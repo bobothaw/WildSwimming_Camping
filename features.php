@@ -138,7 +138,7 @@ if(isset($_POST['btnCusLogin']))
         
         </div>
     </nav>
-    <h1 class="Intro centre">Features in every campsite</h1>
+    <h1 class="Intro centre">Features in the campsite</h1>
     <div class="feature_catalogue_container wrap row">
         <?php
         $featureQuery = "SELECT * FROM features";
