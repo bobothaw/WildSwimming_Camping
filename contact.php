@@ -130,7 +130,7 @@ if(isset($_POST['btnCusLogin']))
             else
             {
                 ?> 
-                <a href="#" id="login"><i class="fa-solid fa-user"></i> Login / SignUp</a>
+                <a href="#" id="login"><i class="fa-solid fa-user"></i>Login / SignUp</a>
                 <?php 
             }
 
