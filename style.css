@@ -1,0 +1,746 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+}
+body {
+  background-color: #f7f3e8;
+}
+
+img.logo {
+  width: 230px;
+  height: 108px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+nav {
+  position: relative; /* Add relative positioning */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f3e8;
+  padding: 0px 40px;
+}
+
+nav div a {
+  font-size: 23px;
+  text-decoration: none;
+  line-height: 50px;
+  font-weight: 550;
+  font-family: "Source Sans 3", sans-serif;
+  color: #7b5237;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  justify-content: space-around;
+}
+
+.drop_angle {
+  font-size: 16px;
+}
+
+.link a:after {
+  content: "";
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0px;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+#drop {
+  position: relative;
+}
+
+.link a:hover:after {
+  width: 100%;
+  background: #7b5237;
+}
+
+.link a.active::after {
+  width: 100%;
+  background: #7b5237;
+}
+
+#dropdown_menu {
+  display: none;
+  position: absolute; /* Add absolute positioning */
+  top: 100%; /* Position the dropdown below the navigation bar */
+  left: 0;
+  z-index: 999; /* Ensure the dropdown covers other elements */
+  background-color: #f7f3e8;
+  border: 1px solid #ccc;
+  flex-direction: column; /* Make it a flex column */
+  min-width: 200px; /* Optional: Set a minimum width for the dropdown */
+  text-align: center;
+}
+
+/* Additional styles for the dropdown menu links */
+#dropdown_menu .link a {
+  display: block;
+  padding: 10px;
+  color: #7b5237;
+  text-decoration: none;
+}
+.text_centre{
+  text-align: center;
+}
+
+
+#dropdown_menu .link a:hover {
+  background-color: #ccc;
+}
+div.slider_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+div.slider {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* height: 900px; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+.slides input {
+  display: none;
+}
+.slides {
+  width: 500%;
+  height: 900px;
+  display: flex;
+}
+.slide {
+  width: 20%;
+  transition: 2s;
+  position: relative;
+}
+.slide_text {
+  font-size: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45%;
+  margin: auto;
+  padding: 50px;
+  width: 500px;
+  text-align: center;
+  background-color: #f7f3e89b;
+}
+
+.slides img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* height: 900px; */
+}
+.navigation-manual {
+  position: absolute;
+  width: 100%;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+.manual-btn {
+  border: 2px solid #f7f3e8;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.manual-btn:not(:last-child) {
+  margin-right: 40px;
+}
+.manual-btn:hover {
+  background: #f7f3e8;
+}
+
+#radio-1:checked ~ .first {
+  margin-left: 0;
+}
+
+#radio-2:checked ~ .first {
+  margin-left: -20%;
+}
+#radio-3:checked ~ .first {
+  margin-left: -40%;
+}
+#radio-4:checked ~ .first {
+  margin-left: -60%;
+}
+#radio-5:checked ~ .first {
+  margin-left: -80%;
+}
+
+/* css for auto navigation */
+.navigation-auto {
+  position: absolute;
+  width: 100%;
+  min-width: auto;
+  margin-top: 900px;
+  display: flex;
+  justify-content: center;
+}
+.navigation-auto div {
+  border: 2px solid #f7f3e8;
+  border-radius: 10px;
+  padding: 5px;
+  transition: 1s;
+}
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio-1:checked ~ .navigation-auto .auto-btn1 {
+  background: #f7f3e8;
+}
+
+#radio-2:checked ~ .navigation-auto .auto-btn2 {
+  background: #f7f3e8;
+}
+#radio-3:checked ~ .navigation-auto .auto-btn3 {
+  background: #f7f3e8;
+}
+#radio-4:checked ~ .navigation-auto .auto-btn4 {
+  background: #f7f3e8;
+}
+#radio-5:checked ~ .navigation-auto .auto-btn5 {
+  background: #f7f3e8;
+}
+.searchbar {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#searchForm {
+  background: #f7f3e8;
+  width: 600px;
+  height: 55px;
+  display: flex;
+}
+#searchForm input {
+  flex: 1;
+  border: none;
+  outline: none;
+
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px;
+  font-size: 20px;
+}
+#searchForm button {
+  background: #7b5237;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  outline: none;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.5s;
+}
+#searchForm button:hover {
+  background: #bd8a6b;
+}
+footer {
+  padding: 10px;
+  background-color: #bd8a6b;
+  text-align: center;
+}
+footer p {
+  font-size: 23px;
+  padding: 5px;
+  color: #f7f3e8;
+}
+footer p a {
+  color: #f7f3e8;
+}
+.social-media-icon {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.modal-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  display: none;
+}
+.modal-content {
+  width: 700px;
+  height: min-content;
+  background-color: #f7f3e8;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+}
+.modal-box {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  color: #5b4248;
+}
+
+.modal_heading {
+  font-size: 40px;
+    color: #5b4248;
+}
+.modal-email {
+  width: 70%;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 18px;
+  display: block;
+  margin: 11px auto;
+}
+.modal_text{
+    display: block;
+    font-size: 17px;
+    text-decoration: none;
+    color: #5b4248;
+}
+.modal-button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #7b5237;
+  font-size: 17px;
+  margin-top: 7px;
+  width: 30%;
+  cursor: pointer;
+  transition: 0.4s;
+  margin-bottom: 10px;
+}
+input[type="submit"]:disabled{
+  background-color: rgba(128, 128, 128, 0.482);
+  cursor: default;
+}
+input[type="submit"]:disabled:hover{
+
+}
+.modal-button:hover {
+  background-color: #5b4248;
+}
+.g-recaptcha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+#signup_form{
+  display: none;
+}
+.centre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Intro{
+  width: 90%;
+  margin: 20px auto;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.AdminSignUpLoginForm {
+  width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Styling for form headings */
+.AdminSignUpLoginForm form h1 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #7b5237;
+}
+
+/* Styling for form labels */
+.AdminSignUpLoginForm form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #7b5237;
+  font-size: 20px;
+}
+
+/* Styling for form input fields */
+.AdminSignUpLoginForm form input[type="text"],
+.AdminSignUpLoginForm form input[type="email"],
+.AdminSignUpLoginForm form input[type="password"],
+.AdminSignUpLoginForm form input[type="file"],
+.AdminSignUpLoginForm form textarea, 
+.AdminSignUpLoginForm form input[type="number"]{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.AdminSignUpLoginForm form input[type="radio"]{
+  border: 0px;
+  width: 10%;
+  height: 1.5em;
+  margin-bottom: 15px;
+}
+.AdminSignUpLoginForm form textarea{
+  width: 100%;
+  border-radius: 5px;
+}
+.AdminSignUpLoginForm span{
+  font-size: 18px;
+  margin-right: 20px;
+}
+.AdminSignUpLoginForm select{
+  font-size: 18px;
+  text-indent: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.AdminSignUpLoginForm form input[type="text"]::placeholder,
+.AdminSignUpLoginForm form input[type="email"]::placeholder,
+.AdminSignUpLoginForm form input[type="password"]::placeholder {
+  color: #7b5237;
+  font-size: 18px;
+}
+.AdminSignUpLoginForm form input[type="text"]::-ms-input-placeholder,
+.AdminSignUpLoginForm form input[type="email"]::-ms-input-placeholder,
+.AdminSignUpLoginForm form input[type="password"]::-ms-input-placeholder {
+  color: #7b5237;
+  font-size: 18px;
+}
+/* Styling for the form button */
+.AdminSignUpLoginForm form button {
+  display: block;
+  width: 100%;
+  background-color: #bd8a6b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+}
+.AdminSignUpLoginForm form button:hover{
+  background-color: #7b5237;
+}
+
+/* Styling for the "Already have an account?" text */
+.AdminSignUpLoginForm form p {
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Styling for the "Login" link */
+.AdminSignUpLoginForm form a {
+  text-decoration: none;
+  color: #7b5237;
+}
+
+.AdminDashboardNav {
+  background-color: #bd8a6b;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: 100%;
+}
+.AdminDashboardNav nav{
+  padding: 0px;
+}
+.AdminDashboardNav ul {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+}
+
+.AdminDashboardNav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.AdminDashboardNav a:hover {
+  background-color: #555;
+}
+#AdminDashboardBody{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+}
+#AdminDashboardBody .AdminInputFormContainer{
+  margin-left: 300px;
+  position: absolute;
+  left: 30%;
+}
+.Intro h1{
+  font-size: 30px;
+  color: #7b5237;
+  margin-bottom: 5px;
+}
+.Intro p{
+  color: #7b5237;
+  font-size: 20px;
+}
+.wrap{
+  flex-wrap: wrap;
+}
+
+.viewed_campsite_container{
+  width: 100%;
+  height: fit-content;
+  justify-content: space-evenly;
+}
+.viewed_campsite_slot{
+  width: 500px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 25px;
+}
+.viewed_campsite{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.viewed_campsite img{
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+.viewed_campsite img:hover {
+  cursor: pointer;
+}
+.viewed_campsite_overlay{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    min-height: 0;
+    overflow: hidden;
+    background-color: #fbf4e2ca;
+    color: #7b5237;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    transition: 0.4s;
+}
+.viewed_campsite_overlay i,
+.viewed_campsite_overlay span, 
+.viewed_campsite_overlay a{
+  font-size: 18px;
+  margin-top: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #7b5237;
+}
+.viewed_campsite_overlay a:hover{
+  text-decoration: underline;
+}
+.viewed_campsite:hover .viewed_campsite_overlay{
+  min-height: 50%;
+  padding: 20px;
+  border-radius: 0px 0px 10px 10px;
+  top: 50%;
+}
+hr{
+  background-color: #7b5237;
+  height: 1px;
+  border: none;
+}
+.feature_catalogue_container{
+  width: 100%;
+  justify-content: space-around;
+}
+.feature_catalogue{
+  width: 360px;
+  padding: 20px;
+  height: fit-content;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.feature_catalogue i{
+  width: 100%;
+  font-size: 100px;
+  color: #7b5237;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feature_catalogue p{
+  color: #7b5237;
+  font-size: 18px;
+}
+.LocalAttractionsContainer{
+  justify-content: space-around;
+  align-items: center;
+}
+.attraction_slot {
+  width: 750px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+.attrImage {
+  width: 300px;
+  position: relative;
+}
+.attrImage img{
+  width: 100%;
+  border-radius: 10px;
+}
+.AttrText {
+  color: #7b5237;
+  width: 400px;
+}
+.AttrText h3{
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 780px) {
+  .attraction_slot {
+    flex-direction: column;
+  }
+  .attrImage {
+    width: 300px;
+  }
+  .AttrText{
+    width: 300px;
+  }
+  .CampsiteInfoContainer .CampInfo{
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  .CampsiteInfoContainer .CampInfo. .CampsiteText{
+    padding: 0px;
+  }
+  .CampInfo .CampSiteImage{
+    padding: 0px;
+  }
+  nav{
+    display: none;
+  }
+}
+.CampInfo{
+  padding: 20px 20px 5px 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  width: 90%;
+  justify-content: space-between;
+}
+.CampSiteImage{
+  padding: 20px;
+  width: 350px;
+  position: relative;
+}
+.CampSiteImage img, iframe{
+  width: 100%;
+  border-radius: 10px;
+  border: 0;
+  aspect-ratio: 16/9;
+}
+.CampsiteText{
+  justify-content: space-evenly;
+  color: #7b5237;
+  max-width: 600px;
+  padding: 10px;
+}
+.CampsiteName{
+  font-size: 25px;
+  font-weight: bold;
+}
+.CampInfoButton{
+  
+  padding: 10px;
+}
+.CampInfoButton button{
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #bd8a6b;
+  border: none;
+  color: #f7f3e8;
+}
+.CampsiteFeatures{
+  justify-content: space-evenly;
+}
+.CampsiteFeatures i{
+  font-size: 18px;
+  padding: 10px;
+  background-color: #ccc;
+  border-radius: 100%;
+}
+.CampsitePitchTypes{
+  justify-content: space-evenly;
+}
+.CampsitePitchTypes p{
+  padding: 5px;
+  background-color: #ccc;
+  border-radius: 30px;
+  margin: 2px;
+}
+.ReviewAndSwimming{
+  justify-content: space-around;
+}
+
+
+
+
+
+

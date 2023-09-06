@@ -1,0 +1,6 @@
+#ignore the weird style
+style-DESKTOP-KU9UO65.css
+
+# ignore all .txt files and also '#' is similar to commenting
+*.txt
+
