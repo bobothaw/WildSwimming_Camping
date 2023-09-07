@@ -486,6 +486,9 @@ if (isset($_POST['btnInsertCampsiteFeature']))
                 <button type="submit" name="btnInsertCampsiteFeature">Insert Campsite Feature</button>
             </form>
         </div>
+        <div class="EditFrom">
+            <div class="Something"></div>
+        </div>
     </div>
     
 </body>
