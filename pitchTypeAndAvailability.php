@@ -141,7 +141,7 @@ if(isset($_POST['btnCusLogin']))
         </div>
     </nav>
     <div class="searchControls row">
-        <form action="POST">
+        <form action="pitchTypeAndAvailability.php" method="POST">
             <?php 
             $currentDate = date("Y-m-d");
             $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
@@ -497,7 +497,6 @@ if(isset($_POST['btnCusLogin']))
     <script>
     $(document).ready(function () {
         const searchForm = $(".searchControls form");
-        const searchResults = $("#searchResults");
 
         searchForm.on("submit", function (event) {
         event.preventDefault();
@@ -508,18 +507,19 @@ if(isset($_POST['btnCusLogin']))
         // Send an AJAX request to your server
         $.ajax({
             type: "POST",
-            url: "pitchTypeAndAvailability.php",
+            url: "#searchResults",
             data: formData,
             processData: false,
             contentType: false,
             success: function (data) {
-            // Display the results in the searchResults div
-            searchResults.html(data);
+            // Update the content of the searchResults div
+            $("#searchResults").html(data);
             },
         });
         });
     });
     </script>
+
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
