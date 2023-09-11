@@ -667,15 +667,15 @@ hr{
     padding: 0px;
     margin: 0px;
   }
-  .CampsiteInfoContainer .CampInfo. .CampsiteText{
+  .CampsiteInfoContainer .CampInfo .CampsiteText{
     padding: 0px;
   }
   .CampInfo .CampSiteImage{
     padding: 0px;
   }
-  nav{
+  /* nav{
     display: none;
-  }
+  } */
 }
 .CampInfo{
   padding: 20px 20px 5px 20px;
@@ -687,7 +687,7 @@ hr{
 }
 .CampSiteImage{
   padding: 20px;
-  width: 350px;
+  width: 400px;
   position: relative;
 }
 .CampSiteImage img, iframe{
