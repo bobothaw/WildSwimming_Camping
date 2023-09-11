@@ -190,7 +190,7 @@ if(isset($_POST['btnCusLogin']))
                         <iframe src=<?= $campsiteRow["MapLocation"];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="CampsiteText column">
-                        <div class="CampsiteName">
+                        <div class="CampsiteName centre">
                             <?= $campsiteRow["CampsiteName"];?>
                         </div>
                         <div class="CampsiteFeatures row wrap">
@@ -251,6 +251,24 @@ if(isset($_POST['btnCusLogin']))
                                     }
                                 ?>
                             </div>
+                        </div>
+                        <div class="centre">
+                            <span>Nearby : </span>
+                            <?php 
+                            $localAttrQuery = "SELECT la.AttractionName 
+                            FROM local_attractions la, campsites ca
+                            Where ca.CampsiteID = $campsiteID
+                            AND la.CountryID = ca.CountryID
+                            LIMIT 2";
+                            $localAttrQueryRun = mysqli_query($connect, $localAttrQuery);
+                            while ($localAttrRow = mysqli_fetch_assoc($localAttrQueryRun))
+                            {
+                                ?>
+                                <span><?= $localAttrRow["AttractionName"] ?>,</span>
+                                <?php
+                            }
+                            ?>
+                            <span> &#160...</span>
                         </div>
                     </div>
                     <div class="CampInfoButton centre">
