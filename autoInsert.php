@@ -1,5 +1,6 @@
 <?php 
 include('connection.php');
+set_time_limit(1000);
 $initialDate = new DateTime('2023-09-01');
 $endDate = new DateTime('2023-12-31');
 $availSpace = 20;
