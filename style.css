@@ -738,6 +738,39 @@ hr{
 .ReviewAndSwimming{
   justify-content: space-around;
 }
+.searchControls form
+{
+  width: 90%;
+  justify-content: space-around;
+  padding: 20px;
+  box-shadow: 0px 0px 5px #7b5237;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 100px;
+}
+.searchControls input,
+.searchControls select{
+  padding: 8px;
+  width: 300px;
+  font-size: 18px;
+  background-color: #bd8a6b;
+  color: #f7f3e8;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+}
+.searchControls input:hover, 
+.searchControls select:hover{
+  color: #bd8a6b;
+  background-color: #fff;
+}
+.searchControls input:active,
+.searchControls select:active{
+  background-color: #ffffffc5;
+}
+
 
 
 
