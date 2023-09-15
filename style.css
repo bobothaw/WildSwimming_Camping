@@ -710,12 +710,19 @@ hr{
   
   padding: 10px;
 }
-.CampInfoButton button{
+.CampInfoButton a{
   padding: 10px;
   border-radius: 30px;
   background-color: #bd8a6b;
-  border: none;
   color: #f7f3e8;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px #ccc;
+  transition: 0.3s;
+}
+.CampInfoButton a:hover{
+  box-shadow: none;
+  background-color: #f7f3e8;
+  color: #bd8a6b;
 }
 .CampsiteFeatures{
   justify-content: space-evenly;

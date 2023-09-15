@@ -1,6 +1,5 @@
 <?php 
 include('connection.php');
-include('searchFunction.php');
 session_start();
 
 if(isset($_POST['btnCusSignUp']))
@@ -85,14 +84,12 @@ if(isset($_POST['btnCusLogin']))
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GWSC - Pitch Types and Availability</title>
+    <title>GWSC - Contact</title>
     <script src="https://kit.fontawesome.com/84ff42f2da.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 <body>
     <nav>
@@ -133,7 +130,7 @@ if(isset($_POST['btnCusLogin']))
             else
             {
                 ?> 
-                <a href="#" id="login"><i class="fa-solid fa-user"></i> Login / SignUp</a>
+                <a href="#" id="login"><i class="fa-solid fa-user"></i>Login / SignUp</a>
                 <?php 
             }
 
@@ -141,146 +138,6 @@ if(isset($_POST['btnCusLogin']))
         
         </div>
     </nav>
-    <div class="searchControls centre">
-        <form action="searchFunction.php" method="POST" class="row wrap">
-            <?php 
-            $currentDate = date("Y-m-d");
-            $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
-            ?>
-            <input type="date" name="startDate" id="dateSet" min ="<?= $currentDate ?>" max="2023-12-31" required>
-            <input type="date" name="endDate" min = "<?= $minEndDate ?>" max="2023-12-31" required>
-            <select name="cboPitchType" id="PitchTypeSelect" required>
-            <option value="" disabled selected>Select the pitch type</option>
-                <?php
-                    $pitchTypeSelectQuery = "SELECT * from pitchtypes";
-                    $runQuery = mysqli_query($connect, $pitchTypeSelectQuery);
-                    $pitchTypeRowCount = mysqli_num_rows($runQuery);
-                    for ($i = 0; $i < $pitchTypeRowCount; $i++)
-                    {
-                        $pitchTypeArray = mysqli_fetch_array($runQuery);
-                        $PitchTypeID = $pitchTypeArray['PitchTypeID'];
-                        $PitchTypeName = $pitchTypeArray['PitchTypeName'];
-                        echo "<option value = '$PitchTypeID'>$PitchTypeName</option>";
-                    }
-                ?>
-            </select>
-            <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    
-        <div class="CampsiteInfoContainer column centre" id="searchResults">
-            
-            <?php 
-            $campsiteQuery = "SELECT * from Campsites";
-            $runcampsiteQuery = mysqli_query($connect, $campsiteQuery);
-            if (mysqli_num_rows($runcampsiteQuery) > 0)
-            {
-                while($campsiteRow = mysqli_fetch_assoc($runcampsiteQuery)){
-                    $campsiteID = $campsiteRow["CampsiteID"];
-                    ?>
-                    <div class="CampInfo row">
-                        <div class="CampSiteImage">
-                            <img src="<?php echo $campsiteRow["Image1"];?> " alt="">
-                            <iframe src=<?= $campsiteRow["MapLocation"];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <div class="CampsiteText column">
-                            <div class="CampsiteName centre">
-                                <?= $campsiteRow["CampsiteName"];?>
-                            </div>
-                            <div class="CampsiteFeatures row wrap">
-                                <?php
-                                    $campsiteFeatureQuery = "SELECT f.FeatureIcon from
-                                    Features f, Campsite_Feature cf
-                                    WHERE f.FeatureID = cf.FeatureID
-                                    AND cf.CampsiteID = $campsiteID";
-                                    $runcampsiteFeatureQuery = mysqli_query($connect, $campsiteFeatureQuery);
-                                    while($campsiteFeatureRow = mysqli_fetch_assoc($runcampsiteFeatureQuery)){
-                                        echo $campsiteFeatureRow["FeatureIcon"];
-                                    }
-                                ?>
-                            </div>
-                            <div class="CampsitePitchTypes row wrap">
-                                <?php
-                                    $campsitePitchQuery = "SELECT pt.PitchTypeName, cp.PricePerSlot
-                                    FROM PitchTypes pt, Campsite_pitchtype cp
-                                    WHERE cp.CampsiteID = $campsiteID
-                                    AND pt.PitchTypeID = cp.PitchTypeID";
-                                    $runcampsitePitchQuery = mysqli_query($connect, $campsitePitchQuery);
-                                    while ($campsitePitchRow = mysqli_fetch_assoc($runcampsitePitchQuery)){
-                                        ?>
-                                        <p><?= $campsitePitchRow["PitchTypeName"].": ".$campsitePitchRow["PricePerSlot"]."$" ?></p>
-                                        <?php
-                                    }
-                                ?>
-                            </div>
-                            <div class="ReviewAndSwimming row">
-                                <div class="CampSiteReview row">
-                                    <?php
-                                        $reviewQuery = "SELECT ROUND (AVG(r.StarCount), 1) AS AVGReviews
-                                        From Reviews r
-                                        WHERE r.CampsiteID = $campsiteID";
-                                        $runreviewQuery = mysqli_query($connect, $reviewQuery);
-                                        $reviewCount = mysqli_num_rows($runreviewQuery);
-                                        if ($reviewCount == 1)
-                                        {
-                                            $reviewArray = mysqli_fetch_array($runreviewQuery);
-                                            ?>
-                                            <p><i class="fa-solid fa-star"></i> <?= $reviewArray["AVGReviews"]."/5"; ?></p>
-                                            <?php
-                                        }
-                                    ?>
-        
-                                </div>
-                                <div class="WildSwimming">
-                                    <?php
-                                        if ($campsiteRow["WildSwimming"] == 0){
-                                            ?>
-                                            <p>Wild Swimming:<i class="fa-solid fa-circle-xmark"></i></i></p>
-                                            <?php
-                                        }
-                                        else{
-                                            ?>
-                                            <p>Wild Swimming:<i class="fa-solid fa-circle-check"></i></i></p>
-                                            <?php
-                                        }
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="centre">
-                                <span>Nearby : </span>
-                                <?php
-                                $localAttrQuery = "SELECT la.AttractionName
-                                FROM local_attractions la, campsites ca
-                                Where ca.CampsiteID = $campsiteID
-                                AND la.CountryID = ca.CountryID
-                                LIMIT 2";
-                                $localAttrQueryRun = mysqli_query($connect, $localAttrQuery);
-                                while ($localAttrRow = mysqli_fetch_assoc($localAttrQueryRun))
-                                {
-                                    ?>
-                                    <span><?= $localAttrRow["AttractionName"] ?>,</span>
-                                    <?php
-                                }
-                                ?>
-                                <span> &#160...</span>
-                            </div>
-                        </div>
-                        <div class="CampInfoButton centre">
-                            <a href="campsiteDetail.php?CampID=<?= $campsiteID?>">View Detailes</a>
-                        </div>
-                    </div>
-                    <?php
-                }
-        
-            }
-            else
-            {
-                echo"Not found";
-            }
-            ?>
-        </div>
-    
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
@@ -357,51 +214,6 @@ if(isset($_POST['btnCusLogin']))
     }
     }
   </script>
-  <script>
-    $(document).ready(function () {
-        
-        $(".CampSiteImage iframe").hide();
-
-        $(".CampSiteImage").hover(
-            function () {
-                $(this).find("img").hide();
-                $(this).find("iframe").show();
-            },
-            function () {
-                $(this).find("iframe").hide();
-                $(this).find("img").show();
-            }
-        );
-    });
-    document.getElementById('dateSet').valueAsDate = new Date();
-    </script>
-    <script>
-    $(document).ready(function () {
-        const searchForm = $(".searchControls form");
-
-        searchForm.on("submit", function (event) {
-        event.preventDefault();
-
-        // Gather form data
-        const formData = new FormData(this);
-
-        // Send an AJAX request to your server
-        $.ajax({
-            type: "POST",
-            url: "searchFunction.php",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-            // Update the content of the searchResults div
-            $("#searchResults").html(data);
-            },
-        });
-        });
-    });
-    </script>
-
-
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

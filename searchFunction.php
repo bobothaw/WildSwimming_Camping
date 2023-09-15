@@ -107,7 +107,7 @@ include('connection.php');
                                 </div>
                             </div>
                             <div class="CampInfoButton centre">
-                                <button>View Details</button>
+                            <a href="campsiteDetail.php?CampID=<?= $campsiteID?>">View Detailes</a>
                             </div>
                         </div>
                         <?php
