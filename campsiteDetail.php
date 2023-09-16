@@ -138,6 +138,112 @@ if(isset($_POST['btnCusLogin']))
         
         </div>
     </nav>
+    <div class="campsiteSlot column">
+        <div class="campsiteHeader row wrap">
+            <div class="headerName">Long Ass Campsite Name </div>
+            <div class="headerPitchType row">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+        <div class="RatingAndLocation row wrap">
+            <div class="Rating"></div>
+            <div class="Location"></div>
+        </div>
+        <div class="CampsiteDetailImages row">
+            <div class="PrincipleImage">
+                <img src="" alt="">
+            </div>
+            <div class="SideImages column">
+                <div class="UpperSideImage"></div>
+                <div class="LowerSideImage"></div>
+            </div>
+        </div>
+        <div class="CampsiteDescription row">
+            <div class="DescriptionText column">
+                <div class="AboutCampsite"></div>
+                <div class="DescFeature"></div>
+            </div>
+            <div class="BookingSideBar searchControls">
+                <form action="searchFunction.php" method="POST" class="column">
+                    <?php 
+                    $currentDate = date("Y-m-d");
+                    $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
+                    ?>
+                    <div class="column">
+                        <label for="startDate">Check In Date</label>
+                        <input type="date" name="startDate" id="dateSet" min ="<?= $currentDate ?>" max="2023-12-31" required>
+                    </div>
+                    <div class="column">
+                        <label for="endDate">Check Out Date</label>
+                        <input type="date" name="endDate" min = "<?= $minEndDate ?>" max="2023-12-31" required>
+                    </div>
+                    <div class="column">
+                        <label for="cboPitchType">Pitch Type</label>
+                        <select name="cboPitchType" id="PitchTypeSelect" required>
+                        <option value="" disabled selected>Select the pitch type</option>
+                            <?php
+                                $pitchTypeSelectQuery = "SELECT * from pitchtypes";
+                                $runQuery = mysqli_query($connect, $pitchTypeSelectQuery);
+                                $pitchTypeRowCount = mysqli_num_rows($runQuery);
+                                for ($i = 0; $i < $pitchTypeRowCount; $i++)
+                                {
+                                    $pitchTypeArray = mysqli_fetch_array($runQuery);
+                                    $PitchTypeID = $pitchTypeArray['PitchTypeID'];
+                                    $PitchTypeName = $pitchTypeArray['PitchTypeName'];
+                                    echo "<option value = '$PitchTypeID'>$PitchTypeName</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="column">
+                        <label for="numOfPeople">Guests</label>
+                        <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
+                    </div>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <div class="CampsiteReview column">
+            <h1>Reviews</h1>
+            <div class="ReviewStar row">
+                <span>4.5/5</span>
+                <i class="fa-star fa-solid"></i>
+            </div>
+            <div class="ReviewSubmit">
+                <form action="">
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"></label>
+                </div>
+                <input type="hidden" id="selected-rating" name="selected-rating">
+                    <label for="txtReviewTitle"></label>
+                    <input type="text" name="txtReviewTitle">
+                    <label for="txtReviewDesc"></label>
+                    <textarea name="txtReviewDesc" id="" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Submit Review">
+                </form>
+            </div>
+        </div>
+        <div class="LocationMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15277.354537074432!2d96.12089354999999!3d16.809548550000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ebde5f0b2bad%3A0x5e765a10681bf5a8!2sTea%20House!5e0!3m2!1sen!2smm!4v1694895983027!5m2!1sen!2smm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="LocalAttractionContainer row wrap">
+            <div class="LocalAttractionSlot">
+                <img src="" alt="">
+                <div class="AttractionDesc">
+                    <h5>AttractionName</h5>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>

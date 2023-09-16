@@ -754,11 +754,13 @@ hr{
   margin-bottom: 20px;
   margin-top: 20px;
   border-radius: 100px;
+  align-items: end;
 }
 .searchControls input,
 .searchControls select{
   padding: 8px;
   width: 300px;
+  height: 50px;
   font-size: 18px;
   background-color: #bd8a6b;
   color: #f7f3e8;

@@ -147,24 +147,36 @@ if(isset($_POST['btnCusLogin']))
             $currentDate = date("Y-m-d");
             $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
             ?>
-            <input type="date" name="startDate" id="dateSet" min ="<?= $currentDate ?>" max="2023-12-31" required>
-            <input type="date" name="endDate" min = "<?= $minEndDate ?>" max="2023-12-31" required>
-            <select name="cboPitchType" id="PitchTypeSelect" required>
-            <option value="" disabled selected>Select the pitch type</option>
-                <?php
-                    $pitchTypeSelectQuery = "SELECT * from pitchtypes";
-                    $runQuery = mysqli_query($connect, $pitchTypeSelectQuery);
-                    $pitchTypeRowCount = mysqli_num_rows($runQuery);
-                    for ($i = 0; $i < $pitchTypeRowCount; $i++)
-                    {
-                        $pitchTypeArray = mysqli_fetch_array($runQuery);
-                        $PitchTypeID = $pitchTypeArray['PitchTypeID'];
-                        $PitchTypeName = $pitchTypeArray['PitchTypeName'];
-                        echo "<option value = '$PitchTypeID'>$PitchTypeName</option>";
-                    }
-                ?>
-            </select>
-            <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
+            <div class="column">
+                <label for="startDate">Check In Date</label>
+                <input type="date" name="startDate" id="dateSet" min ="<?= $currentDate ?>" max="2023-12-31" required>
+            </div>
+            <div class="column">
+                <label for="endDate">Check Out Date</label>
+                <input type="date" name="endDate" min = "<?= $minEndDate ?>" max="2023-12-31" required>
+            </div>
+            <div class="column">
+                <label for="cboPitchType">Pitch Type</label>
+                <select name="cboPitchType" id="PitchTypeSelect" required>
+                <option value="" disabled selected>Select the pitch type</option>
+                    <?php
+                        $pitchTypeSelectQuery = "SELECT * from pitchtypes";
+                        $runQuery = mysqli_query($connect, $pitchTypeSelectQuery);
+                        $pitchTypeRowCount = mysqli_num_rows($runQuery);
+                        for ($i = 0; $i < $pitchTypeRowCount; $i++)
+                        {
+                            $pitchTypeArray = mysqli_fetch_array($runQuery);
+                            $PitchTypeID = $pitchTypeArray['PitchTypeID'];
+                            $PitchTypeName = $pitchTypeArray['PitchTypeName'];
+                            echo "<option value = '$PitchTypeID'>$PitchTypeName</option>";
+                        }
+                    ?>
+                </select>
+            </div>
+            <div class="column">
+                <label for="numOfPeople">Guests</label>
+                <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
+            </div>
             <input type="submit" value="Search">
         </form>
     </div>
