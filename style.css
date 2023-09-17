@@ -780,6 +780,14 @@ hr{
   background-color: #ffffffc5;
 }
 
+.BookingSideBar form{
+  width: 100%;
+  border-radius: 10px;
+}
+.BookingSideBar form input[type=submit]
+{
+  margin-top: 15px;
+}
 
 
 

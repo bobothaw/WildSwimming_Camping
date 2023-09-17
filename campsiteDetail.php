@@ -77,6 +77,17 @@ if(isset($_POST['btnCusLogin']))
       echo "<script>window.alert('Customer Login failed')</script>";
     }
 }
+if (isset($_GET['CampID']))
+{
+    $campsiteID = $_GET['CampID'];
+    $campsiteQuery = "SELECT c.CampsiteName, c.Image1, c.Image2, c.Image3, ctr.CountryID, ctr.CountryName, c.WildSwimming, c.Description, c.MapLocation
+    FROM Campsites c, Countries ctr
+    WHERE c.CampsiteID = $campsiteID
+    AND c.CountryID = ctr.CountryID";
+    $runCampsiteQuery = mysqli_query($connect, $campsiteQuery);
+    $campsiteArray = mysqli_fetch_assoc($runCampsiteQuery);
+    $countryID = $campsiteArray['CountryID'];
+}
 
 ?>
 <!DOCTYPE html>
@@ -140,30 +151,84 @@ if(isset($_POST['btnCusLogin']))
     </nav>
     <div class="campsiteSlot column">
         <div class="campsiteHeader row wrap">
-            <div class="headerName">Long Ass Campsite Name </div>
+            <div class="headerName"><h1><?= $campsiteArray['CampsiteName'] ?> </h1></div>
             <div class="headerPitchType row">
-                <i class="fa-solid fa-user"></i>
+                <?php 
+                $pitchTypeQuery = "SELECT pt.PitchTypeName, pt.PitchTypeImg
+                from PitchTypes pt, Campsite_PitchType cpt
+                WHERE cpt.CampsiteID = $campsiteID
+                AND pt.PitchTypeID = cpt.PitchTypeID";
+                $runpitchTypeQuery = mysqli_query($connect, $pitchTypeQuery);
+                while($pitchTypeArray = mysqli_fetch_assoc($runpitchTypeQuery))
+                {
+                    ?>
+                    <img src="<?= $pitchTypeArray['PitchTypeImg'] ?>" alt="<?= $pitchTypeArray['PitchTypeName'] ?>">
+                    <?php 
+                }
+                ?>
             </div>
         </div>
         <div class="RatingAndLocation row wrap">
-            <div class="Rating"></div>
-            <div class="Location"></div>
+            <div class="Rating row">
+                <?php
+                    $reviewQuery = "SELECT ROUND (AVG(r.StarCount), 1) AS AVGReviews
+                    From Reviews r
+                    WHERE r.CampsiteID = $campsiteID";
+                    $runreviewQuery = mysqli_query($connect, $reviewQuery);
+                    $reviewCount = mysqli_num_rows($runreviewQuery);
+                    if ($reviewCount == 1)
+                    {
+                        $reviewArray = mysqli_fetch_array($runreviewQuery);
+                        ?>
+                        <p><i class="fa-solid fa-star"></i> <?= $reviewArray["AVGReviews"]."/5"; ?></p>
+                        <?php
+                    }
+                ?>
+            </div>
+            <div class="Country">
+                <p><?= $campsiteArray['CountryName'] ?></p>
+            </div>
         </div>
         <div class="CampsiteDetailImages row">
             <div class="PrincipleImage">
-                <img src="" alt="">
+                <img src="<?= $campsiteArray['Image1'] ?>" alt="">
             </div>
             <div class="SideImages column">
-                <div class="UpperSideImage"></div>
-                <div class="LowerSideImage"></div>
+                <div class="UpperSideImage">
+                    <img src="<?= $campsiteArray['Image2'] ?>" alt="">
+                </div>
+                <div class="LowerSideImage">
+                    <img src="<?= $campsiteArray['Image3'] ?>" alt="">
+                </div>
             </div>
         </div>
         <div class="CampsiteDescription row">
             <div class="DescriptionText column">
-                <div class="AboutCampsite"></div>
-                <div class="DescFeature"></div>
+                <div class="AboutCampsite column">
+                    <h2>About <?= $campsiteArray['CampsiteName'] ?></h2>
+                    <p><?= $campsiteArray['Description'] ?></p>
+                </div>
+                <div class="FeatureContainer column">
+                    <?php
+                        $campsiteFeatureQuery = "SELECT f.FeatureIcon, f.FeatureName from
+                        Features f, Campsite_Feature cf
+                        WHERE f.FeatureID = cf.FeatureID
+                        AND cf.CampsiteID = $campsiteID";
+                        $runcampsiteFeatureQuery = mysqli_query($connect, $campsiteFeatureQuery);
+                        while($campsiteFeatureRow = mysqli_fetch_assoc($runcampsiteFeatureQuery)){
+                            ?> 
+                            <div class="FeaturesList row">
+                            <?php
+                            echo $campsiteFeatureRow["FeatureIcon"];
+                            ?>
+                            <h5><?= $campsiteFeatureRow['FeatureName'] ?></h5>
+                            </div>
+                            <?php
+                        }
+                    ?>
+                </div>
             </div>
-            <div class="BookingSideBar searchControls">
+            <div class="searchControls BookingSideBar">
                 <form action="searchFunction.php" method="POST" class="column">
                     <?php 
                     $currentDate = date("Y-m-d");
@@ -233,7 +298,7 @@ if(isset($_POST['btnCusLogin']))
             </div>
         </div>
         <div class="LocationMap">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15277.354537074432!2d96.12089354999999!3d16.809548550000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ebde5f0b2bad%3A0x5e765a10681bf5a8!2sTea%20House!5e0!3m2!1sen!2smm!4v1694895983027!5m2!1sen!2smm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src=<?= $campsiteArray['MapLocation'];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="LocalAttractionContainer row wrap">
             <div class="LocalAttractionSlot">
