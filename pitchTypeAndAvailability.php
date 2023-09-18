@@ -1,7 +1,6 @@
 <?php 
 include('connection.php');
 include('searchFunction.php');
-session_start();
 
 if(isset($_POST['btnCusSignUp']))
 {
@@ -78,7 +77,6 @@ if(isset($_POST['btnCusLogin']))
       echo "<script>window.alert('Customer Login failed')</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,7 +134,6 @@ if(isset($_POST['btnCusLogin']))
                 <a href="#" id="login"><i class="fa-solid fa-user"></i> Login / SignUp</a>
                 <?php 
             }
-
         ?>
         
         </div>
@@ -177,7 +174,7 @@ if(isset($_POST['btnCusLogin']))
                 <label for="numOfPeople">Guests</label>
                 <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
             </div>
-            <input type="submit" value="Search">
+            <input type="submit" value="Search" name = "btnSearch">
         </form>
     </div>
     

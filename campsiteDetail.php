@@ -1,6 +1,6 @@
 <?php 
 include('connection.php');
-session_start();
+include('searchFunction.php');
 
 if(isset($_POST['btnCusSignUp']))
 {
@@ -228,44 +228,18 @@ if (isset($_GET['CampID']))
                     ?>
                 </div>
             </div>
-            <div class="searchControls BookingSideBar">
-                <form action="searchFunction.php" method="POST" class="column">
+            <div class="BookingSideBar column">
+                <div class="CheckInDate">Check In Date: <?= $_SESSION['searchStartDate'] ?></div>
+                <div class="CheckInDate">Check Out Date: <?= $_SESSION['searchEndDate'] ?></div>
+                <div class="CheckInDate">Selected Pitch Type: <?= $_SESSION['searchPitchType'] ?></div>
+                <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople'] ?></div>
+                <hr>
+                <div class="CheckInDate">Total Price:  
                     <?php 
-                    $currentDate = date("Y-m-d");
-                    $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
+                        $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
+                        $totalPrice = 
                     ?>
-                    <div class="column">
-                        <label for="startDate">Check In Date</label>
-                        <input type="date" name="startDate" id="dateSet" min ="<?= $currentDate ?>" max="2023-12-31" required>
-                    </div>
-                    <div class="column">
-                        <label for="endDate">Check Out Date</label>
-                        <input type="date" name="endDate" min = "<?= $minEndDate ?>" max="2023-12-31" required>
-                    </div>
-                    <div class="column">
-                        <label for="cboPitchType">Pitch Type</label>
-                        <select name="cboPitchType" id="PitchTypeSelect" required>
-                        <option value="" disabled selected>Select the pitch type</option>
-                            <?php
-                                $pitchTypeSelectQuery = "SELECT * from pitchtypes";
-                                $runQuery = mysqli_query($connect, $pitchTypeSelectQuery);
-                                $pitchTypeRowCount = mysqli_num_rows($runQuery);
-                                for ($i = 0; $i < $pitchTypeRowCount; $i++)
-                                {
-                                    $pitchTypeArray = mysqli_fetch_array($runQuery);
-                                    $PitchTypeID = $pitchTypeArray['PitchTypeID'];
-                                    $PitchTypeName = $pitchTypeArray['PitchTypeName'];
-                                    echo "<option value = '$PitchTypeID'>$PitchTypeName</option>";
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="column">
-                        <label for="numOfPeople">Guests</label>
-                        <input type="number" name="numOfPeople" min = "1" max = "20" value="1">
-                    </div>
-                    <input type="submit" value="Search">
-                </form>
+                </div>
             </div>
         </div>
         <div class="CampsiteReview column">
