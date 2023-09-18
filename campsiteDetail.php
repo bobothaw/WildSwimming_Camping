@@ -237,7 +237,7 @@ if (isset($_GET['CampID']))
                 <div class="CheckInDate">Total Price:  
                     <?php 
                         $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
-                        $totalPrice = 
+                         
                     ?>
                 </div>
             </div>
