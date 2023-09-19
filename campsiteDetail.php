@@ -267,7 +267,7 @@ if (isset($_GET['CampID']))
                     <input type="text" name="txtReviewTitle">
                     <label for="txtReviewDesc"></label>
                     <textarea name="txtReviewDesc" id="" cols="30" rows="10"></textarea>
-                    <input type="submit" value="Submit Review">
+                    <input type="submit" name = "btnSubmitReview" value="Submit Review">
                 </form>
             </div>
         </div>
