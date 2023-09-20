@@ -100,6 +100,7 @@ if (isset($_GET['CampID']))
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -162,7 +163,7 @@ if (isset($_GET['CampID']))
                 while($pitchTypeArray = mysqli_fetch_assoc($runpitchTypeQuery))
                 {
                     ?>
-                    <img src="<?= $pitchTypeArray['PitchTypeImg'] ?>" alt="<?= $pitchTypeArray['PitchTypeName'] ?>">
+                    <img src="<?= $pitchTypeArray['PitchTypeImg'] ?>" alt="<?= $pitchTypeArray['PitchTypeName'] ?>" title = "<?= $pitchTypeArray['PitchTypeName'] ?>">
                     <?php 
                 }
                 ?>
@@ -202,7 +203,7 @@ if (isset($_GET['CampID']))
                 </div>
             </div>
         </div>
-        <div class="CampsiteDescription row">
+        <div class="CampsiteDescription row wrap">
             <div class="DescriptionText column">
                 <div class="AboutCampsite column">
                     <h2>About <?= $campsiteArray['CampsiteName'] ?></h2>
@@ -235,40 +236,40 @@ if (isset($_GET['CampID']))
                 <div class="CheckInDate">Selected Pitch Type: <?= $_SESSION['searchPitchType'] ?></div>
                 <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople'] ?></div>
                 <hr>
-                <div class="CheckInDate">Total Price:  
+                <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
                         $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
                          
                     ?>
                 </div>
+                <form action="" method = "POST">
+                    <input type="submit" value = "Book Now">
+                </form>
             </div>
         </div>
         <div class="CampsiteReview column">
-            <h1>Reviews</h1>
-            <div class="ReviewStar row">
-                <span>4.5/5</span>
-                <i class="fa-star fa-solid"></i>
-            </div>
             <div class="ReviewSubmit">
-                <form action="">
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5"></label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1"></label>
+                <form action="" method = "POST">
+                    <h2>Submit your review</h2>
+                <div class="submitStar centre">
+                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <label for="star5"><i class="fa-regular fa-star"></i></label>
+                    <input type="radio" id="star4" name="rating" value="4" required>
+                    <label for="star4"><i class="fa-regular fa-star"></i></label>
+                    <input type="radio" id="star3" name="rating" value="3" required>
+                    <label for="star3"><i class="fa-regular fa-star"></i></label>
+                    <input type="radio" id="star2" name="rating" value="2" required>
+                    <label for="star2"><i class="fa-regular fa-star"></i></label>
+                    <input type="radio" id="star1" name="rating" value="1" required>
+                    <label for="star1"><i class="fa-regular fa-star"></i></label>
                 </div>
-                <input type="hidden" id="selected-rating" name="selected-rating">
-                    <label for="txtReviewTitle"></label>
-                    <input type="text" name="txtReviewTitle">
-                    <label for="txtReviewDesc"></label>
-                    <textarea name="txtReviewDesc" id="" cols="30" rows="10"></textarea>
-                    <input type="submit" name = "btnSubmitReview" value="Submit Review">
+                <div class="ratingText column">
+                    <label for="txtReviewTitle">Title of your review</label>
+                    <input type="text" name="txtReviewTitle" required>
+                    <label for="txtReviewDesc">Tell us what you feel about this campsite</label>
+                    <textarea name="txtReviewDesc" id="" cols="30" rows="10" required></textarea>
+                    <input type="submit" name = "btnSubmitReview" value="Submit Review" id = "submit-button">
+                </div>
                 </form>
             </div>
         </div>
@@ -359,6 +360,38 @@ if (isset($_GET['CampID']))
         dropdownMenu.style.display = "none";
     }
     }
+    $(document).ready(function () {
+
+    const ratingInputs = $('.submitStar input');
+    ratingInputs.on('mouseenter', function () {
+      const hoverValue = $(this).val();
+      highlightStars(hoverValue);
+    });
+
+    ratingInputs.on('mouseleave', function () {
+      resetStars();
+    });
+
+    function highlightStars(value) {
+      ratingInputs.each(function () {
+        if ($(this).val() <= value) {
+          $(this).next('label').children('i').addClass('fa-solid').removeClass('fa-regular');
+        }
+      });
+    }
+
+    function resetStars() {
+      ratingInputs.each(function () {
+        $(this).next('label').children('i').addClass('fa-regular').removeClass('fa-solid');
+      });
+    }
+
+    $('#submit-button').on('click', function () {
+      // Get the selected rating value directly from the radio inputs
+      const selectedRating = $('input[name="rating"]:checked').val();
+      alert('Review submitted with rating: ' + selectedRating);
+    });
+  });
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
