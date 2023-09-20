@@ -788,6 +788,61 @@ hr{
 {
   margin-top: 15px;
 }
+.campsiteSlot 
+{
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+.campsiteHeader 
+{
+  justify-content: space-between;
+}
+.headerPitchType
+{
+  width: 200px;
+  justify-content: space-between;
+}
+.headerPitchType img{
+  width: 50px;
+}
+.RatingAndLocation {
+  width: 200px;
+  justify-content: space-between;
+}
+.CampsiteDetailImages {
+  width: 100%;
+}
+.CampsiteDetailImages .PrincipleImage {
+  width: 66.66666%;
+  position: relative;
+}
+.CampsiteDetailImages .SideImages{
+  width: 33.33333%;
+  position: relative;
+}
+.CampsiteDetailImages img{
+  width: 100%;
+  border-radius: 10px;
+}
+.CampsiteDescription {
+  align-items: center;
+}
+.CampsiteDescription .DescriptionText {
+  width: 66.66666%;
+  position: relative;
+  padding: 20px;
+  font-size: 18px;
+}
+.CampsiteDescription .BookingSideBar {
+  width: 33.33333%;
+  position: relative;
+  padding: 20px;
+  font-size: 18px;
+}
+.AboutCampsite {
+  margin-bottom: 50px;
+}
 
 
 

@@ -150,7 +150,7 @@ if (isset($_GET['CampID']))
         </div>
     </nav>
     <div class="campsiteSlot column">
-        <div class="campsiteHeader row wrap">
+        <div class="campsiteHeader row wrap centre">
             <div class="headerName"><h1><?= $campsiteArray['CampsiteName'] ?> </h1></div>
             <div class="headerPitchType row">
                 <?php 
@@ -209,6 +209,7 @@ if (isset($_GET['CampID']))
                     <p><?= $campsiteArray['Description'] ?></p>
                 </div>
                 <div class="FeatureContainer column">
+                    <h2>Features in <?= $campsiteArray['CampsiteName'] ?></h2>
                     <?php
                         $campsiteFeatureQuery = "SELECT f.FeatureIcon, f.FeatureName from
                         Features f, Campsite_Feature cf
@@ -221,7 +222,7 @@ if (isset($_GET['CampID']))
                             <?php
                             echo $campsiteFeatureRow["FeatureIcon"];
                             ?>
-                            <h5><?= $campsiteFeatureRow['FeatureName'] ?></h5>
+                            <p><?= $campsiteFeatureRow['FeatureName'] ?></p>
                             </div>
                             <?php
                         }
@@ -278,7 +279,7 @@ if (isset($_GET['CampID']))
             <div class="LocalAttractionSlot">
                 <img src="" alt="">
                 <div class="AttractionDesc">
-                    <h5>AttractionName</h5>
+                    <h3>AttractionName</h3>
                 </div>
             </div>
         </div>
