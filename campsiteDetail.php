@@ -252,16 +252,26 @@ if (isset($_GET['CampID']))
                 <form action="" method = "POST">
                     <h2>Submit your review</h2>
                 <div class="submitStar centre">
-                    <input type="radio" id="star5" name="rating" value="5" required>
-                    <label for="star5"><i class="fa-regular fa-star"></i></label>
-                    <input type="radio" id="star4" name="rating" value="4" required>
-                    <label for="star4"><i class="fa-regular fa-star"></i></label>
-                    <input type="radio" id="star3" name="rating" value="3" required>
-                    <label for="star3"><i class="fa-regular fa-star"></i></label>
-                    <input type="radio" id="star2" name="rating" value="2" required>
-                    <label for="star2"><i class="fa-regular fa-star"></i></label>
-                    <input type="radio" id="star1" name="rating" value="1" required>
-                    <label for="star1"><i class="fa-regular fa-star"></i></label>
+                    <div class="submitStarInput">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5"><i class="fa-regular fa-star"></i></label>
+                    </div>
+                    <div class="submitStarInput">
+                        <input type="radio" id="star4" name="rating" value="4" required>
+                        <label for="star4"><i class="fa-regular fa-star"></i></label>
+                    </div>
+                    <div class="submitStarInput">
+                        <input type="radio" id="star3" name="rating" value="3" required>
+                        <label for="star3"><i class="fa-regular fa-star"></i></label>
+                    </div>
+                    <div class="submitStarInput">
+                        <input type="radio" id="star2" name="rating" value="2" required>
+                        <label for="star2"><i class="fa-regular fa-star"></i></label>
+                    </div>
+                    <div class="submitStarInput">
+                        <input type="radio" id="star1" name="rating" value="1" required>
+                        <label for="star1"><i class="fa-regular fa-star"></i></label>
+                    </div>
                 </div>
                 <div class="ratingText column">
                     <label for="txtReviewTitle">Title of your review</label>
@@ -365,11 +375,14 @@ if (isset($_GET['CampID']))
     const ratingInputs = $('.submitStar input');
     ratingInputs.on('mouseenter', function () {
       const hoverValue = $(this).val();
+      resetStars();
       highlightStars(hoverValue);
     });
 
     ratingInputs.on('mouseleave', function () {
-      resetStars();
+        if ($('input[name="rating"]:checked').length === 0) {
+            resetStars(); 
+        }
     });
 
     function highlightStars(value) {
