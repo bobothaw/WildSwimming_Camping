@@ -239,7 +239,6 @@ if (isset($_GET['CampID']))
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
                         $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
-                         
                     ?>
                 </div>
                 <form action="" method = "POST">
@@ -247,10 +246,11 @@ if (isset($_GET['CampID']))
                 </form>
             </div>
         </div>
+        <hr>
         <div class="CampsiteReview column">
             <div class="ReviewSubmit">
                 <form action="" method = "POST">
-                    <h2>Submit your review</h2>
+                    <h2 class="centre">Submit your review</h2>
                 <div class="submitStar centre">
                     <div class="submitStarInput">
                         <input type="radio" id="star5" name="rating" value="5" required>
@@ -283,16 +283,41 @@ if (isset($_GET['CampID']))
                 </form>
             </div>
         </div>
-        <div class="LocationMap">
+        <hr>
+        <div class="LocationMap centre column">
+            <h2>Campsite Location on the Map</h2>
             <iframe src=<?= $campsiteArray['MapLocation'];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div class="LocalAttractionContainer row wrap">
-            <div class="LocalAttractionSlot">
-                <img src="" alt="">
-                <div class="AttractionDesc">
-                    <h3>AttractionName</h3>
-                </div>
-            </div>
+        <hr>
+        <h2 class="centre" id="localAttrHeading">Local Attractions near the campsite</h2>
+        <div class="LocalAttractionContainer row wrap" id="campsiteLocalAttr">
+            <?php 
+                $localAttrcQuery = "SELECT la.AttractionID, la.AttractionName, c.CountryName, la.AttractionDesc, la.AttractionImage
+                From local_attractions la, countries c 
+                Where c.CountryID = la.CountryID
+                AND c.CountryID = $countryID";
+                $runAttractionQuery = mysqli_query($connect, $localAttrcQuery);
+                if (mysqli_num_rows($runAttractionQuery) > 0) {
+                    while ($attrRow = mysqli_fetch_assoc($runAttractionQuery)) {
+                        ?>
+                        <div class="attraction_slot row">
+                            <div class="attrImage">
+                                <img src="<?php echo $attrRow["AttractionImage"];?>" alt="">
+                            </div>
+                            <div class="AttrText column">
+                                <div class="AttrHeading"><h1><?php echo$attrRow["AttractionName"]; ?></h1></div>
+                                <div class="AttrCountry"><h3><?php echo$attrRow["CountryName"]; ?></h3></div>
+                                <div class="AttrDesc"><p><?php echo$attrRow["AttractionDesc"]; ?></p></div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <div class="Intro">There is no data available</div>
+                    <?php 
+                }
+            ?>
         </div>
     </div>
     <footer>
@@ -382,6 +407,11 @@ if (isset($_GET['CampID']))
     ratingInputs.on('mouseleave', function () {
         if ($('input[name="rating"]:checked').length === 0) {
             resetStars(); 
+        }
+        const checkedRating = $('input[name="rating"]:checked').val();
+        if (checkedRating !== undefined) {
+            resetStars();
+            highlightStars(checkedRating);
         }
     });
 

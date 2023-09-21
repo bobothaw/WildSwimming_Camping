@@ -800,7 +800,7 @@ hr{
 }
 .headerPitchType
 {
-  width: 200px;
+  width: 250px;
   justify-content: space-between;
 }
 .headerPitchType img{
@@ -859,7 +859,8 @@ hr{
   background-color: #ccc;
   margin-bottom: 10px;
 }
-.BookingSideBar form input {
+.BookingSideBar form input,
+.ratingText input[type="submit"] {
   padding: 10px;
   border-radius: 5px;
   background-color: #bd8a6b;
@@ -867,13 +868,16 @@ hr{
   border: none;
   font-size: 18px;
   color: #f7f3e8;
-  transition: 0.4s;
+  transition: 0.2s;
 }
-.BookingSideBar form input:hover {
+.BookingSideBar form input:hover,
+.ratingText input[type="submit"]:hover {
   background-color: #7b5237;
   color: #f7f3e8;
+  cursor: pointer;
 }
-.BookingSideBar form input:active{
+.BookingSideBar form input:active,
+.ratingText input[type="submit"]:active{
   opacity: 0.5;
 }
 
@@ -901,6 +905,9 @@ hr{
 .submitStar i {
   color: gold;
 }
+.submitStar i:hover{
+  cursor: pointer;
+}
 .submitStar input[type="radio"]{
   position: absolute;
   opacity: 0;
@@ -908,13 +915,56 @@ hr{
   height: 100%;
 }
 .ratingText {
+  margin-top: 30px;
   width: 40%;
   min-width: 300px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-.submitStar i:hover{
-  cursor: pointer;
+.ratingText label{
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #7b5237;
 }
+.ratingText input, 
+.ratingText textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.ReviewSubmit h2{
+  margin-bottom: 20px;
+  color: #7b5237;
+  margin-top: 20px;
+}
+.LocationMap{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.LocationMap h2{
+  margin-bottom: 20px;
+  color: #7b5237;
+}
+.LocationMap iframe{
+  width: 90%;
+  height: auto;
+}
+#campsiteLocalAttr{
+ justify-content: space-around;
+}
+#campsiteLocalAttr>*{
+  margin-bottom: 20px;
+}
+#localAttrHeading{
+  color: #7b5237;
+  margin: 20px 0px;
+}
+
+
+
 
 
 
