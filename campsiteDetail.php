@@ -273,7 +273,18 @@ if (isset($_GET['CampID']))
         <hr>
         <div class="CampsiteReview column">
             <div class="ReviewSubmit">
-                <form action="" method = "POST">
+                <?php 
+                    if (isset($_POST['btnSubmitReview']))
+                    {
+                        $starCount = $_POST['rating'];
+                        $reviewTitle = $_POST['txtReviewTitle'];
+                        $reviewDesc = $_POST['txtReviewDesc'];
+                        $reviewInsertQuery = "INSERT into reviews
+                        Values('$campsiteID', '$CusID', '$reviewTitle', '$reviewDesc', '$starCount')";
+                        $runInsertQuery = mysqli_query($connect, $reviewInsertQuery);
+                    }
+                ?>
+                <form action="campsiteDetail.php" method = "POST">
                     <h2 class="centre">Submit your review</h2>
                 <div class="submitStar centre">
                     <div class="submitStarInput">
