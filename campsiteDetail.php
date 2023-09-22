@@ -233,12 +233,32 @@ if (isset($_GET['CampID']))
             <div class="BookingSideBar column">
                 <div class="CheckInDate">Check In Date: <?= $_SESSION['searchStartDate'] ?></div>
                 <div class="CheckInDate">Check Out Date: <?= $_SESSION['searchEndDate'] ?></div>
-                <div class="CheckInDate">Selected Pitch Type: <?= $_SESSION['searchPitchType'] ?></div>
+                <div class="CheckInDate">Selected Pitch Type: 
+                    <?php
+                
+                        $pitchTypeID = $_SESSION['searchPitchType'];
+                        $selectedPitchQuery = "SELECT PitchTypeName
+                        FROM PitchTypes WHERE PitchTypeID = $pitchTypeID";
+                        $runselectedPitchQuery = mysqli_query($connect, $selectedPitchQuery);
+                        $arrayCount = mysqli_num_rows($runselectedPitchQuery);
+                        if ($arrayCount == 1)
+                        {
+                            $pitchTypeArray = mysqli_fetch_array($runselectedPitchQuery);
+                            echo $pitchTypeArray['PitchTypeName'];
+                        }
+                        
+                        ?></div>
                 <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople'] ?></div>
                 <hr>
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
                         $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
+                        $priceQuery = "SELECT PricePerSlot
+                        FROM campsite_pitchtype
+                        WHERE CampsiteID = $campsiteID
+                        AND PitchTypeID = $pitchTypeID";
+                        $runPriceQuery = mysqli_query($connect, $priceQuery);
+                        $priceArray = 
                     ?>
                 </div>
                 <form action="" method = "POST">
