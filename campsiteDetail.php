@@ -80,6 +80,7 @@ if(isset($_POST['btnCusLogin']))
 if (isset($_GET['CampID']))
 {
     $campsiteID = $_GET['CampID'];
+    $_SESSION['CampsiteID'] = $campsiteID;
     $campsiteQuery = "SELECT c.CampsiteName, c.Image1, c.Image2, c.Image3, ctr.CountryID, ctr.CountryName, c.WildSwimming, c.Description, c.MapLocation
     FROM Campsites c, Countries ctr
     WHERE c.CampsiteID = $campsiteID
@@ -109,7 +110,7 @@ if (isset($_GET['CampID']))
         
         <div class="link-container link">
         <div class="link" id="drop">
-            <a href="#" onclick="dropMenu()">Pages <i class="fa-solid fa-angle-down drop_angle"></i></a>
+            <a onclick="dropMenu()">Pages <i class="fa-solid fa-angle-down drop_angle"></i></a>
             <div id="dropdown_menu">
             <div class="link">
                 <a href="information.php">Information</a>
@@ -252,39 +253,40 @@ if (isset($_GET['CampID']))
                 <hr>
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
-                        $neededPitchCount = $_SESSION['searchNumPeople'] / 5;
-                        $selectedPitch = $_SESSION['searchPitchType'];
-                        $priceQuery = "SELECT PricePerSlot
-                        FROM campsite_pitchtype
-                        WHERE CampsiteID = $campsiteID
-                        AND PitchTypeID = $selectedPitch";
-                        $runPriceQuery = mysqli_query($connect, $priceQuery);
-                        $priceArray = mysqli_fetch_array($runPriceQuery);
-                        $actualPrice = $neededPitchCount * $priceArray['PricePerSlot'];
-                        echo $actualPrice."$";
+                        try{
+                            $neededPitchCount = ceil($_SESSION['searchNumPeople'] / 5);
+                            $selectedPitch = $_SESSION['searchPitchType'];
+                            $priceQuery = "SELECT PricePerSlot
+                            FROM campsite_pitchtype
+                            WHERE CampsiteID = $campsiteID
+                            AND PitchTypeID = $selectedPitch";
+                            $runPriceQuery = mysqli_query($connect, $priceQuery);
+                            $priceArray = mysqli_fetch_array($runPriceQuery);
+                            $checkInDate = date_create($_SESSION['searchEndDate']);
+                            $checkOutDate = date_create($_SESSION['searchStartDate']);
+                            $interval = date_diff($checkInDate, $checkOutDate);
+                            $totalDays = $interval->days;
+                            $actualPrice = $neededPitchCount * $priceArray['PricePerSlot'] * $totalDays;
+                            $_SESSION['totalPrice'] = $actualPrice;
+                            echo $actualPrice."$";
+                        }
+                        catch(Exception $e) {
+                            echo $_SESSION['totalPrice'];
+                          }
                         
                     ?>
                 </div>
-                <form action="" method = "POST">
-                    <input type="submit" value = "Book Now">
+                <form action="booking.php" method = "POST">
+                    <input type="submit" value = "Book Now" name="btnBookCampsite">
                 </form>
             </div>
         </div>
         <hr>
+
         <div class="CampsiteReview column">
             <div class="ReviewSubmit">
-                <?php 
-                    if (isset($_POST['btnSubmitReview']))
-                    {
-                        $starCount = $_POST['rating'];
-                        $reviewTitle = $_POST['txtReviewTitle'];
-                        $reviewDesc = $_POST['txtReviewDesc'];
-                        $reviewInsertQuery = "INSERT into reviews
-                        Values('$campsiteID', '$CusID', '$reviewTitle', '$reviewDesc', '$starCount')";
-                        $runInsertQuery = mysqli_query($connect, $reviewInsertQuery);
-                    }
-                ?>
-                <form action="campsiteDetail.php" method = "POST">
+                
+                <form action="reviewSubmit.php" method = "POST">
                     <h2 class="centre">Submit your review</h2>
                 <div class="submitStar centre">
                     <div class="submitStarInput">
@@ -423,13 +425,13 @@ if (isset($_GET['CampID']))
         document.getElementById('signup_btn').disabled = false;
         }
         function dropMenu() {
-    var dropdownMenu = document.getElementById("dropdown_menu");
-    if (dropdownMenu.style.display == "none") {
-        dropdownMenu.style.display = "flex";
-    } else {
-        dropdownMenu.style.display = "none";
-    }
-    }
+            var dropdownMenu = document.getElementById("dropdown_menu");
+            if (dropdownMenu.style.display == "none") {
+                dropdownMenu.style.display = "flex";
+            } else {
+                dropdownMenu.style.display = "none";
+            }
+        }
     $(document).ready(function () {
 
     const ratingInputs = $('.submitStar input');

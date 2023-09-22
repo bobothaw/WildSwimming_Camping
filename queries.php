@@ -200,24 +200,49 @@ include('connection.php');
 // {
 //     echo "Error in  creating Reviews Table.";
 // }
-$availabilityTB = "CREATE table Available_Campsites
+// $availabilityTB = "CREATE table Available_Campsites
+// (
+//     AvailibilityID int AUTO_INCREMENT,
+//     CampsiteID int,
+//     PitchTypeID int,
+//     Avail_Spaces int,
+//     Avail_Date Date,
+//     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
+//     Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
+//     Primary Key (AvailibilityID)
+// )";
+// $runQuery9 = mysqli_query ($connect, $availabilityTB);
+// if ($runQuery9)
+// {
+//     echo "AvailableCampsites Table created successfully.";
+// }
+// else
+// {
+//     echo "Error in  creating AvailableCampsites Table.";
+// }
+$bookingsTB = "CREATE table Bookings
 (
-    AvailibilityID int AUTO_INCREMENT,
+    BookingID int AUTO_INCREMENT,
+    BookingDateTime DATETIME,
+    NumOfGuests int,
+    CheckInDate Date,
+    CheckOutDate Date,
+    TotalPrice Decimal (5,2),
     CampsiteID int,
     PitchTypeID int,
-    Avail_Spaces int,
-    Avail_Date Date,
+    CustomerID int,
     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
     Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
-    Primary Key (AvailibilityID)
+    Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
+    Primary Key (BookingID)
 )";
-$runQuery9 = mysqli_query ($connect, $availabilityTB);
-if ($runQuery9)
+$runQuery10 = mysqli_query ($connect, $bookingsTB);
+if ($runQuery10)
 {
-    echo "AvailableCampsites Table created successfully.";
+    echo "Bookings Table created successfully.";
 }
 else
 {
-    echo "Error in  creating AvailableCampsites Table.";
+    echo "Error in  creating Bookings Table.";
 }
 ?>
