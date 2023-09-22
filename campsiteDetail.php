@@ -248,17 +248,21 @@ if (isset($_GET['CampID']))
                         }
                         
                         ?></div>
-                <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople'] ?></div>
+                <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople']." guests" ?></div>
                 <hr>
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
-                        $neededPitchCount = $_SESSION['searchNumPeople'] % 5;
+                        $neededPitchCount = $_SESSION['searchNumPeople'] / 5;
+                        $selectedPitch = $_SESSION['searchPitchType'];
                         $priceQuery = "SELECT PricePerSlot
                         FROM campsite_pitchtype
                         WHERE CampsiteID = $campsiteID
-                        AND PitchTypeID = $pitchTypeID";
+                        AND PitchTypeID = $selectedPitch";
                         $runPriceQuery = mysqli_query($connect, $priceQuery);
-                        $priceArray = 
+                        $priceArray = mysqli_fetch_array($runPriceQuery);
+                        $actualPrice = $neededPitchCount * $priceArray['PricePerSlot'];
+                        echo $actualPrice."$";
+                        
                     ?>
                 </div>
                 <form action="" method = "POST">
