@@ -1008,8 +1008,8 @@ hr{
 }
 .ReviewHeadingRight span{
   position: absolute;
-  top: 50%;
-  left: 48%;
+  top: 49%;
+  left: 49%;
   transform: translate(-50%,-50%);
   color: #fff;
   z-index: 1;
