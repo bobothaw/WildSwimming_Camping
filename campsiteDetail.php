@@ -81,13 +81,16 @@ if (isset($_GET['CampID']))
 {
     $campsiteID = $_GET['CampID'];
     $_SESSION['CampsiteID'] = $campsiteID;
-    $campsiteQuery = "SELECT c.CampsiteName, c.Image1, c.Image2, c.Image3, ctr.CountryID, ctr.CountryName, c.WildSwimming, c.Description, c.MapLocation
+    $campsiteQuery = "SELECT c.CampsiteName, c.Image1, c.Image2, c.Image3, ctr.CountryID, ctr.CountryName, c.WildSwimming, c.Description, c.MapLocation, c.NoOfViews
     FROM Campsites c, Countries ctr
     WHERE c.CampsiteID = $campsiteID
     AND c.CountryID = ctr.CountryID";
     $runCampsiteQuery = mysqli_query($connect, $campsiteQuery);
     $campsiteArray = mysqli_fetch_assoc($runCampsiteQuery);
     $countryID = $campsiteArray['CountryID'];
+    $updateCampsiteViewQuery = "UPDATE Campsites SET NoOfViews = NoOfViews + 1 
+    WHERE CampsiteID = $campsiteID";
+    $runUpdateQuery = mysqli_query($connect, $updateCampsiteViewQuery);
 }
 
 ?>
@@ -357,6 +360,7 @@ if (isset($_GET['CampID']))
             ?>
         </div>
     </div>
+    <marquee behavior="sliding" direction="right">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>

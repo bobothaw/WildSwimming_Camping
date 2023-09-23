@@ -179,27 +179,29 @@ include('connection.php');
 //     echo "Error in  creating CampsitePitchType Table.";
 // }
 
-// $reviewsTB = "CREATE table Reviews
-// (
-//     CampsiteID int,
-//     CustomerID int,
-// 	ReviewTitle Varchar(50),
-//     ReviewDesc Varchar (1000),
-//     StarCount int check (StarCount > 0 AND StarCount <= 5),
-//     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
-//     Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
-//     Primary Key (CampsiteID, CustomerID)
-// )";
+$reviewsTB = "CREATE table Reviews
+(
+    ReviewID int AUTO_INCREMENT,
+    CampsiteID int,
+    CustomerID int,
+	ReviewTitle Varchar(50),
+    ReviewDesc Varchar (1000),
+    StarCount int check (StarCount > 0 AND StarCount <= 5),
+    ReviewDate Date,
+    Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
+    Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
+    Primary Key (ReviewID)
+)";
 
-// $runQuery8 = mysqli_query ($connect, $reviewsTB);
-// if ($runQuery8)
-// {
-//     echo "Reviews Table created successfully.";
-// }
-// else
-// {
-//     echo "Error in  creating Reviews Table.";
-// }
+$runQuery8 = mysqli_query ($connect, $reviewsTB);
+if ($runQuery8)
+{
+    echo "Reviews Table created successfully.";
+}
+else
+{
+    echo "Error in  creating Reviews Table.";
+}
 // $availabilityTB = "CREATE table Available_Campsites
 // (
 //     AvailibilityID int AUTO_INCREMENT,
@@ -220,29 +222,29 @@ include('connection.php');
 // {
 //     echo "Error in  creating AvailableCampsites Table.";
 // }
-$bookingsTB = "CREATE table Bookings
-(
-    BookingID int AUTO_INCREMENT,
-    BookingDateTime DATETIME,
-    NumOfGuests int,
-    CheckInDate Date,
-    CheckOutDate Date,
-    TotalPrice Decimal (5,2),
-    CampsiteID int,
-    PitchTypeID int,
-    CustomerID int,
-    Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
-    Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
-    Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
-    Primary Key (BookingID)
-)";
-$runQuery10 = mysqli_query ($connect, $bookingsTB);
-if ($runQuery10)
-{
-    echo "Bookings Table created successfully.";
-}
-else
-{
-    echo "Error in  creating Bookings Table.";
-}
+// $bookingsTB = "CREATE table Bookings
+// (
+//     BookingID int AUTO_INCREMENT,
+//     BookingDateTime DATETIME,
+//     NumOfGuests int,
+//     CheckInDate Date,
+//     CheckOutDate Date,
+//     TotalPrice Decimal (5,2),
+//     CampsiteID int,
+//     PitchTypeID int,
+//     CustomerID int,
+//     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
+//     Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
+//     Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
+//     Primary Key (BookingID)
+// )";
+// $runQuery10 = mysqli_query ($connect, $bookingsTB);
+// if ($runQuery10)
+// {
+//     echo "Bookings Table created successfully.";
+// }
+// else
+// {
+//     echo "Error in  creating Bookings Table.";
+// }
 ?>
