@@ -187,7 +187,7 @@ $reviewsTB = "CREATE table Reviews
 	ReviewTitle Varchar(50),
     ReviewDesc Varchar (1000),
     StarCount int check (StarCount > 0 AND StarCount <= 5),
-    ReviewDate Date,
+    ReviewDate DateTime,
     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
     Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
     Primary Key (ReviewID)
@@ -222,29 +222,29 @@ else
 // {
 //     echo "Error in  creating AvailableCampsites Table.";
 // }
-// $bookingsTB = "CREATE table Bookings
-// (
-//     BookingID int AUTO_INCREMENT,
-//     BookingDateTime DATETIME,
-//     NumOfGuests int,
-//     CheckInDate Date,
-//     CheckOutDate Date,
-//     TotalPrice Decimal (5,2),
-//     CampsiteID int,
-//     PitchTypeID int,
-//     CustomerID int,
-//     Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
-//     Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
-//     Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
-//     Primary Key (BookingID)
-// )";
-// $runQuery10 = mysqli_query ($connect, $bookingsTB);
-// if ($runQuery10)
-// {
-//     echo "Bookings Table created successfully.";
-// }
-// else
-// {
-//     echo "Error in  creating Bookings Table.";
-// }
+$bookingsTB = "CREATE table Bookings
+(
+    BookingID int AUTO_INCREMENT,
+    BookingDateTime DATETIME,
+    NumOfGuests int,
+    CheckInDate Date,
+    CheckOutDate Date,
+    TotalPrice Decimal (5,2),
+    CampsiteID int,
+    PitchTypeID int,
+    CustomerID int,
+    Foreign Key (CampsiteID) REFERENCES Campsites (CampsiteID),
+    Foreign Key (PitchTypeID) REFERENCES PitchTypes (PitchTypeID),
+    Foreign Key (CustomerID) REFERENCES Customers (CustomerID),
+    Primary Key (BookingID)
+)";
+$runQuery10 = mysqli_query ($connect, $bookingsTB);
+if ($runQuery10)
+{
+    echo "Bookings Table created successfully.";
+}
+else
+{
+    echo "Error in  creating Bookings Table.";
+}
 ?>

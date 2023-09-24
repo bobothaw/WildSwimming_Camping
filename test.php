@@ -1,12 +1,7 @@
-<?php 
-session_start();
-unset($_SESSION['CusID']);
-unset($_SESSION['CusFName']);
-<?php
-// Assuming you have the review's posted date in a variable like $reviewPostedDate
-$reviewPostedDate = '2023-09-20'; // Replace this with the actual review date
 
-// Convert the review posted date to a DateTime object
+<?php
+function get_formatDate($reviewPostedDate) {
+
 $reviewDate = new DateTime($reviewPostedDate);
 
 // Get the current date
@@ -29,9 +24,6 @@ if ($timeDifference->y > 0) {
 } else {
     $formattedDate = 'Just now';
 }
-
-// Output the formatted date
-echo $formattedDate;
-?>
-
+return $formattedDate;
+}
 ?>

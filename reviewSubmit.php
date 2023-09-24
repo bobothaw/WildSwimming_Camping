@@ -6,14 +6,14 @@ session_start();
         if (isset($_SESSION['CusID']))
         {
             try {
-                $currentDate = date("Y-m-d");
+                $currentDateTime = date("Y-m-d h:i:s", time());
                 $starCount = $_POST['rating'];
                 $reviewTitle = $_POST['txtReviewTitle'];
                 $reviewDesc = $_POST['txtReviewDesc'];
                 $CusID = $_SESSION['CusID'];
                 $campsiteID = $_SESSION['CampsiteID'];
                 $reviewInsertQuery = "INSERT into reviews (CampsiteID, CustomerID, ReviewTitle, ReviewDesc, StarCount, ReviewDate)
-                Values('$campsiteID', '$CusID', '$reviewTitle', '$reviewDesc', '$starCount', '$currentDate')";
+                Values('$campsiteID', '$CusID', '$reviewTitle', '$reviewDesc', '$starCount', '$currentDateTime')";
                 $runInsertQuery = mysqli_query($connect, $reviewInsertQuery);
                 if ($runInsertQuery)
                 {
