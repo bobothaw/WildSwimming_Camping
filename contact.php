@@ -126,7 +126,6 @@ if(isset($_POST['btnCusLogin']))
                 <a href="#" id="login"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['CusFName']  ?> </a>
                 <?php 
             }
-
             else
             {
                 ?> 
@@ -138,6 +137,55 @@ if(isset($_POST['btnCusLogin']))
         
         </div>
     </nav>
+    <div class="ContactContainer column centre">
+        <h1>Ask us anything</h1>
+
+        <div class="ContactWrapper row">
+            <div class="ContactAddressesContainer column">
+                <h2>Contact Addresses</h2>
+                <div class="ContactAddress row">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel: +959759803723">09-759803723</a>
+                </div>
+                <div class="ContactAddress row">
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="mailto: bobothaw15@gmail.com">bobothaw15@gmail.com</a>
+                </div>
+                <div class="ContactAddress row">
+                    <i class="fa-solid fa-building"></i>
+                    <p>49 6th Dr.Oak Park, MI 48237</p>
+                </div>
+            </div>
+            <div class="ContactForm column">
+                <h2>Contact Form</h2>
+                <form action="" method="POST" class="column">
+                    <div class="FormElements row">
+                        <label for="">Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="FormElements row">
+                        <label for="">Email</label>
+                        <input type="text">
+                    </div>
+                    <div class="FormElements row">
+                        <label for="">Subject</label>
+                        <input type="text">
+                    </div>
+                    <div class="FormElements row">
+                        <label for="">Message</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="FormElements row">
+                        <input type="checkbox">
+                        <label for="">I have agreed to the terms and condition of the GWSC's <a href="">Privacy Policy</a></label>
+                    </div>
+                    <div class="FormElements row">
+                        <input type="submit" value="Send Message" id="ContactSubmit" name="btnContactSubmit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>

@@ -138,6 +138,7 @@ if(isset($_POST['btnCusLogin']))
         ?>
         </div>
     </nav>
+    <h1 class="centre" id="reviewsPageHeading">What our customers says about us</h1>
     <div class="ReviewsContainer row wrap">
         <?php 
         $reviewQuery = "SELECT * from Reviews";
@@ -154,21 +155,27 @@ if(isset($_POST['btnCusLogin']))
                             <div class="ReviewProfile">
                                 <?php 
                                     $customerID = $reviewArray['CustomerID'];
-                                    $customerQuery = "SELECT FirstName from Customers
+                                    $customerQuery = "SELECT FirstName, LastName from Customers
                                     WHERE CustomerID = $customerID";
                                     $runCustomerQuery = mysqli_query($connect, $customerQuery);
                                     $customerArray = mysqli_fetch_array($runCustomerQuery);
                                     $fName = $customerArray['FirstName'];
+                                    $lName = $customerArray['LastName'];
                                     $firstLetter = $fName[0];
                                     echo $firstLetter;
                                 ?>
                             </div>
-                            <div class="ReviewDate centre">
-                                <?php 
-                                    $reviewPostedDate = $reviewArray['ReviewDate'];
-                                    $formatDate = get_formatDate($reviewPostedDate);
-                                    echo $formatDate;
-                                ?>
+                            <div class="ReviewMiddle column">
+                                <div class="ReviewName">
+                                    <?= $fName." ".$lName ?>
+                                </div>
+                                <div class="ReviewDate centre">
+                                    <?php
+                                        $reviewPostedDate = $reviewArray['ReviewDate'];
+                                        $formatDate = get_formatDate($reviewPostedDate);
+                                        echo $formatDate;
+                                    ?>
+                                </div>
                             </div>
                         </div>
                         <div class="ReviewHeadingRight">

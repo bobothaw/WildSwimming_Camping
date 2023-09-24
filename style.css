@@ -973,6 +973,7 @@ hr{
   background-color: aliceblue;
   border-radius: 10px;
   margin-bottom: 20px;
+  height: fit-content;
 }
 .ReviewHeading{
   justify-content: space-between;
@@ -999,6 +1000,9 @@ hr{
   margin-left: 10px;
   height: fit-content;
 }
+.ReviewName{
+  margin-left: 10px;
+}
 .ReviewHeadingRight{
   position: relative;
 }
@@ -1018,6 +1022,10 @@ hr{
 .ReviewLower h3{
   margin-top: 10px;
   margin-bottom: 5px;
+}
+#reviewsPageHeading {
+  color: #7b5237;
+  margin-bottom: 20px;
 }
 
 
