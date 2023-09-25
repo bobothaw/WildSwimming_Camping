@@ -139,8 +139,7 @@ if(isset($_POST['btnCusLogin']))
     </nav>
     <div class="ContactContainer column centre">
         <h1>Ask us anything</h1>
-
-        <div class="ContactWrapper row">
+        <div class="ContactWrapper row wrap">
             <div class="ContactAddressesContainer column">
                 <h2>Contact Addresses</h2>
                 <div class="ContactAddress row">
@@ -158,34 +157,51 @@ if(isset($_POST['btnCusLogin']))
             </div>
             <div class="ContactForm column">
                 <h2>Contact Form</h2>
-                <form action="" method="POST" class="column">
-                    <div class="FormElements row">
+                <form action="contact.php" method="POST" class="column">
+                    <div class="FormElements column">
                         <label for="">Name</label>
-                        <input type="text">
+                        <input type="text" name = "txtContactName" placeholder="Please enter your name here..." required>
                     </div>
-                    <div class="FormElements row">
+                    <div class="FormElements column">
                         <label for="">Email</label>
-                        <input type="text">
+                        <input type="text" name = "txtContactEmail" placeholder="Please enter your email here..." required>
                     </div>
-                    <div class="FormElements row">
+                    <div class="FormElements column">
                         <label for="">Subject</label>
-                        <input type="text">
+                        <input type="text" name = "txtContactSubject" placeholder="Please enter your subject of the question here..." required>
                     </div>
-                    <div class="FormElements row">
+                    <div class="FormElements column">
                         <label for="">Message</label>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name = "txtContactMessage" id="" cols="30" rows="10" placeholder="Please enter the details of your question here..." required></textarea>
                     </div>
-                    <div class="FormElements row">
-                        <input type="checkbox">
+                    <div class="FormElements row align_top">
+                        <input type="checkbox" name="chkContact">
                         <label for="">I have agreed to the terms and condition of the GWSC's <a href="">Privacy Policy</a></label>
                     </div>
-                    <div class="FormElements row">
-                        <input type="submit" value="Send Message" id="ContactSubmit" name="btnContactSubmit">
+                    <div class="FormElements centre">
+                        <input type="submit" value="Send Message" id="ContactSubmit" name="btnContactSubmit" disabled>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <?php 
+    if (isset($_POST['btnContactSubmit']))
+    {
+        $contactName = $_POST['txtContactName'];
+        $contactEmail = $_POST['txtContactEmail'];
+        $contactSubject = $_POST['txtContactSubject'];
+        $contactMessage = $_POST['txtContactMessage'];
+        $currentDateTime = date("Y-m-d h:i:s", time());
+        $insertContactQuery = "INSERT into Contacts (ContactName, Email, ContactSubject, ContactMessage, ContactDateTime)
+        Values ('$contactName', '$contactEmail', '$contactSubject', '$contactMessage', '$currentDateTime')";
+        $runInsertContactQuery = mysqli_query($connect, $insertContactQuery);
+        if ($runInsertContactQuery)
+        {
+            echo "<script>window.alert('Your question is submitted successfully')</script>";
+        }
+    }
+    ?>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
@@ -227,6 +243,14 @@ if(isset($_POST['btnCusLogin']))
         </div>
     </div>
   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var checkBox = document.querySelector("input[name='chkContact']");
+            var submitButton = document.getElementById("ContactSubmit");
+
+            checkBox.addEventListener("change", function () {
+                submitButton.disabled = !checkBox.checked;
+            });
+        });
         document.getElementById('signIN').addEventListener('click',
         function() {
             document.getElementById('signup_form').style.display = 'block';

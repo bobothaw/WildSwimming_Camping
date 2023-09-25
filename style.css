@@ -683,6 +683,7 @@ hr{
   background-color: #fff;
   margin-bottom: 20px;
   width: 90%;
+  max-width: 1500px;
   justify-content: space-between;
 }
 .CampSiteImage{
@@ -753,7 +754,7 @@ hr{
   box-shadow: 0px 0px 5px #7b5237;
   margin-bottom: 20px;
   margin-top: 20px;
-  border-radius: 100px;
+  border-radius: 30px;
   align-items: end;
 }
 .searchControls input,
@@ -784,7 +785,8 @@ hr{
   width: 100%;
   border-radius: 10px;
 }
-.BookingSideBar form input[type=submit]
+.BookingSideBar form input[type=submit],
+.searchControls form input[type=submit]
 {
   margin-top: 15px;
 }
@@ -999,6 +1001,7 @@ hr{
   border-radius: 15px;
   margin-left: 10px;
   height: fit-content;
+  width: fit-content;
 }
 .ReviewName{
   margin-left: 10px;
@@ -1027,8 +1030,82 @@ hr{
   color: #7b5237;
   margin-bottom: 20px;
 }
+.ContactContainer h1{
+  color: #7b5237;
+  margin-bottom: 20px;
+}
+.ContactWrapper {
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+.ContactAddressesContainer{
+  width: 40%;
+  min-width: 300px;
+  max-width: 500px;
+  align-items: flex-start;
+  color: #7b5237;
+}
+.ContactAddress{
+  align-items: center;
+  font-size: 20px;
+  color: #7b5237;
+  margin-top: 20px;
+}
+.ContactAddress i{
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.ContactAddress a{
+  text-decoration: none;
+  color: #7b5237;
+}
+.ContactAddress a:hover{
+  text-decoration: underline;
+}
+.ContactForm {
+  width: 40%;
+  min-width: 300px;
+  max-width: 500px;
+  color: #7b5237;
 
-
+}
+.ContactForm form {
+  font-size: 18px;
+}
+.ContactForm form input, 
+.ContactForm form textarea{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+.FormElements{
+  margin-top: 20px;
+}
+.ContactForm input[type="submit"]{
+  width: 80%;
+  text-align: center;
+  color: #f7f3e8;
+  background-color: #bd8a6b;
+  margin-bottom: 20px;
+  transition: 0.4s;
+}
+.ContactForm input[type="submit"]:disabled{
+  background-color: #ccc;
+}
+.ContactForm input[type="submit"]:active{
+  opacity: 0.6;
+}
+.align_top{
+  align-items: flex-start;
+}
+.align_top input{
+  margin-top: 5px;
+  margin-right: 10px;
+}
 
 
 

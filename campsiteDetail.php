@@ -81,6 +81,9 @@ if(isset($_POST['btnCusLogin']))
 if (isset($_GET['CampID']))
 {
     $campsiteID = $_GET['CampID'];
+    $updateCampsiteViewQuery = "UPDATE Campsites SET NoOfViews = NoOfViews + 1 
+    WHERE CampsiteID = $campsiteID";
+    $runUpdateQuery = mysqli_query($connect, $updateCampsiteViewQuery);
     $_SESSION['CampsiteID'] = $campsiteID;
     $campsiteQuery = "SELECT c.CampsiteName, c.Image1, c.Image2, c.Image3, ctr.CountryID, ctr.CountryName, c.WildSwimming, c.Description, c.MapLocation, c.NoOfViews
     FROM Campsites c, Countries ctr
@@ -89,9 +92,6 @@ if (isset($_GET['CampID']))
     $runCampsiteQuery = mysqli_query($connect, $campsiteQuery);
     $campsiteArray = mysqli_fetch_assoc($runCampsiteQuery);
     $countryID = $campsiteArray['CountryID'];
-    $updateCampsiteViewQuery = "UPDATE Campsites SET NoOfViews = NoOfViews + 1 
-    WHERE CampsiteID = $campsiteID";
-    $runUpdateQuery = mysqli_query($connect, $updateCampsiteViewQuery);
 }
 
 ?>
