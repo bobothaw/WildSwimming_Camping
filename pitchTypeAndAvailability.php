@@ -256,14 +256,14 @@ if(isset($_POST['btnCusLogin']))
                                     ?>
                                 </div>
                             </div>
-                            <div class="centre">
+                            <div class="centre row wrap">
                                 <span>Nearby : </span>
                                 <?php
                                 $localAttrQuery = "SELECT la.AttractionName
                                 FROM local_attractions la, campsites ca
                                 Where ca.CampsiteID = $campsiteID
                                 AND la.CountryID = ca.CountryID
-                                LIMIT 2";
+                                LIMIT 1";
                                 $localAttrQueryRun = mysqli_query($connect, $localAttrQuery);
                                 while ($localAttrRow = mysqli_fetch_assoc($localAttrQueryRun))
                                 {

@@ -659,13 +659,16 @@ hr{
   .AttrText{
     width: 300px;
   }
+  .CampsiteInfoContainer{
+    justify-content: center;
+  }
   .CampsiteInfoContainer .CampInfo{
     width: 100%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
-    margin: 0px;
+    padding: 20px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
   }
   .CampsiteInfoContainer .CampInfo .CampsiteText{
     padding: 0px;
@@ -678,7 +681,7 @@ hr{
   } */
 }
 .CampInfo{
-  padding: 20px 20px 5px 20px;
+  padding: 20px;
   border-radius: 10px;
   background-color: #fff;
   margin-bottom: 20px;
@@ -688,7 +691,7 @@ hr{
 }
 .CampSiteImage{
   padding: 20px;
-  width: 400px;
+  width: 300px;
   position: relative;
 }
 .CampSiteImage img, iframe{
@@ -708,7 +711,7 @@ hr{
   font-weight: bold;
 }
 .CampInfoButton{
-  
+  text-align: center;
   padding: 10px;
 }
 .CampInfoButton a{
@@ -1114,8 +1117,8 @@ hr{
   nav img{
     display: block;
   }
-  nav a {
-    font-size: ;
+  nav div a {
+    font-size: 18px;
   }
 }
 
