@@ -26,4 +26,25 @@ if ($timeDifference->y > 0) {
 }
 return $formattedDate;
 }
+function isUserLockedOut ($userEmail, $connect) {
+    $lockedOutDuration = 600; // 10 minutes in seconds
+
+    // Calculate the timestamp for the time 10 minutes ago
+    $timestampTenMinutesAgo = time() - $lockedOutDuration;
+
+    $failedAttemptsCountQuery = "SELECT COUNT(*) AS failedAttempts FROM loginAttempts
+        WHERE Email = '$userEmail'
+        AND LastFailedAttemptTime >= FROM_UNIXTIME($timestampTenMinutesAgo)";
+
+    $runfailedAttemptQuery = mysqli_query($connect, $failedAttemptsCountQuery);
+    $failedAttemptRow = mysqli_fetch_assoc($runfailedAttemptQuery);
+    if ($failedAttemptRow['failedAttempts'] >= 3)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 ?>

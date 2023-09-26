@@ -1106,6 +1106,18 @@ hr{
   margin-top: 5px;
   margin-right: 10px;
 }
+@media (max-width: 720px )
+{
+  nav {
+    flex-direction: column;
+  }
+  nav img{
+    display: block;
+  }
+  nav a {
+    font-size: ;
+  }
+}
 
 
 

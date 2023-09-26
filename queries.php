@@ -247,23 +247,39 @@ include('connection.php');
 // {
 //     echo "Error in  creating Bookings Table.";
 // }
-$contactTB = "CREATE table Contacts
+// $contactTB = "CREATE table Contacts
+// (
+//     ContactID int AUTO_INCREMENT,
+//     ContactName Varchar (100),
+//     Email Varchar (200),
+//     ContactSubject Varchar (100),
+//     ContactMessage Varchar (1000),
+//     ContactDateTime DateTime,
+//     Primary Key (ContactID)
+// )";
+// $runQuery11 = mysqli_query ($connect, $contactTB);
+// if ($runQuery11)
+// {
+//     echo "Contacts Table created successfully.";
+// }
+// else
+// {
+//     echo "Error in creating Contacts Table.";
+// }
+$loginAttemptsTB = "CREATE table LoginAttempts
 (
-    ContactID int AUTO_INCREMENT,
-    ContactName Varchar (100),
+    LoginAttemptsID int AUTO_INCREMENT not null,
     Email Varchar (200),
-    ContactSubject Varchar (100),
-    ContactMessage Varchar (1000),
-    ContactDateTime DateTime,
-    Primary Key (ContactID)
+    LastFailedAttemptTime Timestamp,
+    Primary Key (LoginAttemptsID)
 )";
-$runQuery11 = mysqli_query ($connect, $contactTB);
-if ($runQuery11)
+$runQuery12 = mysqli_query ($connect, $loginAttemptsTB);
+if ($runQuery12)
 {
-    echo "Contacts Table created successfully.";
+    echo "LoginAttempts Table created successfully.";
 }
 else
 {
-    echo "Error in creating Contacts Table.";
+    echo "Error in creating LoginAttempts Table.";
 }
 ?>

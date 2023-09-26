@@ -1,5 +1,6 @@
 <?php 
 include('connection.php');
+include('test.php');
 session_start();
 
 if(isset($_POST['btnCusSignUp']))
@@ -32,50 +33,55 @@ if(isset($_POST['btnCusSignUp']))
         }
     }
 }
-if (isset($_SESSION['FailedLoginAttempts']) && $_SESSION['FailedLoginAttempts'] >= 3) 
-{
-    echo "<script>window.alert('Too many failed login attempts. Please try again later after 5 second.')</script>";
-    unset($_SESSION['FailedLoginAttempts']);
-    echo "<meta http-equiv='refresh' content='5;url=home.php'>";
-    if (isset($_SESSION['btnCusLogin']))
-    {
-      unset($_SESSION['btnCusLogin']);
-    }
-    exit;
-}
 if(isset($_POST['btnCusLogin']))
 {
     $customerEmail = $_POST['txtCusEmail'];
     $password = $_POST['txtCusPassword'];
-
-    $checkLoginQuery = "SELECT * from customers WHERE Email = '$customerEmail' AND Password = '$password'";
-    $runLoginQuery = mysqli_query($connect, $checkLoginQuery);
-    $validRows = mysqli_num_rows($runLoginQuery);
-
-    if($validRows > 0)
+    if (isUserLockedOut($customerEmail, $connect))
     {
-        $CustomerArray = mysqli_fetch_array($runLoginQuery);
-        $CusID = $CustomerArray['CustomerID'];
-        $CusFName = $CustomerArray['FirstName'];
-        $CusSName = $CustomerArray['LastName'];
-        $CusEmail = $CustomerArray['Email'];
-        $CusPassword = $CustomerArray['Password'];
-
-        $_SESSION['CusID'] = $CusID;
-        $_SESSION['CusFName'] = $CusFName;
-        $_SESSION['CusSName'] = $CusSName;
-        $_SESSION['CusEmail'] = $CusEmail;
-        $_SESSION['CusPassword'] = $CusPassword;
-        echo "<script>window.alert('Customer Login successful')</script>";
-        $_SESSION['FailedLoginAttempts'] = 0;
-        $_SESSION['LastFailedLoginTime'] = 0;
-		    echo "<script>window.location = 'home.php'</script>";
+      echo "<script>window.alert('User is locked out. Please try again after 10 minutes.')</script>";
     }
     else
     {
-      $_SESSION['FailedLoginAttempts'] = isset($_SESSION['FailedLoginAttempts']) ? $_SESSION['FailedLoginAttempts'] + 1 : 2;
-      echo "<script>window.alert('Customer Login failed')</script>";
+      $checkLoginQuery = "SELECT * from customers WHERE Email = '$customerEmail' AND Password = '$password'";
+      $runLoginQuery = mysqli_query($connect, $checkLoginQuery);
+      $validRows = mysqli_num_rows($runLoginQuery);
+
+      if($validRows > 0)
+      {
+          $CustomerArray = mysqli_fetch_array($runLoginQuery);
+          $CusID = $CustomerArray['CustomerID'];
+          $CusFName = $CustomerArray['FirstName'];
+          $CusSName = $CustomerArray['LastName'];
+          $CusEmail = $CustomerArray['Email'];
+          $CusPassword = $CustomerArray['Password'];
+
+          $_SESSION['CusID'] = $CusID;
+          $_SESSION['CusFName'] = $CusFName;
+          $_SESSION['CusSName'] = $CusSName;
+          $_SESSION['CusEmail'] = $CusEmail;
+          $_SESSION['CusPassword'] = $CusPassword;
+          echo "<script>window.alert('Customer Login successful')</script>";
+          $_SESSION['FailedLoginAttempts'] = 0;
+          $_SESSION['LastFailedLoginTime'] = 0;
+          echo "<script>window.location = 'home.php'</script>";
+      }
+      else
+      {
+        $insertFailedQuery = "INSERT INTO loginAttempts (Email, LastFailedAttemptTime)
+        Values ('$customerEmail', NOW())";
+        $runinsertFailedQuery = mysqli_query($connect, $insertFailedQuery);
+        if ($runinsertFailedQuery)
+        {
+          echo "<script>window.alert('Customer Login failed!')</script>";
+        }
+        if (isUserLockedOut($customerEmail, $connect) && $runinsertFailedQuery)
+        {
+          echo "<script>window.alert('Customer Login failed for 3 times and you account is locked for 10 minutes.')</script>";
+        }
+      }
     }
+    
 }
 
 ?>
@@ -97,7 +103,7 @@ if(isset($_POST['btnCusLogin']))
   <nav>
     <img src="Images/GWSC_logo.png" alt="Maple_Woods Logo" class="logo" />
     
-    <div class="link-container link">
+    <div class="link-container link row">
       <div class="link" id="drop">
         <a href="#" onclick="dropMenu()">Pages <i class="fa-solid fa-angle-down drop_angle"></i></a>
         <div id="dropdown_menu">
@@ -137,7 +143,7 @@ if(isset($_POST['btnCusLogin']))
           }
 
        ?>
-      
+      <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
   </nav>
   <div class="slider_container">
