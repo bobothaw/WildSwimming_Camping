@@ -1,88 +1,9 @@
 <?php 
 include('connection.php');
-include('test.php');
+include('functions.php');
 session_start();
+$_SESSION['lastPage'] = 'home.php';
 
-if(isset($_POST['btnCusSignUp']))
-{
-    $customerFName = $_POST['txtCusFName'];
-    $customerSName = $_POST['txtCusSName'];
-    $customerEmail = $_POST['txtCusEmail'];
-    $phNum = $_POST['txtPhoneNumber'];
-    $password = $_POST['txtCusPassword'];
-    $address = $_POST['txtAddress'];
-
-    $checkEmailQuery = "SELECT * from customers WHERE Email = '$customerEmail'";
-    $runQuery = mysqli_query($connect, $checkEmailQuery);
-    $queriedRows = mysqli_num_rows($runQuery);
-
-    if($queriedRows > 0)
-    {
-        echo "<script>window.alert('Customer Email already exists! Please use another email.')</script>";
-        echo "<script>window.location = 'home.php' </script>";
-    }
-    else
-    {
-        $insertQuery = "INSERT into customers (FirstName, LastName, Email, Password, PhoneNumber, Address)
-        Values ('$customerFName', '$customerSName',  '$customerEmail', '$password', '$phNum', '$address') ";
-        $runInsertQuery = mysqli_query($connect, $insertQuery);
-        if ($runInsertQuery)
-        {
-            echo "<script>window.alert('Customer Registered Successfully')</script>";
-			      echo "<script>window.location = 'home.php' </script>";
-        }
-    }
-}
-if(isset($_POST['btnCusLogin']))
-{
-    $customerEmail = $_POST['txtCusEmail'];
-    $password = $_POST['txtCusPassword'];
-    if (isUserLockedOut($customerEmail, $connect))
-    {
-      echo "<script>window.alert('User is locked out. Please try again after 10 minutes.')</script>";
-    }
-    else
-    {
-      $checkLoginQuery = "SELECT * from customers WHERE Email = '$customerEmail' AND Password = '$password'";
-      $runLoginQuery = mysqli_query($connect, $checkLoginQuery);
-      $validRows = mysqli_num_rows($runLoginQuery);
-
-      if($validRows > 0)
-      {
-          $CustomerArray = mysqli_fetch_array($runLoginQuery);
-          $CusID = $CustomerArray['CustomerID'];
-          $CusFName = $CustomerArray['FirstName'];
-          $CusSName = $CustomerArray['LastName'];
-          $CusEmail = $CustomerArray['Email'];
-          $CusPassword = $CustomerArray['Password'];
-
-          $_SESSION['CusID'] = $CusID;
-          $_SESSION['CusFName'] = $CusFName;
-          $_SESSION['CusSName'] = $CusSName;
-          $_SESSION['CusEmail'] = $CusEmail;
-          $_SESSION['CusPassword'] = $CusPassword;
-          echo "<script>window.alert('Customer Login successful')</script>";
-          $_SESSION['FailedLoginAttempts'] = 0;
-          $_SESSION['LastFailedLoginTime'] = 0;
-          echo "<script>window.location = 'home.php'</script>";
-      }
-      else
-      {
-        $insertFailedQuery = "INSERT INTO loginAttempts (Email, LastFailedAttemptTime)
-        Values ('$customerEmail', NOW())";
-        $runinsertFailedQuery = mysqli_query($connect, $insertFailedQuery);
-        if ($runinsertFailedQuery)
-        {
-          echo "<script>window.alert('Customer Login failed!')</script>";
-        }
-        if (isUserLockedOut($customerEmail, $connect) && $runinsertFailedQuery)
-        {
-          echo "<script>window.alert('Customer Login failed for 3 times and you account is locked for 10 minutes.')</script>";
-        }
-      }
-    }
-    
-}
 
 ?>
 <!DOCTYPE html>
@@ -143,7 +64,7 @@ if(isset($_POST['btnCusLogin']))
           }
 
        ?>
-      <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+      <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
   </nav>
   <div class="slider_container">
@@ -301,7 +222,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
   <div class="modal-bg">
     <div class="modal-content">
       <div class="close" id="close">+</div>
-      <form action="home.php" class="modal-box" id="login_form" method="POST">
+      <form action="login.php" class="modal-box" id="login_form" method="POST">
         <h3 class="modal_heading">
           Welcome Back!
         </h3>
@@ -314,7 +235,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
         <input type="submit" value="Login" class="modal-button" id="login_btn" name="btnCusLogin" disabled>
         <p class="modal_text">Don't have an account? <a href="#" id="signIN">SignUp</a></p>
       </form>
-      <form action="home.php" class="modal-box" id="signup_form" method="POST">
+      <form action="login.php" class="modal-box" id="signup_form" method="POST">
         <h3 class="modal_heading">
             Create an Account
         </h3>

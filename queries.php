@@ -266,20 +266,97 @@ include('connection.php');
 // {
 //     echo "Error in creating Contacts Table.";
 // }
-$loginAttemptsTB = "CREATE table LoginAttempts
-(
-    LoginAttemptsID int AUTO_INCREMENT not null,
-    Email Varchar (200),
-    LastFailedAttemptTime Timestamp,
-    Primary Key (LoginAttemptsID)
-)";
-$runQuery12 = mysqli_query ($connect, $loginAttemptsTB);
-if ($runQuery12)
+// $loginAttemptsTB = "CREATE table LoginAttempts
+// (
+//     LoginAttemptsID int AUTO_INCREMENT not null,
+//     Email Varchar (200),
+//     LastFailedAttemptTime Timestamp,
+//     Primary Key (LoginAttemptsID)
+// )";
+// $runQuery12 = mysqli_query ($connect, $loginAttemptsTB);
+// if ($runQuery12)
+// {
+//     echo "LoginAttempts Table created successfully.";
+// }
+// else
+// {
+//     echo "Error in creating LoginAttempts Table.";
+// }
+// $alterQuery = "Alter table Campsites
+// Add City Varchar (100)";
+// $runalterQuery = mysqli_query($connect, $alterQuery);
+// if ($runalterQuery)
+// {
+//     echo "Table Altered successfully";
+// }
+// else
+// {
+//     echo "Something went wrong";
+// }
+$updateQuery = "
+UPDATE campsites
+SET City = 'Cornwall, England'
+WHERE CampsiteName = 'Bude Camping and Caravanning';
+
+UPDATE campsites
+SET City = 'Devon, England'
+WHERE CampsiteName = 'Karrageen Caravan & Camping Park';
+
+UPDATE campsites
+SET City = 'Northern Territory, Australia'
+WHERE CampsiteName = 'Ellery Creek Big Hole Campground';
+
+UPDATE campsites
+SET City = 'Victoria, Australia'
+WHERE CampsiteName = 'Tidal River Campground';
+
+UPDATE campsites
+SET City = 'Victoria, Australia'
+WHERE CampsiteName = 'Waratah Bay Caravan Park';
+
+UPDATE campsites
+SET City = 'Ontario, Canada (Near Tobermory)'
+WHERE CampsiteName = 'Bruce Peninsula National Park';
+
+UPDATE campsites
+SET City = 'British Columbia, Canada'
+WHERE CampsiteName = 'Rathtrevor Beach Provincial Park';
+
+UPDATE campsites
+SET City = 'Alberta, Canada'
+WHERE CampsiteName = 'Lake Louise Soft-Sided Trailer Park';
+
+UPDATE campsites
+SET City = 'Devon, England'
+WHERE CampsiteName = 'Dartmoor Camping';
+
+UPDATE campsites
+SET City = 'Scotland'
+WHERE CampsiteName = 'Glen Nevis Caravan & Camping Park';
+
+UPDATE campsites
+SET City = 'Victoria, Australia'
+WHERE CampsiteName = 'Apollo Bay Holiday Park';
+
+UPDATE campsites
+SET City = 'Northern Territory, Australia'
+WHERE CampsiteName = 'Kakadu National Park';
+
+UPDATE campsites
+SET City = 'Alberta, Canada (or Saskatchewan)'
+WHERE CampsiteName = 'Cypress Hills Camp';
+
+UPDATE campsites
+SET City = 'Yukon, Canada (Near Haines Junction)'
+WHERE CampsiteName = 'Kluane National Park and Reserve';
+";
+$runUpdateQuery = mysqli_query($connect, $updateQuery);
+if ($runUpdateQuery)
 {
-    echo "LoginAttempts Table created successfully.";
+    echo "data updated successfully";
 }
 else
 {
-    echo "Error in creating LoginAttempts Table.";
+    echo "Something went wrong";
 }
 ?>

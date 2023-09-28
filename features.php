@@ -1,82 +1,9 @@
 <?php 
 include('connection.php');
 session_start();
+include('functions.php');
+$_SESSION['lastPage'] = 'features.php';
 
-if(isset($_POST['btnCusSignUp']))
-{
-    $customerFName = $_POST['txtCusFName'];
-    $customerSName = $_POST['txtCusSName'];
-    $customerEmail = $_POST['txtCusEmail'];
-    $phNum = $_POST['txtPhoneNumber'];
-    $password = $_POST['txtCusPassword'];
-    $address = $_POST['txtAddress'];
-
-    $checkEmailQuery = "SELECT * from customers WHERE Email = '$customerEmail'";
-    $runQuery = mysqli_query($connect, $checkEmailQuery);
-    $queriedRows = mysqli_num_rows($runQuery);
-
-    if($queriedRows > 0)
-    {
-        echo "<script>window.alert('Customer Email already exists! Please use another email.')</script>";
-        echo "<script>window.location = 'home.php' </script>";
-    }
-    else
-    {
-        $insertQuery = "INSERT into customers (FirstName, LastName, Email, Password, PhoneNumber, Address)
-        Values ('$customerFName', '$customerSName',  '$customerEmail', '$password', '$phNum', '$address') ";
-        $runInsertQuery = mysqli_query($connect, $insertQuery);
-        if ($runInsertQuery)
-        {
-            echo "<script>window.alert('Customer Registered Successfully')</script>";
-			      echo "<script>window.location = 'home.php' </script>";
-        }
-    }
-}
-if (isset($_SESSION['FailedLoginAttempts']) && $_SESSION['FailedLoginAttempts'] >= 3) 
-{
-    echo "<script>window.alert('Too many failed login attempts. Please try again later after 5 second.')</script>";
-    unset($_SESSION['FailedLoginAttempts']);
-    echo "<meta http-equiv='refresh' content='5;url=home.php'>";
-    if (isset($_SESSION['btnCusLogin']))
-    {
-      unset($_SESSION['btnCusLogin']);
-    }
-    exit;
-}
-if(isset($_POST['btnCusLogin']))
-{
-    $customerEmail = $_POST['txtCusEmail'];
-    $password = $_POST['txtCusPassword'];
-
-    $checkLoginQuery = "SELECT * from customers WHERE Email = '$customerEmail' AND Password = '$password'";
-    $runLoginQuery = mysqli_query($connect, $checkLoginQuery);
-    $validRows = mysqli_num_rows($runLoginQuery);
-
-    if($validRows > 0)
-    {
-        $CustomerArray = mysqli_fetch_array($runLoginQuery);
-        $CusID = $CustomerArray['CustomerID'];
-        $CusFName = $CustomerArray['FirstName'];
-        $CusSName = $CustomerArray['LastName'];
-        $CusEmail = $CustomerArray['Email'];
-        $CusPassword = $CustomerArray['Password'];
-
-        $_SESSION['CusID'] = $CusID;
-        $_SESSION['CusFName'] = $CusFName;
-        $_SESSION['CusSName'] = $CusSName;
-        $_SESSION['CusEmail'] = $CusEmail;
-        $_SESSION['CusPassword'] = $CusPassword;
-        echo "<script>window.alert('Customer Login successful')</script>";
-        $_SESSION['FailedLoginAttempts'] = 0;
-        $_SESSION['LastFailedLoginTime'] = 0;
-		    echo "<script>window.location = 'home.php'</script>";
-    }
-    else
-    {
-      $_SESSION['FailedLoginAttempts'] = isset($_SESSION['FailedLoginAttempts']) ? $_SESSION['FailedLoginAttempts'] + 1 : 2;
-      echo "<script>window.alert('Customer Login failed')</script>";
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -95,7 +22,7 @@ if(isset($_POST['btnCusLogin']))
     <nav>
         <img src="Images/GWSC_logo.png" alt="Maple_Woods Logo" class="logo" />
         
-        <div class="link-container link">
+        <div class="link-container link row">
         <div class="link" id="drop">
             <a href="#" onclick="dropMenu()">Pages <i class="fa-solid fa-angle-down drop_angle"></i></a>
             <div id="dropdown_menu">
@@ -135,7 +62,7 @@ if(isset($_POST['btnCusLogin']))
             }
 
         ?>
-        
+        <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
         </div>
     </nav>
     <h1 class="Intro centre">Features in the campsite</h1>
@@ -177,7 +104,7 @@ if(isset($_POST['btnCusLogin']))
     <div class="modal-bg">
     <div class="modal-content">
         <div class="close" id="close">+</div>
-        <form action="home.php" class="modal-box" id="login_form" method="POST">
+        <form action="login.php" class="modal-box" id="login_form" method="POST">
             <h3 class="modal_heading">
             Welcome Back!
             </h3>
@@ -190,7 +117,7 @@ if(isset($_POST['btnCusLogin']))
             <input type="submit" value="Login" class="modal-button" id="login_btn" name="btnCusLogin" disabled>
             <p class="modal_text">Don't have an account? <a href="#" id="signIN">SignUp</a></p>
         </form>
-        <form action="home.php" class="modal-box" id="signup_form" method="POST">
+        <form action="login.php" class="modal-box" id="signup_form" method="POST">
             <h3 class="modal_heading">
                 Create an Account
             </h3>
