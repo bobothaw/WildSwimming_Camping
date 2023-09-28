@@ -293,41 +293,44 @@ include('connection.php');
 // {
 //     echo "Something went wrong";
 // }
-$updateQuery = "
+$updateQuery = "UPDATE campsites
+SET City = 'Isle of Skye'
+WHERE CampsiteName = 'Glenbrittle Campsite';
+
 UPDATE campsites
-SET City = 'Cornwall, England'
+SET City = 'Cornwall'
 WHERE CampsiteName = 'Bude Camping and Caravanning';
 
 UPDATE campsites
-SET City = 'Devon, England'
+SET City = 'Devon'
 WHERE CampsiteName = 'Karrageen Caravan & Camping Park';
 
 UPDATE campsites
-SET City = 'Northern Territory, Australia'
+SET City = 'Northern Territory'
 WHERE CampsiteName = 'Ellery Creek Big Hole Campground';
 
 UPDATE campsites
-SET City = 'Victoria, Australia'
+SET City = 'Victoria'
 WHERE CampsiteName = 'Tidal River Campground';
 
 UPDATE campsites
-SET City = 'Victoria, Australia'
+SET City = 'Victoria'
 WHERE CampsiteName = 'Waratah Bay Caravan Park';
 
 UPDATE campsites
-SET City = 'Ontario, Canada (Near Tobermory)'
+SET City = 'Ontario'
 WHERE CampsiteName = 'Bruce Peninsula National Park';
 
 UPDATE campsites
-SET City = 'British Columbia, Canada'
+SET City = 'British Columbia'
 WHERE CampsiteName = 'Rathtrevor Beach Provincial Park';
 
 UPDATE campsites
-SET City = 'Alberta, Canada'
+SET City = 'Alberta'
 WHERE CampsiteName = 'Lake Louise Soft-Sided Trailer Park';
 
 UPDATE campsites
-SET City = 'Devon, England'
+SET City = 'Devon'
 WHERE CampsiteName = 'Dartmoor Camping';
 
 UPDATE campsites
@@ -335,22 +338,21 @@ SET City = 'Scotland'
 WHERE CampsiteName = 'Glen Nevis Caravan & Camping Park';
 
 UPDATE campsites
-SET City = 'Victoria, Australia'
+SET City = 'Victoria'
 WHERE CampsiteName = 'Apollo Bay Holiday Park';
 
 UPDATE campsites
-SET City = 'Northern Territory, Australia'
+SET City = 'Northern Territory'
 WHERE CampsiteName = 'Kakadu National Park';
 
 UPDATE campsites
-SET City = 'Alberta, Canada (or Saskatchewan)'
+SET City = 'Alberta'
 WHERE CampsiteName = 'Cypress Hills Camp';
 
 UPDATE campsites
-SET City = 'Yukon, Canada (Near Haines Junction)'
-WHERE CampsiteName = 'Kluane National Park and Reserve';
-";
-$runUpdateQuery = mysqli_query($connect, $updateQuery);
+SET City = 'Yukon'
+WHERE CampsiteName = 'Kluane National Park and Reserve';";
+$runUpdateQuery = mysqli_multi_query($connect, $updateQuery);
 if ($runUpdateQuery)
 {
     echo "data updated successfully";

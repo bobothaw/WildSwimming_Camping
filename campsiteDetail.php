@@ -1,6 +1,5 @@
 <?php 
 include('connection.php');
-include('functions.php');
 include('searchFunction.php');
 include('functions.php');
 $_SESSION['lastPage'] = 'pitchTypeAndAvailability.php';
@@ -350,7 +349,8 @@ if (isset($_GET['CampID']))
             ?>
         </div>
     </div>
-    <marquee behavior="sliding" direction="right">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
+    <marquee behavior="sliding" direction="right" id="campsiteMarquee">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
+    <script src="weather.js"></script>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
