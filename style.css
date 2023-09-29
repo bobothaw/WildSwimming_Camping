@@ -1122,6 +1122,9 @@ hr{
   nav div a {
     font-size: 18px;
   }
+  .link-container{
+    width: 100%;
+  }
 }
 .TechImg{
   width: 100px;
