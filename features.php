@@ -94,6 +94,36 @@ $_SESSION['lastPage'] = 'features.php';
         }
         ?>
     </div>
+    <div class="WerablesTechnologies column">
+        <h2>Werable Technology Categories</h2>
+        <p>Here are some of the werable technologies categories allowed at our campsites</p>
+        <div class="WerableTechCatalogue row wrap">
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-smart-watch-100.png" alt="" class="TechImg">
+                <p>Smart Watches</p>
+            </div>
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-earbud-headphones-64.png" alt="" class="TechImg">
+                <p>Hearables devices</p>
+            </div>
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-google-glass-100.png" alt="" class="TechImg">
+                <p>Smart Watches</p>
+            </div>
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-shirt-80.png" alt="" class="TechImg">
+                <p>Smart Clothing</p>
+            </div>
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-smart-jewelry-64.png" alt="" class="TechImg">
+                <p>Smart Jewelery</p>
+            </div>
+            <div class="TechSlot column centre">
+                <img src="Images/icons8-virtual-reality-64.png" alt="" class="TechImg">
+                <p>Augmented Reality</p>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>You are here: <a href="home.php">Home</a></p>
         <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>

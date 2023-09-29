@@ -1121,8 +1121,59 @@ hr{
     font-size: 18px;
   }
 }
-
-
+.TechImg{
+  width: 100px;
+  aspect-ratio: 1/1;
+}
+.WerableTechCatalogue{
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.TechSlot{
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 30%;
+  min-width: 250px;
+  margin-bottom: 15px;
+}
+.WerablesTechnologies{
+  width: 90%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  color: #7b5237;
+}
+.WerablesTechnologies p{
+  font-size: 18px;
+}
+@media (max-width: 572px){
+  .TechSlot{
+    width: 100%;
+  }
+}
+.ReviewPageHeader{
+  font-size: 18px;
+  color: #7b5237;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.ReviewPageHeader p {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.ReviewPageHeader svg{
+  fill: gold;
+}
+.header{
+  width: 100%;
+  color: #7b5237;
+}
 
 
 
