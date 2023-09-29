@@ -20,7 +20,7 @@ $_SESSION['lastPage'] = 'features.php';
 </head>
 <body>
     <nav>
-        <img src="Images/GWSC_logo.png" alt="Maple_Woods Logo" class="logo" />
+    <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
         
         <div class="link-container link row">
         <div class="link" id="drop">
@@ -94,6 +94,7 @@ $_SESSION['lastPage'] = 'features.php';
         }
         ?>
     </div>
+    <hr>
     <div class="WerablesTechnologies column">
         <h2>Werable Technology Categories</h2>
         <p>Here are some of the werable technologies categories allowed at our campsites</p>

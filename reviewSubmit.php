@@ -33,8 +33,5 @@ session_start();
             echo "<script>window.alert('Please login first!')</script>";
             echo "<script>window.history.back()</script>";
         }
-        
-        
-        
     }
 ?>

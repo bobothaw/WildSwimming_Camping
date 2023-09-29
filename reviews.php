@@ -20,7 +20,7 @@ $_SESSION['lastPage'] = 'reviews.php';
 </head>
 <body>
     <nav>
-    <img src="Images/GWSC_logo.png" alt="Maple_Woods Logo" class="logo" />
+    <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
     
     <div class="link-container link row">
       <div class="link" id="drop">

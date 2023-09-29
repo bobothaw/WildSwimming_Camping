@@ -126,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     ?>
     <?php
 }
+
 if (isset($_POST['btnSearch']))
 {
     var_dump($_SESSION);
