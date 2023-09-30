@@ -125,12 +125,12 @@ $_SESSION['lastPage'] = 'home.php';
     }, 5000);
   </script>
   <div class="searchbar">
-    <form action="" id="searchForm">
-      <input type="text" placeholder="Search....." />
-      <button type="submit" name="search-btn">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      </button>
-    </form>
+        <form action="information.php" id="searchForm" method="POST">
+        <input type="text" placeholder="Search....." name="txtSearchResult" />
+        <button type="submit" name="search-btn">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </button>
+        </form>
   </div>
 
   <div class="Intro text_centre centre column">

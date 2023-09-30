@@ -2,6 +2,13 @@
 include('connection.php');
 include('searchFunction.php');
 include('functions.php');
+if ($_SESSION['lastPage'] == 'information.php')
+{
+    $isFromInformation = true;
+}
+else{
+    $isFromInformation = false;
+}
 $_SESSION['lastPage'] = 'pitchTypeAndAvailability.php';
 
 if (isset($_GET['CampID']))
@@ -161,12 +168,27 @@ if (isset($_GET['CampID']))
                     ?>
                 </div>
             </div>
+            
             <div class="BookingSideBar column">
-                <div class="CheckInDate">Check In Date: <?= $_SESSION['searchStartDate'] ?></div>
-                <div class="CheckInDate">Check Out Date: <?= $_SESSION['searchEndDate'] ?></div>
+                <div class="CheckInDate">Check In Date: 
+                    <?php
+                    if (isset($_SESSION['searchStartDate']))
+                    {
+                        echo $_SESSION['searchStartDate']; 
+                    }
+                    ?>
+                </div>
+                <div class="CheckInDate">Check Out Date: 
+                <?php
+                    if (isset($_SESSION['searchEndDate']))
+                    {
+                        echo $_SESSION['searchEndDate']; 
+                    }    
+                ?> 
+                </div>
                 <div class="CheckInDate">Selected Pitch Type: 
                     <?php
-                
+                        try{
                         $pitchTypeID = $_SESSION['searchPitchType'];
                         $selectedPitchQuery = "SELECT PitchTypeName
                         FROM PitchTypes WHERE PitchTypeID = $pitchTypeID";
@@ -177,9 +199,22 @@ if (isset($_GET['CampID']))
                             $pitchTypeArray = mysqli_fetch_array($runselectedPitchQuery);
                             echo $pitchTypeArray['PitchTypeName'];
                         }
-                        
+                    }
+                    catch(ErrorException $e) {
+                        echo "<script>
+                        $(document).ready(function () {
+                            $('.BookingSideBar').css('display', 'none');
+                        });
+                        </script>";
+                      }
                         ?></div>
-                <div class="CheckInDate">Total Guests: <?= $_SESSION['searchNumPeople']." guests" ?></div>
+                <div class="CheckInDate">Total Guests: 
+                    <?php 
+                    if (isset($_SESSION['searchNumPeople']))
+                    {
+                        echo $_SESSION['searchNumPeople']." guests";
+                    }
+                    ?></div>
                 <hr>
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
@@ -200,12 +235,17 @@ if (isset($_GET['CampID']))
                             $_SESSION['totalPrice'] = $actualPrice;
                             echo $actualPrice."$";
                         }
-                        catch(Exception $e) {
-                            echo $_SESSION['totalPrice'];
+                        catch(ErrorException $e) {
+                            echo "<script>
+                            $(document).ready(function () {
+                                $('.BookingSideBar').css('display', 'none');
+                            });
+                            </script>";
                           }
                         
                     ?>
                 </div>
+                
                 <form action="booking.php" method = "POST">
                     <input type="submit" value = "Book Now" name="btnBookCampsite">
                 </form>

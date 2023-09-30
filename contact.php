@@ -104,7 +104,7 @@ $_SESSION['lastPage'] = 'contact.php';
                     </div>
                     <div class="FormElements row align_top">
                         <input type="checkbox" name="chkContact">
-                        <label for="">I have agreed to the terms and condition of the GWSC's <a href="">Privacy Policy</a></label>
+                        <label for="">I have agreed to the terms and condition of the GWSC's <a href="PrivacyPolicy.pdf" target="_blank">Privacy Policy</a></label>
                     </div>
                     <div class="FormElements centre">
                         <input type="submit" value="Send Message" id="ContactSubmit" name="btnContactSubmit" disabled>
