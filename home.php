@@ -215,9 +215,10 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
   <footer>
     <p>You are here: <a href="home.php">Home</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
-    <a href="https://facebook.com"><img src="Images/facebookLogo.png" alt="Facebook Logo" class="social-media-icon" /></a>
-    <a href="https://twitter.com"><img src="Images/instaLogo.png" alt="Instagram Logo" class="social-media-icon" /></a>
-    <a href="https://www.instagram.com/"><img src="Images/twitterLogo.png" alt="Twitter Logo" class="social-media-icon" /></a>
+    <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://twitter.com"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="rssfeed.php"><i class="fa-solid fa-rss"></i></a>
   </footer>
   <div class="modal-bg">
     <div class="modal-content">

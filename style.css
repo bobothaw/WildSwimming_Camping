@@ -263,11 +263,23 @@ footer p {
 footer p a {
   color: #f7f3e8;
 }
-.social-media-icon {
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  margin-left: 20px;
+footer a{
+  color: #f7f3e8;
+}
+footer a i{
+  font-size: 20px;
+}
+.fa-facebook:hover{
+  color: #4267B2;
+}
+.fa-instagram:hover{
+  color: #833AB4;
+}
+.fa-x-twitter:hover{
+  color: black;
+}
+.fa-rss:hover{
+  color: #f26522;
 }
 
 .modal-bg {
