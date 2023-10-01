@@ -3,7 +3,7 @@ include('connection.php');
 include('searchFunction.php');
 include('functions.php');
 $_SESSION['lastPage'] = 'pitchTypeAndAvailability.php';
-
+$_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +111,7 @@ $_SESSION['lastPage'] = 'pitchTypeAndAvailability.php';
         </div>
     
     <footer>
-    <p>You are here: <a href="home.php">Home</a></p>
+    <p>You are here: <a href="pitchTypeAndAvailability.php">PitchType and Availability</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>

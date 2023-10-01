@@ -3,6 +3,7 @@ include('connection.php');
 session_start();
 include('functions.php');
 $_SESSION['lastPage'] = 'contact.php';
+$_SESSION['loginLastPage'] = 'contact.php';
 
 
 ?>
@@ -131,7 +132,7 @@ $_SESSION['lastPage'] = 'contact.php';
     }
     ?>
     <footer>
-    <p>You are here: <a href="home.php">Home</a></p>
+    <p>You are here: <a href="contact.php">Contact</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>

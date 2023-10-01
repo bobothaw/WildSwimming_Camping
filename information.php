@@ -3,8 +3,7 @@ include('connection.php');
 session_start();
 include('functions.php');
 $_SESSION['lastPage'] = 'home.php';
-
-
+$_SESSION['loginLastPage'] = 'information.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +202,7 @@ $_SESSION['lastPage'] = 'home.php';
             ?>
         </div>
     <footer>
-    <p>You are here: <a href="home.php">Home</a></p>
+    <p>You are here: <a href="information.php">Information</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>

@@ -3,7 +3,7 @@ include('connection.php');
 include('functions.php');
 session_start();
 $_SESSION['lastPage'] = 'home.php';
-
+$_SESSION['loginLastPage'] = 'home.php';
 
 ?>
 <!DOCTYPE html>

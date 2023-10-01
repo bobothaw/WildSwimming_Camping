@@ -300,7 +300,8 @@ footer a i{
   display: none;
 }
 .modal-content {
-  width: 700px;
+  width: 40%;
+  min-width: 350px;
   height: min-content;
   background-color: #f7f3e8;
   border-radius: 4px;
@@ -360,9 +361,6 @@ footer a i{
 input[type="submit"]:disabled{
   background-color: rgba(128, 128, 128, 0.482);
   cursor: default;
-}
-input[type="submit"]:disabled:hover{
-
 }
 .modal-button:hover {
   background-color: #5b4248;
@@ -844,9 +842,11 @@ hr{
 .CampsiteDetailImages .PrincipleImage {
   width: 66.66666%;
   position: relative;
+  min-width: 300px;
 }
 .CampsiteDetailImages .SideImages{
   width: 33.33333%;
+  min-width: 300px;
   position: relative;
 }
 .CampsiteDetailImages img{
@@ -1207,7 +1207,7 @@ hr{
   color: #7b5237;
   padding: 20px;
   border: 1px solid #7b5237;
-  margin-bottom: 10px;
+  margin-bottom: 200px;
   background-color: #f7f3e8;
 }
 marquee {

@@ -2,7 +2,7 @@
 session_start();
 include('connection.php');
 include('functions.php');
-$lastPage = $_SESSION['lastPage'];
+$lastPage = $_SESSION['loginLastPage'];
 if(isset($_POST['btnCusSignUp']))
 {
     $customerFName = $_POST['txtCusFName'];

@@ -3,7 +3,7 @@ include('connection.php');
 session_start();
 include ('functions.php');
 $_SESSION['lastPage'] = 'reviews.php';
-
+$_SESSION['loginLastPage'] = 'reviews.php';
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $_SESSION['lastPage'] = 'reviews.php';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <nav>
@@ -144,7 +144,7 @@ $_SESSION['lastPage'] = 'reviews.php';
         ?>
     </div>
     <footer>
-    <p>You are here: <a href="home.php">Home</a></p>
+    <p>You are here: <a href="reviews.php">Reviews</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
