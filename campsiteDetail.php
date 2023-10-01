@@ -2,18 +2,26 @@
 include('connection.php');
 include('searchFunction.php');
 include('functions.php');
-if ($_SESSION['lastPage'] == 'information.php')
+if ($_SESSION['lastPage'] === 'home.php')
 {
-    $isFromInformation = true;
+    $isFromhome = true;
 }
 else{
-    $isFromInformation = false;
+    $isFromhome = false;
 }
+$_SESSION['loginLastPage'] = 'campsiteDetail.php';
 $_SESSION['lastPage'] = 'pitchTypeAndAvailability.php';
 
-if (isset($_GET['CampID']))
+if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
 {
-    $campsiteID = $_GET['CampID'];
+    if (isset($_GET['CampID']))
+    {
+        $campsiteID = $_GET['CampID'];
+    }
+    else
+    {
+        $campsiteID = $_SESSION['CampsiteID'];
+    }
     $updateCampsiteViewQuery = "UPDATE Campsites SET NoOfViews = NoOfViews + 1 
     WHERE CampsiteID = $campsiteID";
     $runUpdateQuery = mysqli_query($connect, $updateCampsiteViewQuery);
@@ -88,6 +96,17 @@ if (isset($_GET['CampID']))
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
+    <?php 
+    if ($isFromhome)
+    {
+        echo "<script>window.alert('To book this campsite, please search the campsite in the Pitch Type and Availability page.')</script>";
+        echo "<script>
+            $(document).ready(function () {
+                $('.BookingSideBar').css('display', 'none');
+            });
+            </script>";
+    }
+     ?>
     <div class="campsiteSlot column">
         <div class="campsiteHeader row wrap centre">
             <div class="headerName"><h1><?= $campsiteArray['CampsiteName'] ?> </h1></div>
@@ -128,7 +147,7 @@ if (isset($_GET['CampID']))
                 <p><?= $campsiteArray['CountryName'] ?></p>
             </div>
         </div>
-        <div class="CampsiteDetailImages row">
+        <div class="CampsiteDetailImages row wrap centre">
             <div class="PrincipleImage">
                 <img src="<?= $campsiteArray['Image1'] ?>" alt="">
             </div>
@@ -343,21 +362,27 @@ if (isset($_GET['CampID']))
                                 <div class="ReviewProfile">
                                     <?php 
                                         $customerID = $reviewArray['CustomerID'];
-                                        $customerQuery = "SELECT FirstName from Customers
+                                        $customerQuery = "SELECT FirstName, LastName from Customers
                                         WHERE CustomerID = $customerID";
                                         $runCustomerQuery = mysqli_query($connect, $customerQuery);
                                         $customerArray = mysqli_fetch_array($runCustomerQuery);
                                         $fName = $customerArray['FirstName'];
+                                        $lName = $customerArray['LastName'];
                                         $firstLetter = $fName[0];
                                         echo $firstLetter;
                                     ?>
                                 </div>
-                                <div class="ReviewDate centre">
-                                    <?php 
-                                        $reviewPostedDate = $reviewArray['ReviewDate'];
-                                        $formatDate = get_formatDate($reviewPostedDate);
-                                        echo $formatDate;
-                                    ?>
+                                <div class="ReviewMiddle column">
+                                    <div class="ReviewName">
+                                        <?= $fName." ".$lName ?>
+                                    </div>
+                                    <div class="ReviewDate centre">
+                                        <?php
+                                            $reviewPostedDate = $reviewArray['ReviewDate'];
+                                            $formatDate = get_formatDate($reviewPostedDate);
+                                            echo $formatDate;
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="ReviewHeadingRight">
@@ -392,12 +417,16 @@ if (isset($_GET['CampID']))
     <marquee behavior="sliding" direction="right" id="campsiteMarquee">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
     <script src="weather.js"></script>
     <footer>
-        <p>You are here: <a href="home.php">Home</a></p>
-        <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
-        <a href="https://facebook.com"><img src="Images/facebookLogo.png" alt="Facebook Logo" class="social-media-icon" /></a>
-        <a href="https://twitter.com"><img src="Images/instaLogo.png" alt="Instagram Logo" class="social-media-icon" /></a>
-        <a href="https://www.instagram.com/"><img src="Images/twitterLogo.png" alt="Twitter Logo" class="social-media-icon" /></a>
-    </footer>
+    <p>You are here: <a href="campsiteDetail.php">Campsite Details</a></p>
+    <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
+    <div class="socialMediaIcons row wrap">
+      <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://twitter.com"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
+    </div>
+    
+  </footer>
     <div class="modal-bg">
     <div class="modal-content">
         <div class="close" id="close">+</div>
@@ -499,12 +528,6 @@ if (isset($_GET['CampID']))
         $(this).next('label').children('i').addClass('fa-regular').removeClass('fa-solid');
       });
     }
-
-    $('#submit-button').on('click', function () {
-      // Get the selected rating value directly from the radio inputs
-      const selectedRating = $('input[name="rating"]:checked').val();
-      alert('Review submitted with rating: ' + selectedRating);
-    });
   });
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

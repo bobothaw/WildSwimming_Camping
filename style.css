@@ -5,7 +5,8 @@
   font-family: "Source Sans 3", sans-serif;
 }
 body {
-  background-color: #f7f3e8;
+  background: #f7f3e8 url('Images/bodybg.png');
+  height:min-content;
 }
 
 img.logo {
@@ -263,13 +264,31 @@ footer p {
 footer p a {
   color: #f7f3e8;
 }
-.social-media-icon {
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  margin-left: 20px;
+footer a{
+  color: #f7f3e8;
 }
-
+footer a i{
+  font-size: 20px;
+}
+.fa-facebook:hover{
+  color: #4267B2;
+}
+.fa-instagram:hover{
+  color: #833AB4;
+}
+.fa-x-twitter:hover{
+  color: black;
+}
+.fa-rss:hover{
+  color: #f26522;
+}
+.socialMediaIcons{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  justify-content: space-around;
+}
 .modal-bg {
   width: 100%;
   height: 100%;
@@ -281,7 +300,8 @@ footer p a {
   display: none;
 }
 .modal-content {
-  width: 700px;
+  width: 40%;
+  min-width: 350px;
   height: min-content;
   background-color: #f7f3e8;
   border-radius: 4px;
@@ -342,9 +362,6 @@ input[type="submit"]:disabled{
   background-color: rgba(128, 128, 128, 0.482);
   cursor: default;
 }
-input[type="submit"]:disabled:hover{
-
-}
 .modal-button:hover {
   background-color: #5b4248;
 }
@@ -365,6 +382,7 @@ input[type="submit"]:disabled:hover{
 .Intro{
   width: 90%;
   margin: 20px auto;
+  color: #7b5237;
 }
 .row{
   display: flex;
@@ -760,6 +778,7 @@ hr{
   margin-top: 20px;
   border-radius: 30px;
   align-items: end;
+  background-color: #f7f3e8;
 }
 .searchControls input,
 .searchControls select{
@@ -823,9 +842,11 @@ hr{
 .CampsiteDetailImages .PrincipleImage {
   width: 66.66666%;
   position: relative;
+  min-width: 300px;
 }
 .CampsiteDetailImages .SideImages{
   width: 33.33333%;
+  min-width: 300px;
   position: relative;
 }
 .CampsiteDetailImages img{
@@ -833,6 +854,7 @@ hr{
   border-radius: 10px;
 }
 .CampsiteDescription {
+  background-color: #f7f3e8;
 }
 .CampsiteDescription .DescriptionText {
   width: 66.66666%;
@@ -977,7 +999,7 @@ hr{
   width: 30%;
   padding: 20px;
   min-width: 300px;
-  background-color: aliceblue;
+  background-color: #fff;
   border-radius: 10px;
   margin-bottom: 20px;
   height: fit-content;
@@ -1185,9 +1207,13 @@ hr{
   color: #7b5237;
   padding: 20px;
   border: 1px solid #7b5237;
-  margin-bottom: 10px;
+  margin-bottom: 200px;
+  background-color: #f7f3e8;
 }
-
+marquee {
+  color: #7b5237;
+  font-size: 18px;
+}
 
 
 

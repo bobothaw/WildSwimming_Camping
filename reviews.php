@@ -3,7 +3,7 @@ include('connection.php');
 session_start();
 include ('functions.php');
 $_SESSION['lastPage'] = 'reviews.php';
-
+$_SESSION['loginLastPage'] = 'reviews.php';
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $_SESSION['lastPage'] = 'reviews.php';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <nav>
@@ -144,12 +144,16 @@ $_SESSION['lastPage'] = 'reviews.php';
         ?>
     </div>
     <footer>
-        <p>You are here: <a href="home.php">Home</a></p>
-        <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
-        <a href="https://facebook.com"><img src="Images/facebookLogo.png" alt="Facebook Logo" class="social-media-icon" /></a>
-        <a href="https://twitter.com"><img src="Images/instaLogo.png" alt="Instagram Logo" class="social-media-icon" /></a>
-        <a href="https://www.instagram.com/"><img src="Images/twitterLogo.png" alt="Twitter Logo" class="social-media-icon" /></a>
-    </footer>
+    <p>You are here: <a href="reviews.php">Reviews</a></p>
+    <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
+    <div class="socialMediaIcons row wrap">
+      <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://twitter.com"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
+    </div>
+    
+  </footer>
     <div class="modal-bg">
     <div class="modal-content">
         <div class="close" id="close">+</div>
