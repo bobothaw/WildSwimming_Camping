@@ -5,7 +5,8 @@
   font-family: "Source Sans 3", sans-serif;
 }
 body {
-  background-color: #f7f3e8;
+  background: #f7f3e8 url('Images/bodybg.png');
+  height:min-content;
 }
 
 img.logo {
@@ -281,7 +282,13 @@ footer a i{
 .fa-rss:hover{
   color: #f26522;
 }
-
+.socialMediaIcons{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  justify-content: space-around;
+}
 .modal-bg {
   width: 100%;
   height: 100%;
@@ -377,6 +384,7 @@ input[type="submit"]:disabled:hover{
 .Intro{
   width: 90%;
   margin: 20px auto;
+  color: #7b5237;
 }
 .row{
   display: flex;
@@ -772,6 +780,7 @@ hr{
   margin-top: 20px;
   border-radius: 30px;
   align-items: end;
+  background-color: #f7f3e8;
 }
 .searchControls input,
 .searchControls select{
@@ -845,6 +854,7 @@ hr{
   border-radius: 10px;
 }
 .CampsiteDescription {
+  background-color: #f7f3e8;
 }
 .CampsiteDescription .DescriptionText {
   width: 66.66666%;
@@ -989,7 +999,7 @@ hr{
   width: 30%;
   padding: 20px;
   min-width: 300px;
-  background-color: aliceblue;
+  background-color: #fff;
   border-radius: 10px;
   margin-bottom: 20px;
   height: fit-content;
@@ -1198,8 +1208,12 @@ hr{
   padding: 20px;
   border: 1px solid #7b5237;
   margin-bottom: 10px;
+  background-color: #f7f3e8;
 }
-
+marquee {
+  color: #7b5237;
+  font-size: 18px;
+}
 
 
 

@@ -170,6 +170,13 @@ if (isset($_GET['CampID']))
             </div>
             
             <div class="BookingSideBar column">
+                <?php 
+                if ($isFromInformation)
+                {
+                    echo "<script>window.alert('If you want to book the campsite, 
+                            please search the campsite at Pitch Type and Availability page.')</script>";
+                }
+                ?>
                 <div class="CheckInDate">Check In Date: 
                     <?php
                     if (isset($_SESSION['searchStartDate']))
@@ -392,12 +399,16 @@ if (isset($_GET['CampID']))
     <marquee behavior="sliding" direction="right" id="campsiteMarquee">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
     <script src="weather.js"></script>
     <footer>
-        <p>You are here: <a href="home.php">Home</a></p>
-        <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
-        <a href="https://facebook.com"><img src="Images/facebookLogo.png" alt="Facebook Logo" class="social-media-icon" /></a>
-        <a href="https://twitter.com"><img src="Images/instaLogo.png" alt="Instagram Logo" class="social-media-icon" /></a>
-        <a href="https://www.instagram.com/"><img src="Images/twitterLogo.png" alt="Twitter Logo" class="social-media-icon" /></a>
-    </footer>
+    <p>You are here: <a href="home.php">Home</a></p>
+    <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
+    <div class="socialMediaIcons row wrap">
+      <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://twitter.com"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
+    </div>
+    
+  </footer>
     <div class="modal-bg">
     <div class="modal-content">
         <div class="close" id="close">+</div>
