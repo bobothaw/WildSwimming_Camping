@@ -148,7 +148,7 @@ $_SESSION['lastPage'] = 'contact.php';
             <input type="email" name = "txtCusEmail" placeholder="Please enter your email" class="modal-email" required>
             <input type="password" name = "txtCusPassword" placeholder="Please enter the password" class="modal-email" required>
 
-            <a href="#" class="modal_text">Forgot Password?</a>
+            
             <div class="g-recaptcha" data-sitekey="6LfhaGQnAAAAADtUt1H7vF1tHa0ZvSae5iwBZ34S" data-callback = "enableLoginBtn"></div>
             <input type="submit" value="Login" class="modal-button" id="login_btn" name="btnCusLogin" disabled>
             <p class="modal_text">Don't have an account? <a href="#" id="signIN">SignUp</a></p>
