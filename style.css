@@ -655,6 +655,7 @@ hr{
 .attrImage {
   width: 300px;
   position: relative;
+
 }
 .attrImage img{
   width: 100%;
@@ -663,6 +664,10 @@ hr{
 .AttrText {
   color: #7b5237;
   width: 400px;
+}
+.AttrText a{
+  color: #7b5237;
+  
 }
 .AttrText h3{
   margin-bottom: 10px;
@@ -1207,14 +1212,20 @@ hr{
   color: #7b5237;
   padding: 20px;
   border: 1px solid #7b5237;
-  margin-bottom: 200px;
+  margin-bottom: 60vh;
   background-color: #f7f3e8;
 }
 marquee {
   color: #7b5237;
   font-size: 18px;
 }
-
+.pitchIcon{
+  max-width: 100px;
+}
+#homePitch{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 
 

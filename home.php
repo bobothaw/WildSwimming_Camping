@@ -196,7 +196,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
                 <img src="<?php echo $countryRow["CountryImage"]; ?>" alt="">
                 <div class="viewed_campsite_overlay">
                     <h2><?php echo $countryRow["CountryName"]; ?></h2>
-                    <a href="Package.php?CountryID=<?php echo $countryRow["CountryID"]; ?>">Explore Campsites &#8594;</a>
+                    <a href="information.php?CountryID=<?php echo $countryRow["CountryID"]; ?>">Explore Campsites &#8594;</a>
                 </div>
             </div>
         </div>
@@ -209,7 +209,35 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
 }
 ?>
   </div>
-  
+  <hr>
+  <div class="LocalAttractionsContainer row wrap" id="homePitch">
+    <h1 class="Intro centre">Different pitchtypes of our campsites</h1>
+        <?php 
+        $pitchTypeQuery = "SELECT * FROM PitchTypes";
+        $runPitchTypeQuery = mysqli_query($connect, $pitchTypeQuery);
+        if (mysqli_num_rows($runPitchTypeQuery) > 0) {
+            while ($pitchRow = mysqli_fetch_assoc($runPitchTypeQuery)) {
+                ?>
+                <div class="attraction_slot row">
+                    <div class="attrImage centre">
+                        <img src="<?php echo $pitchRow["PitchTypeImg"];?>" alt="" class="pitchIcon">
+                    </div>
+                    <div class="AttrText column">
+                        <div class="AttrHeading"><h1><?php echo$pitchRow["PitchTypeName"]; ?></h1></div>
+                        <a href="information.php?PitchTypeID=<?php echo$pitchRow['PitchTypeID']?>">Explore Campsites &#8594;</a>
+                        <div class="AttrDesc"><p><?php echo$pitchRow["PitchTypeDesc"]; ?></p></div>
+                    </div>
+                </div>
+                <?php
+            }
+        } else {
+            ?>
+            <div class="Intro">There is no data available</div>
+            <?php 
+        }
+        ?>
+        
+    </div>
   <hr>
 
   <footer>

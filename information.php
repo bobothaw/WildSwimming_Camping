@@ -93,7 +93,19 @@ $_SESSION['loginLastPage'] = 'information.php';
                 OR pt.PitchTypeName LIKE '%$userInput%'
                 OR c.Description LIKE '%$userInput%'";
             }
-            
+            if (isset($_GET['CountryID']))
+            {
+                $countryID = $_GET['CountryID'];
+                $campsiteQuery = "SELECT DISTINCT * from Campsites WHERE CountryID = $countryID";
+            }
+            if (isset($_GET['PitchTypeID']))
+            {
+                $pitchTypeID = $_GET['PitchTypeID'];
+                $campsiteQuery = "SELECT DISTINCT c.*
+                FROM Campsites AS c
+                INNER JOIN Campsite_pitchtype AS cp ON cp.CampsiteID = c.CampsiteID
+                WHERE cp.PitchTypeID = $pitchTypeID";
+            }
             $runcampsiteQuery = mysqli_query($connect, $campsiteQuery);
             if (mysqli_num_rows($runcampsiteQuery) > 0)
             {
@@ -197,7 +209,7 @@ $_SESSION['loginLastPage'] = 'information.php';
             }
             else
             {
-                echo"Not found";
+                echo"<p id='searchParagraph'>There is no result that matches the input.</p>";
             }
             ?>
         </div>
