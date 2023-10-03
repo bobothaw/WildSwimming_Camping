@@ -812,7 +812,6 @@ hr{
   width: 100%;
   border-radius: 10px;
 }
-.BookingSideBar form input[type=submit],
 .searchControls form input[type=submit]
 {
   margin-top: 15px;
@@ -880,9 +879,6 @@ hr{
   padding: 20px;
   background-color: #f7f3e8;
 }
-#TotalPrice {
-  margin-top: 10px;
-}
 .AboutCampsite {
   color: #7b5237;
 }
@@ -890,7 +886,7 @@ hr{
   margin-bottom: 3px;
 }
 .BookingSideBar div{
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   background-color: #ccc;
   margin-bottom: 10px;
@@ -920,6 +916,12 @@ hr{
 .FeatureContainer h2 {
   margin-bottom: 3px;
 }
+.FeatureWholeContainer{
+  width: 60%;
+  position: relative;
+  min-width: 300px;
+}
+
 .FeatureContainer i{
   font-size: 18px;
   margin-right: 5px;
@@ -1173,12 +1175,13 @@ hr{
   margin-bottom: 15px;
 }
 .WerablesTechnologies{
-  width: 90%;
+  width: 30%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   color: #7b5237;
   margin-top: 20px;
+  min-width: 350px;
 }
 .WerablesTechnologies p{
   font-size: 18px;
@@ -1244,5 +1247,29 @@ marquee {
   background-color: #fff;
   color: #7b5237;
 }
+.cookie{
+  width: 100%;
+  padding: 30px;
+  background-color: #bd8a6bb1;
+  position: fixed;
+  bottom: 0;
+}
+.cookie form{
+  justify-content: space-around;
+  align-items: center;
+  font-size: 18px;
+  color: #f7f3e8;
+}
+.cookie form input, 
+.cookie form button{
+  padding: 20px;
+  color: #f7f3e8;
+  background-color: #7b5237;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
 
 

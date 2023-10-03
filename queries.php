@@ -293,72 +293,77 @@ include('connection.php');
 // {
 //     echo "Something went wrong";
 // }
-$updateQuery = "UPDATE campsites
-SET City = 'Isle of Skye'
-WHERE CampsiteName = 'Glenbrittle Campsite';
+// $updateQuery = "UPDATE campsites
+// SET City = 'Isle of Skye'
+// WHERE CampsiteName = 'Glenbrittle Campsite';
 
-UPDATE campsites
-SET City = 'Cornwall'
-WHERE CampsiteName = 'Bude Camping and Caravanning';
+// UPDATE campsites
+// SET City = 'Cornwall'
+// WHERE CampsiteName = 'Bude Camping and Caravanning';
 
-UPDATE campsites
-SET City = 'Devon'
-WHERE CampsiteName = 'Karrageen Caravan & Camping Park';
+// UPDATE campsites
+// SET City = 'Devon'
+// WHERE CampsiteName = 'Karrageen Caravan & Camping Park';
 
-UPDATE campsites
-SET City = 'Northern Territory'
-WHERE CampsiteName = 'Ellery Creek Big Hole Campground';
+// UPDATE campsites
+// SET City = 'Northern Territory'
+// WHERE CampsiteName = 'Ellery Creek Big Hole Campground';
 
-UPDATE campsites
-SET City = 'Victoria'
-WHERE CampsiteName = 'Tidal River Campground';
+// UPDATE campsites
+// SET City = 'Victoria'
+// WHERE CampsiteName = 'Tidal River Campground';
 
-UPDATE campsites
-SET City = 'Victoria'
-WHERE CampsiteName = 'Waratah Bay Caravan Park';
+// UPDATE campsites
+// SET City = 'Victoria'
+// WHERE CampsiteName = 'Waratah Bay Caravan Park';
 
-UPDATE campsites
-SET City = 'Ontario'
-WHERE CampsiteName = 'Bruce Peninsula National Park';
+// UPDATE campsites
+// SET City = 'Ontario'
+// WHERE CampsiteName = 'Bruce Peninsula National Park';
 
-UPDATE campsites
-SET City = 'British Columbia'
-WHERE CampsiteName = 'Rathtrevor Beach Provincial Park';
+// UPDATE campsites
+// SET City = 'British Columbia'
+// WHERE CampsiteName = 'Rathtrevor Beach Provincial Park';
 
-UPDATE campsites
-SET City = 'Alberta'
-WHERE CampsiteName = 'Lake Louise Soft-Sided Trailer Park';
+// UPDATE campsites
+// SET City = 'Alberta'
+// WHERE CampsiteName = 'Lake Louise Soft-Sided Trailer Park';
 
-UPDATE campsites
-SET City = 'Devon'
-WHERE CampsiteName = 'Dartmoor Camping';
+// UPDATE campsites
+// SET City = 'Devon'
+// WHERE CampsiteName = 'Dartmoor Camping';
 
-UPDATE campsites
-SET City = 'Scotland'
-WHERE CampsiteName = 'Glen Nevis Caravan & Camping Park';
+// UPDATE campsites
+// SET City = 'Scotland'
+// WHERE CampsiteName = 'Glen Nevis Caravan & Camping Park';
 
-UPDATE campsites
-SET City = 'Victoria'
-WHERE CampsiteName = 'Apollo Bay Holiday Park';
+// UPDATE campsites
+// SET City = 'Victoria'
+// WHERE CampsiteName = 'Apollo Bay Holiday Park';
 
-UPDATE campsites
-SET City = 'Northern Territory'
-WHERE CampsiteName = 'Kakadu National Park';
+// UPDATE campsites
+// SET City = 'Northern Territory'
+// WHERE CampsiteName = 'Kakadu National Park';
 
-UPDATE campsites
-SET City = 'Alberta'
-WHERE CampsiteName = 'Cypress Hills Camp';
+// UPDATE campsites
+// SET City = 'Alberta'
+// WHERE CampsiteName = 'Cypress Hills Camp';
 
-UPDATE campsites
-SET City = 'Yukon'
-WHERE CampsiteName = 'Kluane National Park and Reserve';";
-$runUpdateQuery = mysqli_multi_query($connect, $updateQuery);
-if ($runUpdateQuery)
-{
-    echo "data updated successfully";
-}
-else
-{
-    echo "Something went wrong";
-}
+// UPDATE campsites
+// SET City = 'Yukon'
+// WHERE CampsiteName = 'Kluane National Park and Reserve';";
+// $runUpdateQuery = mysqli_multi_query($connect, $updateQuery);
+// if ($runUpdateQuery)
+// {
+//     echo "data updated successfully";
+// }
+// else
+// {
+//     echo "Something went wrong";
+// }
+$alterQuery = "ALTER TABLE Bookings
+ADD COLUMN PaymentType VARCHAR(30),
+ADD COLUMN PaymentCredential VARCHAR (200)";
+$runAlterQuery = mysqli_query($connect, $alterQuery);
+
 ?>

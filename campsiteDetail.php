@@ -291,7 +291,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                     </div>  
                     <div id="accDetails">
                         <h4>Payment Accredentials</h4>
-                        <input type="text" name="txtPaymentInformation" placeholder="Please enter your PAN number" required>
+                        <input type="text" name="txtPaymentInformation" placeholder="Please enter your PAN number" minlength="14" id="paymentcreInput" >
                     </div>
                     <input type="submit" value = "Book Now" name="btnBookCampsite">
                 </form>
@@ -557,11 +557,13 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
     }
     $('input[type="radio"]').click(function() {
        if($(this).attr('id') == 'debit') {
-            $('#accDetails').show();           
+            $('#accDetails').show();
+            $('#paymentcreInput').prop('required', true);   
        }
 
        else {
             $('#accDetails').hide();   
+            $('#paymentcreInput').prop('required', false);
        }
    });
   });

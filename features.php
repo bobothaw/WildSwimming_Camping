@@ -65,63 +65,66 @@ $_SESSION['loginLastPage'] = 'features.php';
         <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
         </div>
     </nav>
-    <h1 class="Intro centre">Features in the campsite</h1>
-    <div class="feature_catalogue_container wrap row">
-        <?php
-        $featureQuery = "SELECT * FROM features";
-        $runfeatureQuery = mysqli_query($connect, $featureQuery);
-
-        if (mysqli_num_rows($runfeatureQuery) > 0) {
-            while ($featureRow = mysqli_fetch_assoc($runfeatureQuery)) {
-                ?>
-                <div class="feature_catalogue column">
-                    <?php 
-                    echo $featureRow["FeatureIcon"];
-                     ?>
-                    <h3 class="centre"><?php echo $featureRow["FeatureName"]; ?></h3> 
-                    <p>
-                        <?php 
-                        echo $featureRow["FeatureDesc"];
-                         ?>
-                    </p>
-                </div>
+    <div class="FeaturePageContainer row wrap">
+        <div class="FeatureWholeContainer column">
+            <h1 class="Intro centre">Features in the campsite</h1>
+            <div class="feature_catalogue_container wrap row">
                 <?php
-            }
-        } else {
-            ?>
-            <div class="Intro">There is no data available</div>
-            <?php 
-        }
-        ?>
-    </div>
-    <hr>
-    <div class="WerablesTechnologies column">
-        <h2>Werable Technology Categories</h2>
-        <p>Here are some of the werable technologies categories allowed at our campsites</p>
-        <div class="WerableTechCatalogue row wrap">
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-smart-watch-100.png" alt="" class="TechImg">
-                <p>Smart Watches</p>
+                $featureQuery = "SELECT * FROM features";
+                $runfeatureQuery = mysqli_query($connect, $featureQuery);
+                if (mysqli_num_rows($runfeatureQuery) > 0) {
+                    while ($featureRow = mysqli_fetch_assoc($runfeatureQuery)) {
+                        ?>
+                        <div class="feature_catalogue column">
+                            <?php
+                            echo $featureRow["FeatureIcon"];
+                             ?>
+                            <h3 class="centre"><?php echo $featureRow["FeatureName"]; ?></h3>
+                            <p>
+                                <?php
+                                echo $featureRow["FeatureDesc"];
+                                 ?>
+                            </p>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <div class="Intro">There is no data available</div>
+                    <?php
+                }
+                ?>
             </div>
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-earbud-headphones-64.png" alt="" class="TechImg">
-                <p>Hearables devices</p>
-            </div>
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-google-glass-100.png" alt="" class="TechImg">
-                <p>Smart Watches</p>
-            </div>
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-shirt-80.png" alt="" class="TechImg">
-                <p>Smart Clothing</p>
-            </div>
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-smart-jewelry-64.png" alt="" class="TechImg">
-                <p>Smart Jewelery</p>
-            </div>
-            <div class="TechSlot column centre">
-                <img src="Images/icons8-virtual-reality-64.png" alt="" class="TechImg">
-                <p>Augmented Reality</p>
+        </div>
+        <hr>
+        <div class="WerablesTechnologies column">
+            <h2>Werable Technology Categories</h2>
+            <p>Here are some of the werable technologies categories allowed at our campsites</p>
+            <div class="WerableTechCatalogue row wrap">
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-smart-watch-100.png" alt="" class="TechImg">
+                    <p>Smart Watches</p>
+                </div>
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-earbud-headphones-64.png" alt="" class="TechImg">
+                    <p>Hearables devices</p>
+                </div>
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-google-glass-100.png" alt="" class="TechImg">
+                    <p>Smart Watches</p>
+                </div>
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-shirt-80.png" alt="" class="TechImg">
+                    <p>Smart Clothing</p>
+                </div>
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-smart-jewelry-64.png" alt="" class="TechImg">
+                    <p>Smart Jewelery</p>
+                </div>
+                <div class="TechSlot column centre">
+                    <img src="Images/icons8-virtual-reality-64.png" alt="" class="TechImg">
+                    <p>Augmented Reality</p>
+                </div>
             </div>
         </div>
     </div>

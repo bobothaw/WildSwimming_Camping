@@ -4,7 +4,13 @@ include('functions.php');
 session_start();
 $_SESSION['lastPage'] = 'home.php';
 $_SESSION['loginLastPage'] = 'home.php';
-
+$cookieName = "User";
+$cookieValue = "Bo Bo Thaw";
+if (isset($_POST['btnCookieAccept']))
+{
+  setcookie($cookieName, $cookieValue, time() + (86400 * 30), "/");
+}
+setcookie($cookieName, $cookieValue, time() - (86400 * 30), "/"); //to remove
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +24,7 @@ $_SESSION['loginLastPage'] = 'home.php';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -236,7 +243,6 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
             <?php 
         }
         ?>
-        
     </div>
   <hr>
 
@@ -250,6 +256,25 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
       <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
     </div>
   </footer>
+  <?php 
+  if (!isset($_COOKIE[$cookieName]))
+  {
+    ?> 
+    <div class="cookie" id="cookie">
+      <form action="home.php" class="row wrap" method="POST">
+        <p>
+        This website uses cookies to ensure you get the best experience 
+        on our website. By clicking "Accept," you consent to the use of 
+        all the cookies.
+        </p>
+        <input type="submit" value="Accept" name="btnCookieAccept">
+        <button id="CookieCancel" type="reset">Cancel</button>
+      </form>
+    </div>
+  <?php
+  }
+  ?>
+  
   <div class="modal-bg">
     <div class="modal-content">
       <div class="close" id="close">+</div>
@@ -318,6 +343,13 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
     dropdownMenu.style.display = "none";
   }
 }
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("#CookieCancel").click(function() {
+        $("#cookie").hide(); // Hide the popup with the ID "cookie"
+      });
+    });
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

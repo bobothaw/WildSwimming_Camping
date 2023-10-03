@@ -28,8 +28,8 @@ session_start();
                         $paymentInfo = "null";
                     }
 
-                    $bookingQuery = "INSERT into bookings(BookingDateTime, NumOfGuests, CheckInDate, CheckOutDate, TotalPrice, CampsiteID, PitchTypeID, CustomerID)
-                    Values('$currentDateTime', '$numOfGuest', '$checkInDate', '$checkOutDate','$totalPrice', '$campsiteID', '$pitchTypeID', '$CusID')";
+                    $bookingQuery = "INSERT into bookings(BookingDateTime, NumOfGuests, CheckInDate, CheckOutDate, TotalPrice, CampsiteID, PitchTypeID, CustomerID, PaymentType, PaymentCredential)
+                    Values('$currentDateTime', '$numOfGuest', '$checkInDate', '$checkOutDate','$totalPrice', '$campsiteID', '$pitchTypeID', '$CusID', '$paymentType', '$paymentInfo')";
                     $runbookingInsertQuery = mysqli_query($connect, $bookingQuery);
                     $updateAvailQuery = "UPDATE available_campsites
                     SET Avail_Spaces = Avail_Spaces - $numOfGuest
