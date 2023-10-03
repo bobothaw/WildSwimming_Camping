@@ -41,7 +41,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GWSC - Contact</title>
+    <title>GWSC - Campsite Detail</title>
     <script src="https://kit.fontawesome.com/84ff42f2da.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -145,6 +145,20 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
             </div>
             <div class="Country">
                 <p><?= $campsiteArray['CountryName'] ?></p>
+            </div>
+            <div class="WildSwimming">
+                <?php
+                    if ($campsiteArray["WildSwimming"] == 0){
+                        ?>
+                        <p>Wild Swimming:<i class="fa-solid fa-circle-xmark"></i></i></p>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <p>Wild Swimming:<i class="fa-solid fa-circle-check"></i></i></p>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
         <div class="CampsiteDetailImages row wrap centre">

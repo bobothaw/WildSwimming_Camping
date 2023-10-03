@@ -74,7 +74,7 @@ nav div a {
   position: absolute; /* Add absolute positioning */
   top: 100%; /* Position the dropdown below the navigation bar */
   left: 0;
-  z-index: 999; /* Ensure the dropdown covers other elements */
+  z-index: 1; /* Ensure the dropdown covers other elements */
   background-color: #f7f3e8;
   border: 1px solid #ccc;
   flex-direction: column; /* Make it a flex column */
@@ -106,7 +106,6 @@ div.slider_container {
 div.slider {
   width: 100%;
   aspect-ratio: 16/9;
-  /* height: 900px; */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -115,7 +114,6 @@ div.slider {
 }
 .slides {
   width: 500%;
-  height: 900px;
   display: flex;
 }
 .slide {
@@ -124,14 +122,14 @@ div.slider {
   position: relative;
 }
 .slide_text {
-  font-size: 50px;
+  font-size: 4vw;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 45%;
+  bottom: 30%;
   margin: auto;
-  padding: 50px;
-  width: 500px;
+  padding: 5vw;
+  width: 50%;
   text-align: center;
   background-color: #f7f3e89b;
 }
@@ -139,12 +137,11 @@ div.slider {
 .slides img {
   width: 100%;
   aspect-ratio: 16/9;
-  /* height: 900px; */
 }
 .navigation-manual {
   position: absolute;
   width: 100%;
-  margin-top: 0px;
+  bottom: 10px;
   display: flex;
   justify-content: center;
 }
@@ -183,8 +180,7 @@ div.slider {
 .navigation-auto {
   position: absolute;
   width: 100%;
-  min-width: auto;
-  margin-top: 900px;
+  bottom: 10px;
   display: flex;
   justify-content: center;
 }
@@ -298,6 +294,7 @@ footer a i{
   left: 0;
   justify-content: center;
   display: none;
+  z-index: 3;
 }
 .modal-content {
   width: 40%;
@@ -308,6 +305,7 @@ footer a i{
   text-align: center;
   position: relative;
   padding: 20px;
+  z-index: 999;
 }
 .modal-box {
   margin-left: 10px;
@@ -838,7 +836,8 @@ hr{
   width: 50px;
 }
 .RatingAndLocation {
-  width: 200px;
+  width: 30%;
+  min-width: 300px;
   justify-content: space-between;
 }
 .CampsiteDetailImages {
