@@ -132,6 +132,7 @@ div.slider {
   width: 50%;
   text-align: center;
   background-color: #f7f3e89b;
+  color: #5b4248;
 }
 
 .slides img {
@@ -859,6 +860,7 @@ hr{
 }
 .CampsiteDescription {
   background-color: #f7f3e8;
+  align-items: flex-start;
 }
 .CampsiteDescription .DescriptionText {
   width: 66.66666%;
@@ -868,6 +870,7 @@ hr{
   font-size: 18px;
   color: #7b5237;
   justify-content: space-around;
+  
 }
 .CampsiteDescription .BookingSideBar {
   width: 33.33333%;
@@ -1225,8 +1228,21 @@ marquee {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-
-
+.paymentradio{
+  justify-content: space-between;
+  align-items: center;
+}
+.paymentradio input[type="radio"]{
+  padding: 0px;
+  width: 20%;
+  height: 20px;
+}
+#accDetails{
+  display: none;
+}
+#accDetails input{
+  background-color: #fff;
+  color: #7b5237;
+}
 
 

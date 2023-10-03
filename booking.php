@@ -14,6 +14,20 @@ session_start();
                     $pitchTypeID = $_SESSION['searchPitchType'];
                     $campsiteID = $_SESSION['CampsiteID'];
                     $totalPrice = $_SESSION['totalPrice'];
+                    $paymentType = $_POST['paymentRadio'];
+                    if ($paymentType == "Paypal")
+                    {
+                        $paymentInfo = $_SESSION['CusEmail'];
+                    }
+                    else if ($paymentType == "Debit")
+                    {
+                        $paymentInfo = $_POST['txtPaymentInformation'];
+                    }
+                    else 
+                    {
+                        $paymentInfo = "null";
+                    }
+
                     $bookingQuery = "INSERT into bookings(BookingDateTime, NumOfGuests, CheckInDate, CheckOutDate, TotalPrice, CampsiteID, PitchTypeID, CustomerID)
                     Values('$currentDateTime', '$numOfGuest', '$checkInDate', '$checkOutDate','$totalPrice', '$campsiteID', '$pitchTypeID', '$CusID')";
                     $runbookingInsertQuery = mysqli_query($connect, $bookingQuery);

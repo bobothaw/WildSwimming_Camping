@@ -248,7 +248,6 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                         echo $_SESSION['searchNumPeople']." guests";
                     }
                     ?></div>
-                <hr>
                 <div class="CheckInDate" id = TotalPrice>Total Price:  
                     <?php 
                         try{
@@ -278,8 +277,22 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                         
                     ?>
                 </div>
-                
                 <form action="booking.php" method = "POST">
+                    <div class="PaymentTypes column">
+                        <h4>Payment Type</h4>
+                        <div class="paymentradio row">
+                            <label for="">Paypal</label>
+                            <input type="radio" value="Paypal" name="paymentRadio" class="inputRadio" id="" required>
+                        </div>
+                        <div class="paymentradio row">
+                            <label for="">Debit</label>
+                            <input type="radio" value="Debit" name="paymentRadio" class="inputRadio" id="debit" required>
+                        </div>
+                    </div>  
+                    <div id="accDetails">
+                        <h4>Payment Accredentials</h4>
+                        <input type="text" name="txtPaymentInformation" placeholder="Please enter your PAN number" required>
+                    </div>
                     <input type="submit" value = "Book Now" name="btnBookCampsite">
                 </form>
             </div>
@@ -542,6 +555,15 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
         $(this).next('label').children('i').addClass('fa-regular').removeClass('fa-solid');
       });
     }
+    $('input[type="radio"]').click(function() {
+       if($(this).attr('id') == 'debit') {
+            $('#accDetails').show();           
+       }
+
+       else {
+            $('#accDetails').hide();   
+       }
+   });
   });
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

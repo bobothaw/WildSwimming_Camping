@@ -55,13 +55,11 @@ if(isset($_POST['btnCusLogin']))
           $CusFName = $CustomerArray['FirstName'];
           $CusSName = $CustomerArray['LastName'];
           $CusEmail = $CustomerArray['Email'];
-          $CusPassword = $CustomerArray['Password'];
 
           $_SESSION['CusID'] = $CusID;
           $_SESSION['CusFName'] = $CusFName;
           $_SESSION['CusSName'] = $CusSName;
           $_SESSION['CusEmail'] = $CusEmail;
-          $_SESSION['CusPassword'] = $CusPassword;
           echo "<script>window.alert('Customer Login successful')</script>";
           echo "<script>window.location = '$lastPage' </script>";
       }
