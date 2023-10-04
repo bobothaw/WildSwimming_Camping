@@ -386,7 +386,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                     <div class="ReviewSlot column">
                         <div class="ReviewHeading row wrap">
                             <div class="ReviewHeadingLeft row">
-                                <div class="ReviewProfile">
+                                <div class="ReviewProfile" style="background-color: <?php echo getRandColor()?>;">
                                     <?php 
                                         $customerID = $reviewArray['CustomerID'];
                                         $customerQuery = "SELECT FirstName, LastName from Customers

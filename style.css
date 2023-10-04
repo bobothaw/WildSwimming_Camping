@@ -920,6 +920,8 @@ hr{
   width: 60%;
   position: relative;
   min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .FeatureContainer i{
@@ -1026,6 +1028,7 @@ hr{
   width: 55px;
   background-color: #bd8a6b;
   display: flex;
+  color: #fff;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -1270,6 +1273,14 @@ marquee {
   outline: none;
   border-radius: 10px;
 }
-
+.PrivacyPolicy{
+  list-style-type: circle;
+  color: #7b5237;
+  font-size: 18px;
+  width: 50%;
+  min-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 

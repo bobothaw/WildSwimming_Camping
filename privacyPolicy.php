@@ -1,9 +1,10 @@
 <?php 
 include('connection.php');
 session_start();
-include ('functions.php');
-$_SESSION['lastPage'] = 'reviews.php';
-$_SESSION['loginLastPage'] = 'reviews.php';
+include('functions.php');
+$_SESSION['lastPage'] = 'contact.php';
+$_SESSION['loginLastPage'] = 'contact.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -11,12 +12,12 @@ $_SESSION['loginLastPage'] = 'reviews.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GWSC - Reviews</title>
+    <title>GWSC - Privacy Policy</title>
     <script src="https://kit.fontawesome.com/84ff42f2da.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Source+Sans+3&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <nav>
@@ -65,86 +66,89 @@ $_SESSION['loginLastPage'] = 'reviews.php';
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
-    <h1 class="centre" id="reviewsPageHeading">Reviews</h1>
-    <div class="ReviewPageHeader row wrap">
-          <?php 
-           $reviewCalcQuery = "SELECT Round(AVG(StarCount), 1) as OverallRating, Count(*) as TotalReviews from Reviews";
-           $runreviewCalcQuery = mysqli_query($connect, $reviewCalcQuery);
-           $reviewCalcRow = mysqli_fetch_assoc($runreviewCalcQuery);
-           ?>
-           <p>Overall rating: <?= $reviewCalcRow['OverallRating']." "?>
-           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg></p>
-           <p>Out of <?= $reviewCalcRow['TotalReviews']." "?> reviews.</p>
-           <?php
-          ?>
-    </div>
+    <div class="PrivacyPolicy">
+        <h1>Privacy Policy of GWSC</h1>
+        <p>Last Updated: [9.29.2023]</p>
+        <p>Global Wild Swimming and Camping is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines our practices concerning the collection, use, and protection of your personal information when you interact with our wild swimming and camping services.</p>
+        
+        <p>Please take a moment to read this Privacy Policy carefully to understand how we handle your personal information. By using our services, you consent to the practices described in this Privacy Policy.</p>
 
-    <div class="ReviewsContainer row wrap">
-        <h2 class="header centre">Customer Reviews</h2>
-        <?php 
-        $reviewQuery = "SELECT * from Reviews";
-        $runReviewQuery = mysqli_query($connect, $reviewQuery);
-        $reviewsCount = mysqli_num_rows($runReviewQuery);
-        if ($reviewsCount > 0)
-        {
-            while ($reviewArray = mysqli_fetch_assoc($runReviewQuery))
-            {
-                ?>
-                <div class="ReviewSlot column">
-                    <div class="ReviewHeading row wrap">
-                        <div class="ReviewHeadingLeft row">
-                            <div class="ReviewProfile" style="background-color: <?php echo getRandColor()?>;">
-                                <?php 
-                                    $customerID = $reviewArray['CustomerID'];
-                                    $customerQuery = "SELECT FirstName, LastName from Customers
-                                    WHERE CustomerID = $customerID";
-                                    $runCustomerQuery = mysqli_query($connect, $customerQuery);
-                                    $customerArray = mysqli_fetch_array($runCustomerQuery);
-                                    $fName = $customerArray['FirstName'];
-                                    $lName = $customerArray['LastName'];
-                                    $firstLetter = $fName[0];
-                                    echo $firstLetter;
-                                ?>
-                            </div>
-                            <div class="ReviewMiddle column">
-                                <div class="ReviewName">
-                                    <?= $fName." ".$lName ?>
-                                </div>
-                                <div class="ReviewDate centre">
-                                    <?php
-                                        $reviewPostedDate = $reviewArray['ReviewDate'];
-                                        $formatDate = get_formatDate($reviewPostedDate);
-                                        echo $formatDate;
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ReviewHeadingRight">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
-                            <span>
-                                <?php 
-                                    $starCount = $reviewArray['StarCount'];
-                                    echo $starCount;
-                                ?>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="ReviewLower column">
-                        <h3><?= $reviewArray['ReviewTitle'] ?></h3>
-                        <p><?= $reviewArray ['ReviewDesc']?></p>
-                    </div>
-                </div>
-                <?php 
-            }
-        }
-        else
-        {
-            echo "No data available";
-        }
-        ?>
+        <h2>1. Information We Collect</h2>
+        <p>We may collect the following types of information when you interact with us:</p>
+        
+        <h3>1.1. Personal Information:</h3>
+        <ul>
+            <li>Name</li>
+            <li>Contact information (email address, phone number, address)</li>
+            <li>Payment information</li>
+            <li>Date of birth</li>
+            <li>Passport or ID information (if required for bookings)</li>
+            <li>Emergency contact details</li>
+        </ul>
+
+        <h3>1.2. Non-Personal Information:</h3>
+        <ul>
+            <li>Browsing history</li>
+            <li>IP address</li>
+            <li>Browser type</li>
+            <li>Device information</li>
+            <li>Cookies and similar technologies (please see our Cookie Policy for more details)</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We may use your personal information for the following purposes:</p>
+
+        <h3>2.1. Providing Services:</h3>
+        <ul>
+            <li>Processing reservations and bookings</li>
+            <li>Communicating with you about your bookings</li>
+            <li>Providing you with information about our wild swimming and camping services</li>
+        </ul>
+
+        <h3>2.2. Improving Our Services:</h3>
+        <ul>
+            <li>Analyzing customer preferences and behaviors</li>
+            <li>Conducting market research and surveys</li>
+            <li>Enhancing and customizing your experience on our website</li>
+        </ul>
+
+        <h3>2.3. Legal and Safety Purposes:</h3>
+        <ul>
+            <li>Complying with legal obligations</li>
+            <li>Protecting our rights, privacy, safety, or property</li>
+            <li>Resolving disputes and enforcing our policies</li>
+        </ul>
+
+        <h2>3. Sharing Your Information</h2>
+        <p>We may share your personal information with:</p>
+
+        <h3>3.1. Service Providers:</h3>
+        <p>Third-party companies or individuals who help us provide our services, such as payment processors, customer support services, and marketing partners.</p>
+
+        <h3>3.2. Legal Compliance:</h3>
+        <p>When required by law or to protect our rights, privacy, safety, or property.</p>
+
+        <h2>4. Your Choices</h2>
+        <p>You can choose to:</p>
+        <ul>
+            <li>Access, update, or delete your personal information by contacting us.</li>
+            <li>Opt-out of marketing communications by following the unsubscribe instructions provided in our emails.</li>
+            <li>Disable cookies in your browser, although this may affect your browsing experience.</li>
+        </ul>
+
+        <h2>5. Security</h2>
+        <p>We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, no data transmission over the internet is entirely secure, and we cannot guarantee the security of your information.</p>
+
+        <h2>6. Changes to this Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time. The most recent version will be posted on our website, with the effective date indicated at the beginning of the policy.</p>
+
+        <h2>7. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or your personal information, please contact us at:</p>
+
+        <p>Thank you for choosing Global Wild Swimming and Camping (GWSC). Your privacy is important to us, and we are committed to protecting it.</p>
     </div>
     <footer>
-    <p>You are here: <a href="reviews.php">Reviews</a></p>
+    <p>You are here: <a href="privacyPolicy.php">Privacy Policy</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
       <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
@@ -188,6 +192,14 @@ $_SESSION['loginLastPage'] = 'reviews.php';
         </div>
     </div>
   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var checkBox = document.querySelector("input[name='chkContact']");
+            var submitButton = document.getElementById("ContactSubmit");
+
+            checkBox.addEventListener("change", function () {
+                submitButton.disabled = !checkBox.checked;
+            });
+        });
         document.getElementById('signIN').addEventListener('click',
         function() {
             document.getElementById('signup_form').style.display = 'block';
@@ -215,11 +227,11 @@ $_SESSION['loginLastPage'] = 'reviews.php';
         document.getElementById('signup_btn').disabled = false;
         }
         function dropMenu() {
-    
-    if (document.getElementById("dropdown_menu").style.display == "none") {
-        document.getElementById("dropdown_menu").style.display = "flex";
+    var dropdownMenu = document.getElementById("dropdown_menu");
+    if (dropdownMenu.style.display == "none") {
+        dropdownMenu.style.display = "flex";
     } else {
-        document.getElementById("dropdown_menu").style.display = "none";
+        dropdownMenu.style.display = "none";
     }
     }
   </script>

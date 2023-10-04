@@ -55,4 +55,23 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
     
     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 });
+function getRandColor() {
+    static $colorArray = array(
+        "#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB" 
+        , "#7646FF", "#20CEF5",
+    );
+
+    if (empty($colorArray)) 
+    {
+        $colorArray = array(
+            "#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB" 
+            , "#7646FF", "#20CEF5",
+        );
+    }
+    $randomColorIndex = array_rand($colorArray);
+    $randomColor = $colorArray[$randomColorIndex];
+    unset($colorArray[$randomColorIndex]);
+
+    return $randomColor;
+}
 ?>
