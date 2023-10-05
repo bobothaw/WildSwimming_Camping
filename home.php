@@ -121,6 +121,7 @@ setcookie($cookieName, $cookieValue, time() - (86400 * 30), "/"); //to remove
         </div>
     </div>
   </div>
+  
   <script type="text/javascript">
     var counter = 1;
     setInterval(function() {

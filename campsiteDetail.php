@@ -247,8 +247,10 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                     {
                         echo $_SESSION['searchNumPeople']." guests";
                     }
-                    ?></div>
-                <div class="CheckInDate" id = TotalPrice>Total Price:  
+                    ?>
+                </div>
+                <script src="currencyExchange.js"></script>
+                <div class="CheckInDate">Total price:  
                     <?php 
                         try{
                             $neededPitchCount = ceil($_SESSION['searchNumPeople'] / 5);
@@ -265,7 +267,9 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                             $totalDays = $interval->days;
                             $actualPrice = $neededPitchCount * $priceArray['PricePerSlot'] * $totalDays;
                             $_SESSION['totalPrice'] = $actualPrice;
-                            echo $actualPrice."$";
+                            json_encode(['totalPrice' => $actualPrice]);
+                            
+                            echo "<span id = 'TotalPrice'>$actualPrice</span>";
                         }
                         catch(ErrorException $e) {
                             echo "<script>
