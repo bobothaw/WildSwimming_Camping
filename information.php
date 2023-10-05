@@ -67,7 +67,22 @@ $_SESSION['loginLastPage'] = 'information.php';
     </nav>
     <div class="searchbar">
         <form action="information.php" id="searchForm" method="POST">
-        <input type="text" placeholder="Search....." name="txtSearchResult" />
+        <input type="text" placeholder="
+        <?php 
+        if (isset($_POST['txtSearchResult']) && $_POST['txtSearchResult'] == "")
+        {
+            echo "Search.....";
+        }
+        else if (isset($_POST['txtSearchResult']))
+        {
+            echo $_POST['txtSearchResult'];
+        }
+        else 
+        {
+            echo "Search .....";
+        }
+        ?>
+        " name="txtSearchResult" />
         <button type="submit" name="search-btn">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </button>

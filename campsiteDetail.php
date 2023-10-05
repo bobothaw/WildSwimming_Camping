@@ -443,6 +443,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
     </div>
     <marquee behavior="sliding" direction="right" id="campsiteMarquee">Campsite view count <?php echo $campsiteArray['NoOfViews']."." ?></marquee>
     <script src="weather.js"></script>
+    <script src="currencyExchange.js"></script>
     <footer>
     <p>You are here: <a href="campsiteDetail.php">Campsite Details</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
@@ -569,5 +570,6 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
   });
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
 </body>
 </html>
