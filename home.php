@@ -10,7 +10,7 @@ if (isset($_POST['btnCookieAccept']))
 {
   setcookie($cookieName, $cookieValue, time() + (86400 * 30), "/");
 }
-setcookie($cookieName, $cookieValue, time() - (86400 * 30), "/"); //to remove
+// setcookie($cookieName, $cookieValue, time() - (86400 * 30), "/"); //to remove
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +247,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
     </div>
   <hr>
 
-  <footer class="column">
+  <footer class="column centre">
     <p>You are here: <a href="home.php">Home</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
@@ -256,7 +256,9 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
       <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
     </div>
-    <div class="footer-icon-box translatebox" id="google_element"></div>
+        
+    <div class="footer-icon-box translatebox row wrap" id="google_element">Select Prefered Language:</div>
+    
   </footer>
   <?php 
   if (!isset($_COOKIE[$cookieName]))
@@ -355,7 +357,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
       });
     });
   </script>
-   <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+  <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
           new google.translate.TranslateElement("google_element");

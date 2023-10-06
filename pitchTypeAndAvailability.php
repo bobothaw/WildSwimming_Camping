@@ -47,28 +47,26 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
           </div>
         </div>
       </div>
-      <?php 
+      <?php
         if (isset($_SESSION['CusFName']))
           {
             ?>
             <a href="#" id="login"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['CusFName']  ?> </a>
-            <?php 
+            <?php
           }
-
         else
           {
-            ?> 
+            ?>
             <a href="#" id="login"><i class="fa-solid fa-user"></i> Login / SignUp</a>
-            <?php 
+            <?php
           }
-
-       ?>
+        ?>
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
     <div class="searchControls centre">
         <form action="searchFunction.php" method="POST" class="row wrap">
-            <?php 
+            <?php
             $currentDate = date("Y-m-d");
             $minEndDate = date("Y-m-d", strtotime('+1 day', strtotime($currentDate)));
             ?>
@@ -110,6 +108,7 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
             <p id="searchParagraph">Please use the search bar to find the available campsites at the preferred date time and number of guests.</p>
         </div>
     
+  
     <footer>
     <p>You are here: <a href="pitchTypeAndAvailability.php">PitchType and Availability</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
@@ -119,6 +118,8 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
       <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
     </div>
+        
+    <div class="footer-icon-box translatebox row wrap" id="google_element">Select Prefered Language:</div>
     
   </footer>
     <div class="modal-bg">
@@ -234,7 +235,12 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
     });
     </script>
 
-
+<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+  <script>
+      function loadGoogleTranslate(){
+          new google.translate.TranslateElement("google_element");
+      }
+  </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

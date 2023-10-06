@@ -457,6 +457,8 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
       <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
     </div>
+        
+    <div class="footer-icon-box translatebox row wrap" id="google_element">Select Prefered Language:</div>
     
   </footer>
     <div class="modal-bg">
@@ -573,6 +575,12 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
    });
   });
   </script>
+<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+<script>
+    function loadGoogleTranslate(){
+        new google.translate.TranslateElement("google_element");
+    }
+</script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   
 </body>

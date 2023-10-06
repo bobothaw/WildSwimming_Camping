@@ -6,7 +6,12 @@
 }
 body {
   background: #f7f3e8 url('Images/bodybg.png');
-  height:min-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.contentWrapper{
+  flex-grow: 1;
 }
 
 img.logo {
@@ -1220,8 +1225,8 @@ hr{
   color: #7b5237;
   padding: 20px;
   border: 1px solid #7b5237;
-  margin-bottom: 60vh;
   background-color: #f7f3e8;
+  margin-bottom: 52vh;
 }
 marquee {
   color: #7b5237;
@@ -1294,9 +1299,14 @@ body{
 }
 .translatebox{
   padding: 0px;
+  align-items: center;
+  justify-content: center;
+  color: #f7f3e8;
 }
 .goog-te-gadget{
   color: transparent !important;
+  height: 35px;
+  overflow: hidden;
 }
 .goog-te-combo{
   border: none;
@@ -1305,5 +1315,10 @@ body{
 }
 .goog-te-gadget span{
   display: none;
+  height: 0px;
 }
+.goog-te-gadget #text{
+  height: 0px;
+}
+
 
