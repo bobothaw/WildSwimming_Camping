@@ -1273,6 +1273,10 @@ marquee {
   outline: none;
   border-radius: 10px;
 }
+.cookiebuttons {
+  width: 300px;
+  justify-content: space-between;
+}
 .PrivacyPolicy{
   list-style-type: circle;
   color: #7b5237;
@@ -1282,5 +1286,24 @@ marquee {
   margin-left: auto;
   margin-right: auto;
 }
-
+.VIpgJd-ZVi9od-ORHb-OEVmcd{
+  display: none;
+}
+body{
+  margin-top: -40px;
+}
+.translatebox{
+  padding: 0px;
+}
+.goog-te-gadget{
+  color: transparent !important;
+}
+.goog-te-combo{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.goog-te-gadget span{
+  display: none;
+}
 

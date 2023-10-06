@@ -247,7 +247,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
     </div>
   <hr>
 
-  <footer>
+  <footer class="column">
     <p>You are here: <a href="home.php">Home</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
     <div class="socialMediaIcons row wrap">
@@ -256,6 +256,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
       <a href="https://www.instagram.com/"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="rss.php"><i class="fa-solid fa-rss"></i></a>
     </div>
+    <div class="footer-icon-box translatebox" id="google_element"></div>
   </footer>
   <?php 
   if (!isset($_COOKIE[$cookieName]))
@@ -268,8 +269,10 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
         on our website. By clicking "Accept," you consent to the use of 
         all the cookies.
         </p>
-        <input type="submit" value="Accept" name="btnCookieAccept">
-        <button id="CookieCancel" type="reset">Cancel</button>
+        <div class="cookiebuttons row wrap">
+          <input type="submit" value="Accept" name="btnCookieAccept">
+          <button id="CookieCancel" type="reset">Cancel</button>
+        </div>
       </form>
     </div>
   <?php
@@ -351,6 +354,12 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
         $("#cookie").hide(); // Hide the popup with the ID "cookie"
       });
     });
+  </script>
+   <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+  <script>
+      function loadGoogleTranslate(){
+          new google.translate.TranslateElement("google_element");
+      }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
