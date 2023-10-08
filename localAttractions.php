@@ -70,7 +70,8 @@ $_SESSION['lastPage'] = 'localAttractions.php';
         <?php 
         $localAttrcQuery = "SELECT la.AttractionID, la.AttractionName, c.CountryName, la.AttractionDesc, la.AttractionImage
         From local_attractions la, countries c
-        Where c.CountryID = la.CountryID";
+        Where c.CountryID = la.CountryID
+        Order By la.CountryID";
         $runAttractionQuery = mysqli_query($connect, $localAttrcQuery);
         if (mysqli_num_rows($runAttractionQuery) > 0) {
             while ($attrRow = mysqli_fetch_assoc($runAttractionQuery)) {

@@ -294,7 +294,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                         </div>
                     </div>  
                     <div id="accDetails">
-                        <h4>Payment Accredentials</h4>
+                        <h4>Payment credentials</h4>
                         <input type="text" name="txtPaymentInformation" placeholder="Please enter your PAN number" minlength="14" id="paymentcreInput" >
                     </div>
                     <input type="submit" value = "Book Now" name="btnBookCampsite">

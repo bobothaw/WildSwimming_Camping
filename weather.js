@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             iconElement.height = 50;
 
             // Create a weather message with the desired format
-            const weatherMessage = `City: ${city} | Temperature: ${temperature}°C | Wind speed: ${wind_mph}mph | Humidity: ${humidity} | Description: ${description}  |`;
+            const weatherMessage = `City: ${city} | Temperature: ${temperature}°C | Wind speed: ${wind_mph}mph | Humidity: ${humidity}% | Description: ${description}  |`;
 
             // Get the existing content of the marquee
             const weatherMarquee = document.getElementById('campsiteMarquee');
