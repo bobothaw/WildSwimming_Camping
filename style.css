@@ -1164,6 +1164,9 @@ hr{
   .link-container{
     width: 100%;
   }
+  .campsiteSlot{
+    width: 100%;
+  }
 }
 .TechImg{
   width: 100px;
@@ -1231,6 +1234,9 @@ hr{
 marquee {
   color: #7b5237;
   font-size: 18px;
+}
+marquee img{
+  vertical-align: middle;
 }
 .pitchIcon{
   max-width: 100px;

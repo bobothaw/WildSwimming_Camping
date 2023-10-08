@@ -29,17 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
             // Extract relevant weather information
             const temperature = data.current.temp_c;
             const description = data.current.condition.text;
+            const wind_mph = data.current.wind_mph;
+            const humidity = data.current.humidity;
+            
+            var iconElement = document.createElement("img");
+            iconElement.src = data.current.condition.icon;
+            iconElement.width = 50;
+            iconElement.height = 50;
 
             // Create a weather message with the desired format
-            const weatherMessage = `City: ${city} | Temperature: ${temperature}°C | Description: ${description}`;
+            const weatherMessage = `City: ${city} | Temperature: ${temperature}°C | Wind speed: ${wind_mph}mph | Humidity: ${humidity} | Description: ${description}  |`;
 
             // Get the existing content of the marquee
             const weatherMarquee = document.getElementById('campsiteMarquee');
             const existingContent = weatherMarquee.textContent;
 
             // Append the new weather message to the existing content with a separator
+            
             const separator = ' | '; // Adjust the separator as needed
             weatherMarquee.textContent = existingContent + separator + weatherMessage;
+            weatherMarquee.appendChild(iconElement);
+            
         })
         .catch(error => {
             console.error('Error fetching weather data:', error.message);
