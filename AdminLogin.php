@@ -53,6 +53,13 @@ if(isset($_POST['btnAdminLogin']))
         $_SESSION['AdminPassword'] = $AdminPassword;
         echo "<script>window.alert('Admin Login successful')</script>";
 		echo "<script>window.location = 'AdminDashboard.php'</script>";
+        unset($_POST['btnAdminLogin']);
+    }
+    else
+    {
+        unset($_POST['btnAdminLogin']);
+        echo "<script>window.alert('Admin Login failed. Please try again later.')</script>";
+		echo "<script>window.location = 'AdminLogin.php'</script>";
     }
 }
 ?>

@@ -186,7 +186,7 @@ if (isset($_POST['btnInsertCampsite']))
     $countryID = $_POST['cboCountryID'];
     $wildSwimming = isset($_POST['WildSwimming']) ? ($_POST['WildSwimming'] === 'true' ? 1 : 0) : 0;
     $mapLocation = $_POST['txtMapLocation'];
-
+    $campsiteCity = $_POST['txtCampsiteCity'];
     $campsiteDesc = $_POST['txtCampsiteDesc'];
 
     $checkCampsiteQuery = "Select * from campsites Where CampsiteName = '$campsiteName'";
@@ -200,8 +200,8 @@ if (isset($_POST['btnInsertCampsite']))
 	}
 	else 
 	{
-		$insert = "INSERT into campsites (CampsiteName, Image1, Image2, Image3, CountryID, NoOfViews, MapLocation, WildSwimming, Description) 
-        Values('$campsiteName', '$campsiteImgFileName1', '$campsiteImgFileName2', '$campsiteImgFileName3', $countryID, 0, '$mapLocation', $wildSwimming, '$campsiteDesc')";
+		$insert = "INSERT into campsites (CampsiteName, Image1, Image2, Image3, CountryID, NoOfViews, MapLocation, WildSwimming, Description, City) 
+        Values('$campsiteName', '$campsiteImgFileName1', '$campsiteImgFileName2', '$campsiteImgFileName3', $countryID, 0, '$mapLocation', $wildSwimming, '$campsiteDesc', '$campsiteCity')";
 
 		$inserted = mysqli_query($connect, $insert);
 		if ($inserted)
@@ -401,6 +401,8 @@ if (isset($_POST['btnInsertCampsiteFeature']))
         
                 <label for="txtMapLocation">Map Location: (Google Maps Link SRC)</label>
                 <textarea name="txtMapLocation" id="" rows="6" ></textarea><br>
+                <label for="">Campsite City:</label>
+                <input type="text" name="txtCampsiteCity"> <br>
                 <label for="txtCampsiteDesc">Campsite Description:</label>
                 <textarea name="txtCampsiteDesc" id="" rows="6" ></textarea><br>
         
