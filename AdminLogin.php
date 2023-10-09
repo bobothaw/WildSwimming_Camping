@@ -114,17 +114,14 @@ if(isset($_POST['btnAdminLogin']))
     </div>
     <script>
         $(document).ready(function() {
-            // Initially, hide the register form and show the login form
             $("#AdminLoginForm").show();
             $("#AdminRegisterForm").hide();
 
-            // When the "Register" link is clicked, show the register form and hide the login form
             $("#RegisterLink").click(function() {
                 $("#AdminLoginForm").hide();
                 $("#AdminRegisterForm").show();
             });
 
-            // When the "Login" link is clicked, show the login form and hide the register form
             $("#LoginLink").click(function() {
                 $("#AdminRegisterForm").hide();
                 $("#AdminLoginForm").show();

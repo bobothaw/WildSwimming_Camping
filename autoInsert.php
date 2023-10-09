@@ -28,30 +28,3 @@ while ($campPitchRow = mysqli_fetch_assoc($runcampsitePitchQuery))
 }
 echo "Successfully inserted. Check the database.";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<?php 
-// while ($campPitchRow = mysqli_fetch_assoc($runcampsitePitchQuery))
-// {
-//     echo $campPitchRow["CampsiteID"];
-//     echo $campPitchRow["PitchTypeID"];
-//     $currentDate = clone $initialDate;
-//     while ($currentDate <= $endDate)
-//     {
-//         $formattedDate = $currentDate->format('Y-m-d');
-//         echo $formattedDate;
-//         echo " ";
-//         $currentDate->modify('+1 day');
-//         echo $availSpace;
-//         echo "<br>";
-//     }
-// }
-?>
-</body>
-</html>

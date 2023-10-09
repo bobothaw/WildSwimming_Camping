@@ -4,13 +4,10 @@ function get_formatDate($reviewPostedDate) {
 
 $reviewDate = new DateTime($reviewPostedDate);
 
-// Get the current date
 $currentDate = new DateTime();
 
-// Calculate the time difference
 $timeDifference = $currentDate->diff($reviewDate);
 
-// Format the time difference
 if ($timeDifference->y > 0) {
     $formattedDate = $timeDifference->y . ' year' . ($timeDifference->y > 1 ? 's' : '') . ' ago';
 } elseif ($timeDifference->m > 0) {
@@ -27,9 +24,8 @@ if ($timeDifference->y > 0) {
 return $formattedDate;
 }
 function isUserLockedOut ($userEmail, $connect) {
-    $lockedOutDuration = 600; // 10 minutes in seconds
+    $lockedOutDuration = 600; 
 
-    // Calculate the timestamp for the time 10 minutes ago
     $timestampTenMinutesAgo = time() - $lockedOutDuration;
 
     $failedAttemptsCountQuery = "SELECT COUNT(*) AS failedAttempts FROM loginAttempts
@@ -47,8 +43,8 @@ function isUserLockedOut ($userEmail, $connect) {
         return false;
     }
 }
+
 set_error_handler(function($errno, $errstr, $errfile, $errline) {
-    // error was suppressed with the @-operator
     if (0 === error_reporting()) {
         return false;
     }

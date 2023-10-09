@@ -216,10 +216,8 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
         searchForm.on("submit", function (event) {
         event.preventDefault();
 
-        // Gather form data
         const formData = new FormData(this);
 
-        // Send an AJAX request to your server
         $.ajax({
             type: "POST",
             url: "searchFunction.php",
@@ -227,7 +225,6 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
             processData: false,
             contentType: false,
             success: function (data) {
-            // Update the content of the searchResults div
             $("#searchResults").html(data);
             },
         });

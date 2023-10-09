@@ -9,7 +9,6 @@ fetch('countryToCurrencyCode.json')
   .then(data => {
     countryToCurrencyCode = data;
 
-    // Now, you can fetch your apiUrl and use the loaded data
     return fetch(apiUrl);
   })
   .then(response => response.json())
@@ -27,15 +26,12 @@ fetch('countryToCurrencyCode.json')
     throw new Error('Network response was not ok');
   }
 
-  // Read the response text as HTML
   return response.text();
 })
 .then(htmlContent => {
-  // Parse the HTML content using DOMParser
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlContent, 'text/html');
 
-  // Extract data from the parsed HTML (example: extracting a specific element)
   const totalPriceElement = doc.querySelector('#TotalPrice');
   if (totalPriceElement) {
     totalPrice = totalPriceElement.textContent;
