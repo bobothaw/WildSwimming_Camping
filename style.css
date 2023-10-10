@@ -835,7 +835,7 @@ hr{
 .headerPitchType
 {
   width: 250px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .headerPitchType img{
   width: 50px;
@@ -1089,6 +1089,7 @@ hr{
   max-width: 500px;
   align-items: flex-start;
   color: #7b5237;
+  margin-bottom: 20px;
 }
 .ContactAddress{
   align-items: center;
@@ -1164,8 +1165,8 @@ hr{
   .link-container{
     width: 100%;
   }
-  .campsiteSlot{
-    width: 100%;
+  .campsiteHeader {
+    justify-content: center;
   }
 }
 .TechImg{
