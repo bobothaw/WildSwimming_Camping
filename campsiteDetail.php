@@ -587,7 +587,6 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
           ];
 
           if (colorArray.length === 0) {
-              // Reset the color array if it's empty
               colorArray.push("#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB", "#7646FF", "#20CEF5");
           }
 

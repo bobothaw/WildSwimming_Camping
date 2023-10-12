@@ -238,14 +238,13 @@ $_SESSION['loginLastPage'] = 'reviews.php';
           ];
 
           if (colorArray.length === 0) {
-              // Reset the color array if it's empty
               colorArray.push("#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB", "#7646FF", "#20CEF5");
           }
 
           const randomColorIndex = Math.floor(Math.random() * colorArray.length);
           const randomColor = colorArray[randomColorIndex];
           colorArray.splice(randomColorIndex, 1);
-
+          
           return randomColor;
       }
       const reviewProfile = document.querySelectorAll(".ReviewProfile");

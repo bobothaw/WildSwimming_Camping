@@ -1,3 +1,3 @@
 <?php 
-$connect = mysqli_connect('localhost', 'root', '', 'GWSC_Database');
+$connect = mysqli_connect('localhost', 'root', '', 'Gwsc_Database');
 ?>
