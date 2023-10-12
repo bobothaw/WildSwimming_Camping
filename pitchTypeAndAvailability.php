@@ -31,7 +31,7 @@ $_SESSION['loginLastPage'] = 'pitchTypeAndAvailability.php';
             <a href="information.php">Information</a>
           </div>
           <div class="link">
-            <a href="pitchTypeAndAvailability.php">Pitch Types <br>& Availability </a>
+            <a href="pitchTypeAndAvailability.php"  class="active">Pitch Types <br>& Availability </a>
           </div>
           <div class="link">
             <a href="reviews.php"> Reviews </a>

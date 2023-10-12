@@ -42,7 +42,7 @@ $_SESSION['lastPage'] = 'localAttractions.php';
             <a href="contact.php">Contact</a>
           </div>
           <div class="link">
-            <a href="localAttractions.php">Local Attractions</a>
+            <a href="localAttractions.php" class="active">Local Attractions</a>
           </div>
         </div>
       </div>

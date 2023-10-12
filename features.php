@@ -36,7 +36,7 @@ $_SESSION['loginLastPage'] = 'features.php';
                 <a href="reviews.php"> Reviews </a>
             </div>
             <div class="link">
-                <a href="features.php">Features</a>
+                <a href="features.php"  class="active">Features</a>
             </div>
             <div class="link">
                 <a href="contact.php">Contact</a>

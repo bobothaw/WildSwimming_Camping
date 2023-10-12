@@ -33,7 +33,7 @@ $_SESSION['loginLastPage'] = 'reviews.php';
             <a href="pitchTypeAndAvailability.php">Pitch Types <br>& Availability </a>
           </div>
           <div class="link">
-            <a href="reviews.php"> Reviews </a>
+            <a href="reviews.php"  class="active"> Reviews </a>
           </div>
           <div class="link">
             <a href="features.php">Features</a>
@@ -93,7 +93,7 @@ $_SESSION['loginLastPage'] = 'reviews.php';
                 <div class="ReviewSlot column">
                     <div class="ReviewHeading row wrap">
                         <div class="ReviewHeadingLeft row">
-                            <div class="ReviewProfile" style="background-color: <?php echo getRandColor()?>;">
+                            <div class="ReviewProfile" id="reviewProfile">
                                 <?php 
                                     $customerID = $reviewArray['CustomerID'];
                                     $customerQuery = "SELECT FirstName, LastName from Customers
@@ -224,12 +224,35 @@ $_SESSION['loginLastPage'] = 'reviews.php';
         document.getElementById("dropdown_menu").style.display = "none";
     }
     }
+    
   </script>
     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
           new google.translate.TranslateElement("google_element");
       }
+      function getRandColor() {
+          const colorArray = [
+              "#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB",
+              "#7646FF", "#20CEF5"
+          ];
+
+          if (colorArray.length === 0) {
+              // Reset the color array if it's empty
+              colorArray.push("#44BEC7", "#3355FE", "#FFC300", "#FA3C4C", "#D696BB", "#7646FF", "#20CEF5");
+          }
+
+          const randomColorIndex = Math.floor(Math.random() * colorArray.length);
+          const randomColor = colorArray[randomColorIndex];
+          colorArray.splice(randomColorIndex, 1);
+
+          return randomColor;
+      }
+      const reviewProfile = document.querySelectorAll(".ReviewProfile");
+    reviewProfile.forEach(profile=>{
+      profile.style.backgroundColor = getRandColor();
+    })
+    
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

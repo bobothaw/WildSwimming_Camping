@@ -28,7 +28,7 @@ $_SESSION['loginLastPage'] = 'information.php';
                 <a href="#" onclick="dropMenu()">Pages <i class="fa-solid fa-angle-down drop_angle"></i></a>
                 <div id="dropdown_menu">
                 <div class="link">
-                    <a href="information.php">Information</a>
+                    <a href="information.php" class="active">Information</a>
                 </div>
                 <div class="link">
                     <a href="pitchTypeAndAvailability.php">Pitch Types <br>& Availability </a>

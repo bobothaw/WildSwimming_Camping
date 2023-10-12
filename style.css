@@ -22,7 +22,7 @@ img.logo {
 }
 
 nav {
-  position: relative; /* Add relative positioning */
+  position: relative; 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -76,18 +76,18 @@ nav div a {
 
 #dropdown_menu {
   display: none;
-  position: absolute; /* Add absolute positioning */
-  top: 100%; /* Position the dropdown below the navigation bar */
+  position: absolute; 
+  top: 100%; 
   left: 0;
-  z-index: 1; /* Ensure the dropdown covers other elements */
+  z-index: 1; 
   background-color: #f7f3e8;
   border: 1px solid #ccc;
-  flex-direction: column; /* Make it a flex column */
-  min-width: 200px; /* Optional: Set a minimum width for the dropdown */
+  flex-direction: column; 
+  min-width: 200px; 
   text-align: center;
 }
 
-/* Additional styles for the dropdown menu links */
+
 #dropdown_menu .link a {
   display: block;
   padding: 10px;
@@ -182,7 +182,7 @@ div.slider {
   margin-left: -80%;
 }
 
-/* css for auto navigation */
+
 .navigation-auto {
   position: absolute;
   width: 100%;
@@ -406,7 +406,7 @@ input[type="submit"]:disabled{
   background-color: #fff;
 }
 
-/* Styling for form headings */
+
 .AdminSignUpLoginForm form h1 {
   font-size: 1.5em;
   margin-bottom: 15px;
@@ -414,7 +414,7 @@ input[type="submit"]:disabled{
   color: #7b5237;
 }
 
-/* Styling for form labels */
+
 .AdminSignUpLoginForm form label {
   display: block;
   font-weight: bold;
@@ -423,7 +423,7 @@ input[type="submit"]:disabled{
   font-size: 20px;
 }
 
-/* Styling for form input fields */
+
 .AdminSignUpLoginForm form input[type="text"],
 .AdminSignUpLoginForm form input[type="email"],
 .AdminSignUpLoginForm form input[type="password"],
@@ -470,7 +470,7 @@ input[type="submit"]:disabled{
   color: #7b5237;
   font-size: 18px;
 }
-/* Styling for the form button */
+
 .AdminSignUpLoginForm form button {
   display: block;
   width: 100%;
@@ -487,13 +487,13 @@ input[type="submit"]:disabled{
   background-color: #7b5237;
 }
 
-/* Styling for the "Already have an account?" text */
+
 .AdminSignUpLoginForm form p {
   margin-top: 15px;
   text-align: center;
 }
 
-/* Styling for the "Login" link */
+
 .AdminSignUpLoginForm form a {
   text-decoration: none;
   color: #7b5237;
@@ -703,9 +703,6 @@ hr{
   .CampInfo .CampSiteImage{
     padding: 0px;
   }
-  /* nav{
-    display: none;
-  } */
 }
 .CampInfo{
   padding: 20px;
@@ -1031,7 +1028,7 @@ hr{
   font-size: 25px;
   aspect-ratio: 1/1;
   width: 55px;
-  background-color: #bd8a6b;
+
   display: flex;
   color: #fff;
   justify-content: center;

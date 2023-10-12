@@ -40,7 +40,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
             <a href="features.php">Features</a>
           </div>
           <div class="link">
-            <a href="contact.php">Contact</a>
+            <a href="contact.php"  class="active">Contact</a>
           </div>
           <div class="link">
             <a href="localAttractions.php">Local Attractions</a>
