@@ -117,6 +117,8 @@ $_SESSION['loginLastPage'] = 'contact.php';
     <?php 
     if (isset($_POST['btnContactSubmit']))
     {
+      if (isset($_SESSION['CusID']))
+      {
         $contactName = $_POST['txtContactName'];
         $contactEmail = $_POST['txtContactEmail'];
         $contactSubject = $_POST['txtContactSubject'];
@@ -129,6 +131,11 @@ $_SESSION['loginLastPage'] = 'contact.php';
         {
             echo "<script>window.alert('Your question is submitted successfully')</script>";
         }
+      }
+      else
+      {
+        echo "<script>window.alert('Please login first!')</script>";
+      }
     }
     ?>
     <footer>
