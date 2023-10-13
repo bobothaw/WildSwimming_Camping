@@ -231,7 +231,10 @@ $_SESSION['loginLastPage'] = 'contact.php';
     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
-          new google.translate.TranslateElement("google_element");
+            new google.translate.TranslateElement({
+          defaultLanguage: 'en', 
+          multilanguagePage: true
+        }, 'google_element');
       }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

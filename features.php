@@ -20,7 +20,7 @@ $_SESSION['loginLastPage'] = 'features.php';
 </head>
 <body>
     <nav>
-    <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
+    <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
         
         <div class="link-container link row">
         <div class="link" id="drop">
@@ -102,27 +102,27 @@ $_SESSION['loginLastPage'] = 'features.php';
             <p>Here are some of the werable technologies categories allowed at our campsites</p>
             <div class="WerableTechCatalogue row wrap">
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-smart-watch-100.png" alt="" class="TechImg">
+                    <img src="Images/icons8-smart-watch-100.png" alt="Smart Watch Image" class="TechImg">
                     <p>Smart Watches</p>
                 </div>
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-earbud-headphones-64.png" alt="" class="TechImg">
+                    <img src="Images/icons8-earbud-headphones-64.png" alt="Headphone Image" class="TechImg">
                     <p>Hearables devices</p>
                 </div>
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-google-glass-100.png" alt="" class="TechImg">
-                    <p>Smart Watches</p>
+                    <img src="Images/icons8-google-glass-100.png" alt="Smart Glasses Image" class="TechImg">
+                    <p>Smart Glasses</p>
                 </div>
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-shirt-80.png" alt="" class="TechImg">
+                    <img src="Images/icons8-shirt-80.png" alt="Smart Clothing Image" class="TechImg">
                     <p>Smart Clothing</p>
                 </div>
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-smart-jewelry-64.png" alt="" class="TechImg">
+                    <img src="Images/icons8-smart-jewelry-64.png" alt="Smart Jewelry Image" class="TechImg">
                     <p>Smart Jewelery</p>
                 </div>
                 <div class="TechSlot column centre">
-                    <img src="Images/icons8-virtual-reality-64.png" alt="" class="TechImg">
+                    <img src="Images/icons8-virtual-reality-64.png" alt="Augmented Reality Image" class="TechImg">
                     <p>Augmented Reality</p>
                 </div>
             </div>
@@ -213,7 +213,10 @@ $_SESSION['loginLastPage'] = 'features.php';
     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
-          new google.translate.TranslateElement("google_element");
+            new google.translate.TranslateElement({
+          defaultLanguage: 'en', 
+          multilanguagePage: true
+        }, 'google_element');
       }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

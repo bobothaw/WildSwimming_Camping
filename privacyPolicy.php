@@ -21,7 +21,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
 </head>
 <body>
     <nav>
-    <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
+    <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
     <div class="link-container link row">
       <div class="link" id="drop">
@@ -240,7 +240,10 @@ $_SESSION['loginLastPage'] = 'contact.php';
     <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
-          new google.translate.TranslateElement("google_element");
+            new google.translate.TranslateElement({
+          defaultLanguage: 'en', 
+          multilanguagePage: true
+        }, 'google_element');
       }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

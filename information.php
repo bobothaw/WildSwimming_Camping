@@ -21,7 +21,7 @@ $_SESSION['loginLastPage'] = 'information.php';
 <body>
     <div class="contentWrapper">
         <nav>
-        <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
+        <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
         
             <div class="link-container link row">
             <div class="link" id="drop">
@@ -128,7 +128,7 @@ $_SESSION['loginLastPage'] = 'information.php';
                         ?>
                         <div class="CampInfo row">
                             <div class="CampSiteImage">
-                                <img src="<?php echo $campsiteRow["Image1"];?> " alt="">
+                                <img src="<?php echo $campsiteRow["Image1"];?> " alt="Campsite Image">
                                 <iframe src=<?= $campsiteRow["MapLocation"];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                             <div class="CampsiteText column">
@@ -330,7 +330,10 @@ $_SESSION['loginLastPage'] = 'information.php';
       <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
-          new google.translate.TranslateElement("google_element");
+            new google.translate.TranslateElement({
+          defaultLanguage: 'en', 
+          multilanguagePage: true
+        }, 'google_element');
       }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

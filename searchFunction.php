@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             ?>
             <div class="CampInfo row">
                 <div class="CampSiteImage">
-                    <img src="<?php echo $campsiteRow["Image1"];?> " alt="">
+                    <img src="<?php echo $campsiteRow["Image1"];?> " alt="Campsite Image">
                     <iframe src=<?= $campsiteRow["MapLocation"];?> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="CampsiteText column">

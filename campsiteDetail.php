@@ -51,7 +51,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
 </head>
 <body>
     <nav>
-    <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
+    <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
     <div class="link-container link row">
       <div class="link" id="drop">
@@ -163,14 +163,14 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
         </div>
         <div class="CampsiteDetailImages row wrap centre">
             <div class="PrincipleImage">
-                <img src="<?= $campsiteArray['Image1'] ?>" alt="">
+                <img src="<?= $campsiteArray['Image1'] ?>" alt="Campsite Image 1">
             </div>
             <div class="SideImages column">
                 <div class="UpperSideImage">
-                    <img src="<?= $campsiteArray['Image2'] ?>" alt="">
+                    <img src="<?= $campsiteArray['Image2'] ?>" alt="Campsite Image 2">
                 </div>
                 <div class="LowerSideImage">
-                    <img src="<?= $campsiteArray['Image3'] ?>" alt="">
+                    <img src="<?= $campsiteArray['Image3'] ?>" alt="Campsite Image 3">
                 </div>
             </div>
         </div>
@@ -359,10 +359,10 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
                         ?>
                         <div class="attraction_slot row">
                             <div class="attrImage">
-                                <img src="<?php echo $attrRow["AttractionImage"];?>" alt="">
+                                <img src="<?php echo $attrRow["AttractionImage"];?>" alt="Attraction Image">
                             </div>
                             <div class="AttrText column">
-                                <div class="AttrHeading"><h1><?php echo$attrRow["AttractionName"]; ?></h1></div>
+                                <div class="AttrHeading"><h2><?php echo$attrRow["AttractionName"]; ?></h2></div>
                                 <div class="AttrCountry"><h3><?php echo$attrRow["CountryName"]; ?></h3></div>
                                 <div class="AttrDesc"><p><?php echo$attrRow["AttractionDesc"]; ?></p></div>
                             </div>

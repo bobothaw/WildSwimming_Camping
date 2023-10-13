@@ -29,7 +29,7 @@ if (isset($_POST['btnCookieAccept']))
 
 <body>
   <nav>
-  <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
+  <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
     <div class="link-container link row">
       <div class="link" id="drop">
@@ -159,7 +159,7 @@ if (isset($_POST['btnCookieAccept']))
   </div>
   <hr>
   <div class="Intro text_centre centre">
-    <h1>Most Viewed Campsites</h1>
+    <h2>Most Viewed Campsites</h2>
   </div>
   <div class="viewed_campsite_container row wrap">
   <?php
@@ -171,7 +171,7 @@ if (isset($_POST['btnCookieAccept']))
               ?>
               <div class="viewed_campsite_slot">
                   <div class="viewed_campsite">
-                      <img src="<?php echo $campsiteRow["Image1"]; ?>" alt="">
+                      <img src="<?php echo $campsiteRow["Image1"]; ?>" alt="Campsite Image">
                       <div class="viewed_campsite_overlay">
                           <h2><?php echo $campsiteRow["CampsiteName"]; ?></h2>
                           <span><i class="fa-regular fa-eye"></i><?php echo $campsiteRow["NoOfViews"]; ?></span>   
@@ -189,7 +189,7 @@ if (isset($_POST['btnCookieAccept']))
   </div>
   <hr>
   <div class="Intro text_centre centre">
-    <h1>Most Popular Countries</h1>
+    <h2>Most Popular Countries</h2>
   </div>
   <div class="viewed_campsite_container row wrap">
   <?php
@@ -201,7 +201,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
         ?>
         <div class="viewed_campsite_slot">
             <div class="viewed_campsite">
-                <img src="<?php echo $countryRow["CountryImage"]; ?>" alt="">
+                <img src="<?php echo $countryRow["CountryImage"]; ?>" alt="Country Image">
                 <div class="viewed_campsite_overlay">
                     <h2><?php echo $countryRow["CountryName"]; ?></h2>
                     <a href="information.php?CountryID=<?php echo $countryRow["CountryID"]; ?>">Explore Campsites &#8594;</a>
@@ -219,7 +219,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
   </div>
   <hr>
   <div class="LocalAttractionsContainer row wrap" id="homePitch">
-    <h1 class="Intro centre">Different pitchtypes of our campsites</h1>
+    <h2 class="Intro centre">Different pitchtypes of our campsites</h2>
         <?php 
         $pitchTypeQuery = "SELECT * FROM PitchTypes";
         $runPitchTypeQuery = mysqli_query($connect, $pitchTypeQuery);
@@ -228,10 +228,10 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
                 ?>
                 <div class="attraction_slot row">
                     <div class="attrImage centre">
-                        <img src="<?php echo $pitchRow["PitchTypeImg"];?>" alt="" class="pitchIcon">
+                        <img src="<?php echo $pitchRow["PitchTypeImg"];?>" alt="Pitch Type Image" class="pitchIcon">
                     </div>
                     <div class="AttrText column">
-                        <div class="AttrHeading"><h1><?php echo$pitchRow["PitchTypeName"]; ?></h1></div>
+                        <div class="AttrHeading"><h2><?php echo$pitchRow["PitchTypeName"]; ?></h2></div>
                         <a href="information.php?PitchTypeID=<?php echo$pitchRow['PitchTypeID']?>">Explore Campsites &#8594;</a>
                         <div class="AttrDesc"><p><?php echo$pitchRow["PitchTypeDesc"]; ?></p></div>
                     </div>
@@ -353,14 +353,17 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
   <script>
     $(document).ready(function() {
       $("#CookieCancel").click(function() {
-        $("#cookie").hide(); // Hide the popup with the ID "cookie"
+        $("#cookie").hide(); 
       });
     });
   </script>
   <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
       function loadGoogleTranslate(){
-          new google.translate.TranslateElement("google_element");
+            new google.translate.TranslateElement({
+          defaultLanguage: 'en', 
+          multilanguagePage: true
+        }, 'google_element');
       }
   </script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>

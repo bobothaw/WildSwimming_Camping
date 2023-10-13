@@ -79,7 +79,7 @@ if(isset($_POST['btnAdminLogin']))
 <body>
     <div class="AdminSignUpLoginForm" id="AdminRegisterForm">
         <form action="AdminLogin.php" method="POST">
-        <h1>Admin Register Form</h1>
+        <h2>Admin Register Form</h2>
 		<label for="txtAdminName">Admin  Name</label>
 		<input type="text" name="txtAdminName" placeholder="Enter Admin name.." required><br><br>
 
@@ -104,7 +104,7 @@ if(isset($_POST['btnAdminLogin']))
     </div>
     <div class= "AdminSignUpLoginForm" id="AdminLoginForm">
     <form action="AdminLogin.php" method="POST">
-        <h1>Admin Login Form</h1>
+        <h2>Admin Login Form</h2>
 		
 		<label for="txtAdminEmail">Email</label>
 		<input type="email" name="txtAdminEmail" placeholder="Enter Admin Email.." required><br><br>
