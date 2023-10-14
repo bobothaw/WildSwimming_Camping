@@ -18,7 +18,11 @@ if (isset($_POST['btnCookieAccept']))
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GWSC - Home</title>
+  <title>Global Wild Swimming and Camping: Book your desired campsite here - GWSC</title>
+  <meta name="description" content="Welcome to Global Wild Swimming and Camping (GWSC), your gateway to 
+          unforgettable outdoor adventures! Immerse yourself in the beauty of nature
+          and discover our diverse collection of breathtaking wild swimming and 
+          camping sites.">
   <script src="https://kit.fontawesome.com/84ff42f2da.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

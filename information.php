@@ -246,7 +246,7 @@ $_SESSION['loginLastPage'] = 'information.php';
     <div class="modal-bg">
     <div class="modal-content">
         <div class="close" id="close">+</div>
-        <form action="home.php" class="modal-box" id="login_form" method="POST">
+        <form action="login.php" class="modal-box" id="login_form" method="POST">
             <h3 class="modal_heading">
             Welcome Back!
             </h3>

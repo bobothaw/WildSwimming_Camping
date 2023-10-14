@@ -2,8 +2,8 @@
 include('connection.php');
 session_start();
 include('functions.php');
-$_SESSION['lastPage'] = 'contact.php';
-$_SESSION['loginLastPage'] = 'contact.php';
+$_SESSION['lastPage'] = 'privacyPolicy.php';
+$_SESSION['loginLastPage'] = 'privacyPolicy.php';
 
 
 ?>
