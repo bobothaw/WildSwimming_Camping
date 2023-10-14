@@ -20,6 +20,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
     <nav>
     <a href="home.php"><img src="Images/GWSC_logo.png" alt="" class="logo" /></a>
     
@@ -66,6 +67,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
+  </header>
     <div class="ContactContainer column centre">
         <h1>Ask us anything</h1>
         <div class="ContactWrapper row wrap">

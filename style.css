@@ -384,7 +384,7 @@ input[type="submit"]:disabled{
   align-items: center;
 }
 .Intro{
-  width: 90%;
+  width: 100%;
   margin: 20px auto;
   color: #7b5237;
 }
@@ -659,7 +659,6 @@ hr{
 .attrImage {
   width: 300px;
   position: relative;
-
 }
 .attrImage img{
   width: 100%;

@@ -19,6 +19,7 @@ $_SESSION['loginLastPage'] = 'reviews.php';
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <header>
     <nav>
     <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
@@ -65,6 +66,7 @@ $_SESSION['loginLastPage'] = 'reviews.php';
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
+    </header>
     <h1 class="centre" id="reviewsPageHeading">Reviews</h1>
     <div class="ReviewPageHeader row wrap">
           <?php 

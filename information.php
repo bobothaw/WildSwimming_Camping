@@ -20,6 +20,7 @@ $_SESSION['loginLastPage'] = 'information.php';
 </head>
 <body>
     <div class="contentWrapper">
+        <header>
         <nav>
         <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
         
@@ -64,6 +65,7 @@ $_SESSION['loginLastPage'] = 'information.php';
             <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
             </div>
         </nav>
+        </header>
         <div class="searchbar">
             <form action="information.php" id="searchForm" method="POST">
             <input type="text" placeholder="

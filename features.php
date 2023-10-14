@@ -19,6 +19,7 @@ $_SESSION['loginLastPage'] = 'features.php';
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <header>
     <nav>
     <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
         
@@ -65,6 +66,7 @@ $_SESSION['loginLastPage'] = 'features.php';
         <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
         </div>
     </nav>
+    </header>
     <div class="FeaturePageContainer row wrap">
         <div class="FeatureWholeContainer column">
             <h1 class="Intro centre">Features in the campsite</h1>
@@ -96,7 +98,6 @@ $_SESSION['loginLastPage'] = 'features.php';
                 ?>
             </div>
         </div>
-        <hr>
         <div class="WerablesTechnologies column">
             <h2>Werable Technology Categories</h2>
             <p>Here are some of the werable technologies categories allowed at our campsites</p>

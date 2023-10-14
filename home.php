@@ -28,6 +28,7 @@ if (isset($_POST['btnCookieAccept']))
 </head>
 
 <body>
+  <header>
   <nav>
   <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
@@ -74,6 +75,7 @@ if (isset($_POST['btnCookieAccept']))
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
   </nav>
+  </header>
   <div class="slider_container">
     <div class="slider">
       <div class="slides">
@@ -361,7 +363,7 @@ if (mysqli_num_rows($runCountryQuery) > 0) {
   <script>
       function loadGoogleTranslate(){
             new google.translate.TranslateElement({
-          defaultLanguage: 'en', 
+          pageLanguage: 'en', 
           multilanguagePage: true
         }, 'google_element');
       }

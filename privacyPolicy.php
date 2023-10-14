@@ -20,6 +20,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
     <nav>
     <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
@@ -66,6 +67,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
+    </header>
     <div class="PrivacyPolicy">
         <h1>Privacy Policy of GWSC</h1>
         <p>Last Updated: [9.29.2023]</p>

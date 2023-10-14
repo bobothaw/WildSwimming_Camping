@@ -19,6 +19,7 @@ $_SESSION['lastPage'] = 'localAttractions.php';
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
     <nav>
     <a href="home.php"><img src="Images/GWSC_logo.png" alt="GWSC logo" class="logo" /></a>
     
@@ -65,8 +66,9 @@ $_SESSION['lastPage'] = 'localAttractions.php';
       <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
     </div>
     </nav>
-    <h1 class="Intro centre">Local Attractions</h1>
-    <div class="LocalAttractionsContainer row wrap">
+  </header>
+    <section class="LocalAttractionsContainer row wrap">
+      <h1 class="Intro centre">Local Attractions</h1>
         <?php 
         $localAttrcQuery = "SELECT la.AttractionID, la.AttractionName, c.CountryName, la.AttractionDesc, la.AttractionImage
         From local_attractions la, countries c
@@ -95,7 +97,7 @@ $_SESSION['lastPage'] = 'localAttractions.php';
         }
         ?>
         
-    </div>
+    </section>
     <footer>
     <p>You are here: <a href="home.php">Home</a></p>
     <p>Copyright &copy; 2023 GWSC. All rights reserved.</p>
