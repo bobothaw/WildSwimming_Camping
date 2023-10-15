@@ -484,7 +484,7 @@ if (isset($_GET['CampID']) || isset($_SESSION['CampsiteID']))
             <input type="text" name = "txtCusFName" placeholder="Please enter your first name" class="modal-email" required>
             <input type="text" name = "txtCusSName" placeholder="Please enter your surname" class="modal-email" required>
             <input type="email" name = "txtCusEmail" placeholder="Please enter your email" class="modal-email" required>
-            <input type="password" name = "txtCusPassword" placeholder="Please enter the password" class="modal-email" required>
+            <input type="password" name = "txtCusPassword" placeholder="Please enter the password" class="modal-email" minlength="10" required>
             <input type="text" name = "txtPhoneNumber" placeholder = "Please enter your phone number" class = "modal-email" required>
             <input type="text" name = "txtAddress" placeholder="Please enter your address" class="modal-email" required>
 

@@ -1328,4 +1328,25 @@ body{
   height: 0px;
 }
 
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th:nth-child(1), td:nth-child(1) {
+  width: 15%; 
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 10%;
+}
+td img{
+  width: 100px;
+  height: 100px;
+}
+
 

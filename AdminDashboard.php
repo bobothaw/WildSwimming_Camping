@@ -407,6 +407,7 @@ if (isset($_POST['btnInsertCampsiteFeature']))
                 <textarea name="txtCampsiteDesc" id="" rows="6" ></textarea><br>
         
                 <button type="submit" name="btnInsertCampsite">Insert Campsite</button>
+                <a href="CampsiteDashboard.php">Edit Campsite?</a>
             </form>
         </div>
         
