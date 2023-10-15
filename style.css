@@ -49,7 +49,9 @@ nav div a {
 .drop_angle {
   font-size: 16px;
 }
-
+.link a:hover{
+  color: #bd8a6b;
+}
 .link a:after {
   content: "";
   display: block;
@@ -65,14 +67,16 @@ nav div a {
 
 .link a:hover:after {
   width: 100%;
-  background: #7b5237;
+  background: #bd8a6b;
 }
 
 .link a.active::after {
   width: 100%;
   background: #7b5237;
 }
-
+.link a.active:hover::after{
+  background: #bd8a6b;
+}
 #dropdown_menu {
   display: none;
   position: absolute; 
@@ -86,12 +90,14 @@ nav div a {
   text-align: center;
 }
 
-
 #dropdown_menu .link a {
   display: block;
   padding: 10px;
   color: #7b5237;
   text-decoration: none;
+}
+#dropdown_menu .link a:hover{
+  color: #bd8a6b;
 }
 .text_centre{
   text-align: center;
@@ -99,7 +105,7 @@ nav div a {
 
 
 #dropdown_menu .link a:hover {
-  background-color: #ccc;
+  background-color: #e7e7e7;
 }
 div.slider_container {
   display: flex;
