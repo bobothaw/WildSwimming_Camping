@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["CampsiteID"])) {
 }
 if (isset($_POST['btnEditCampsite']))
 {
+    $campsiteID = $_POST['txtCampsiteID'];
     $campsiteName = $_POST['txtCampsiteName'];
     $countryID = $_POST['cboCountryID'];
     $wildSwimming = isset($_POST['WildSwimming']) ? ($_POST['WildSwimming'] === 'true' ? 1 : 0) : 0;
