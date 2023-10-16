@@ -13,17 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["CampsiteID"])) {
     Where co.CountryID = c.CountryID
     AND c.CampsiteID = $campsiteID";
     $runCampsiteQuery = mysqli_query($connect, $campsiteQuery);
-    if ($runCampsiteQuery->num_rows > 0) {
-        while ($row = $runCampsiteQuery->fetch_assoc()) {
-            $campsiteName = $row["CampsiteName"];
-            $countryID = $row["CountryID"];
-            $countryName = $row["CountryName"];
-            $wildSwimming = $row["WildSwimming"];
-            $description = $row["Description"];
-            $mapLocation = $row["MapLocation"];
-            $campsiteCity = $row["City"];
-        }
-    }
+    $row = mysqli_fetch_assoc($runCampsiteQuery);
+    $campsiteName = $row["CampsiteName"];
+    $countryID = $row["CountryID"];
+    $countryName = $row["CountryName"];
+    $wildSwimming = $row["WildSwimming"];
+    $description = $row["Description"];
+    $mapLocation = $row["MapLocation"];
+    $campsiteCity = $row["City"];
 }
 if (isset($_POST['btnEditCampsite']))
 {
