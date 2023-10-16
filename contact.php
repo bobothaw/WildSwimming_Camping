@@ -51,6 +51,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
           {
             ?>
             <a href="#" id="login"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['CusFName']  ?> </a>
+            <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
             <?php 
           }
 
@@ -62,7 +63,7 @@ $_SESSION['loginLastPage'] = 'contact.php';
           }
 
        ?>
-      <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+      
     </div>
     </nav>
   </header>
