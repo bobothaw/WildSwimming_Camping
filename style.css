@@ -10,6 +10,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+textarea{
+  resize: vertical;
+}
 .contentWrapper{
   flex-grow: 1;
 }
@@ -979,6 +982,7 @@ hr{
   border: none;
   margin-bottom: 15px;
   border-radius: 10px;
+  font-size: 18px;
 }
 
 .ReviewSubmit h2{
